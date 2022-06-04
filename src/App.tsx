@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import * as d3 from 'd3';
+import React, { useEffect, useState } from 'react';
+import { Node, addNode } from './components/node';
 import './App.css';
 
 function App() {
+  const [data] = useState<Node[]>([
+    {
+      state: 0,
+      cx: 100,
+      cy: 100,
+    },
+    {
+      state: 1,
+      cx: 400,
+      cy: 100,
+    },
+    {
+      state: 2,
+      cx: 400,
+      cy: 200,
+    },
+    {
+      state: 3,
+      cx: 400,
+      cy: 300,
+    },
+  ]);
+
+  useEffect(() => {
+    const svg = d3.select('#svg-canvas');
+    svg.selectAll('*').remove();
+    addNode(svg, data);
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <svg id="svg-canvas" width="800" height="600"></svg>
     </div>
   );
 }
