@@ -1,37 +1,47 @@
 import * as d3 from 'd3';
 import React, { useEffect, useState } from 'react';
-import { Node, addNode } from './components/node';
+import { addNode } from './components/node';
+import { Port, Graph } from './type';
 import './App.css';
 
 function App() {
-  const [data] = useState<Node[]>([
-    {
-      state: 0,
-      cx: 100,
-      cy: 100,
-    },
-    {
-      state: 1,
-      cx: 400,
-      cy: 100,
-    },
-    {
-      state: 2,
-      cx: 400,
-      cy: 200,
-    },
-    {
-      state: 3,
-      cx: 400,
-      cy: 300,
-    },
-  ]);
+  const [graph] = useState<Graph>({
+    nodes: [
+      {
+        state: 0,
+        cx: 100,
+        cy: 300,
+      },
+      {
+        state: 1,
+        cx: 300,
+        cy: 100,
+      },
+    ],
+    links: [
+      {
+        source: { node: 0, port: Port.TopRight },
+        target: { node: 1, port: Port.BottomLeft },
+        content: {
+          value: ['Makan Nasi', 'Makan Soto'],
+        },
+      },
+      {
+        source: { node: 3, port: Port.Top },
+        target: { node: 2, port: Port.Bottom },
+        content: {
+          value: ['Makan Nasi', 'Makan Soto'],
+        },
+      },
+    ],
+  });
 
   useEffect(() => {
     const svg = d3.select('#svg-canvas');
     svg.selectAll('*').remove();
-    addNode(svg, data);
+    addNode(svg, graph);
   });
+
   return (
     <div className="App">
       <svg id="svg-canvas" width="800" height="600"></svg>
