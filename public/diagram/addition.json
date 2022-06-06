@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "state": 0,
+      "cx": 150,
+      "cy": 350
+    },
+    {
+      "state": 1,
+      "cx": 350,
+      "cy": 150
+    },
+    {
+      "state": 2,
+      "cx": 350,
+      "cy": 550
+    },
+    {
+      "state": 3,
+      "cx": 650,
+      "cy": 550
+    }
+  ],
+  "links": [
+    {
+      "source": { "node": 1, "port": "BL" },
+      "target": { "node": 2, "port": "TL" },
+      "content": {
+        "value": ["Makan Nasi", "Makan Soto"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "T" },
+      "target": { "node": 1, "port": "T" },
+      "content": {
+        "value": ["Makan Nasi", "Makan Soto"]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "TR" },
+      "target": { "node": 1, "port": "BR" },
+      "content": {
+        "value": ["Makan Nasi", "Makan Soto"]
+      }
+    },
+    {
+      "source": { "node": 0, "port": "L" },
+      "target": { "node": 0, "port": "L" },
+      "content": {
+        "value": ["Makan Nasi", "Makan Soto"]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "R" },
+      "target": { "node": 3, "port": "L" },
+      "content": {
+        "value": ["Makan Nasi", "Makan Soto"]
+      }
+    }
+  ]
+}
