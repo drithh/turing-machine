@@ -1,23 +1,13 @@
-export type Node = {
+export type TypeNode = {
   state: number;
   cx: number;
   cy: number;
+  type: 'start' | 'normal' | 'final';
 };
 
-export enum Port {
-  Top = 'T',
-  TopRight = 'TR',
-  Right = 'R',
-  BottomRight = 'BR',
-  Bottom = 'B',
-  BottomLeft = 'BL',
-  Left = 'L',
-  TopLeft = 'TL',
-}
-
-type Link = {
+type LinkTarget = {
   node: number;
-  port: Port;
+  port: 'T' | 'TR' | 'R' | 'BR' | 'B' | 'BL' | 'L' | 'TL';
 };
 
 type LinkContent = {
@@ -28,13 +18,13 @@ type LinkContent = {
   };
 };
 
-export type Links = {
-  source: Link;
-  target: Link;
+export type TypeLink = {
+  source: LinkTarget;
+  target: LinkTarget;
   content: LinkContent;
 };
 
 export type Graph = {
-  nodes: Node[];
-  links: Links[];
+  nodes: TypeNode[];
+  links: TypeLink[];
 };
