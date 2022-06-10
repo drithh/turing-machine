@@ -8,10 +8,11 @@ interface Props {
   sourceLocation: Type.Node;
   targetLocation: Type.Node;
   active?: Transition;
+  duration: number;
 }
 
 export const NormalArrow = (props: Props) => {
-  const { link, sourceLocation, targetLocation, active } = props;
+  const { link, sourceLocation, targetLocation, active, duration } = props;
   const sourcePort = convertPort(link.source.port);
   const targetPort = convertPort(link.target.port);
 
@@ -19,6 +20,13 @@ export const NormalArrow = (props: Props) => {
   useEffect(() => {
     setIsActive(active ? true : false);
   }, [active]);
+
+  setTimeout(() => {
+    if (isActive) {
+      setIsActive(false);
+    }
+  }, duration);
+
   const linkVariants = {
     active: {
       stroke: '#fdba74',
@@ -53,9 +61,6 @@ export const NormalArrow = (props: Props) => {
         y2={targetLocation.cy + targetPort.y}
         variants={linkVariants}
         animate={isActive ? 'active' : 'inactive'}
-        onAnimationComplete={() => {
-          setIsActive(false);
-        }}
       ></motion.line>
       <g
         className=" font-sans font-medium"

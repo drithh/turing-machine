@@ -8,25 +8,27 @@ import { Transition } from '../type';
 interface GraphProps {
   diagramFileName: string;
   steps?: Transition[];
+  duration: number;
 }
 
 export const CreateGraph = (props: GraphProps) => {
-  const { diagramFileName, steps } = props;
+  const { diagramFileName, steps, duration } = props;
   const [data, dataSet] = useState<any>(null);
 
   const [activeTransition, setActiveTransition] = useState<Transition>();
 
   const [step, setStep] = useState<number>(0);
+  console.log(steps);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (steps) {
+      if (steps && step < steps.length) {
         setActiveTransition(steps[step]);
         setStep(step + 1);
       }
-    }, 1500);
+    }, duration);
     return () => clearInterval(interval);
-  }, [steps, step]);
+  }, [steps, step, duration]);
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -50,7 +52,12 @@ export const CreateGraph = (props: GraphProps) => {
       {data
         ? data.nodes.map((node: Type.Node) => {
             return (
-              <Node key={node.state} node={node} active={activeTransition} />
+              <Node
+                key={node.state}
+                node={node}
+                active={activeTransition}
+                duration={duration / 2}
+              />
             );
           })
         : null}
@@ -62,6 +69,7 @@ export const CreateGraph = (props: GraphProps) => {
                 graph={data}
                 link={link}
                 active={activeTransition}
+                duration={duration / 2}
               />
             );
           })

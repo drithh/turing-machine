@@ -14,22 +14,69 @@ function App() {
     {
       from: 0,
       to: 0,
-      head: '0B',
+      head: '1B',
       headReplace: 'CB',
       tapeDirection: 'RL',
     },
     {
       from: 0,
-      to: 0,
-      head: '0B',
+      to: 1,
+      head: 'CB',
+      headReplace: 'CB',
+      tapeDirection: 'RL',
+    },
+    {
+      from: 1,
+      to: 1,
+      head: '01',
+      headReplace: 'CB',
+      tapeDirection: 'RL',
+    },
+    {
+      from: 1,
+      to: 1,
+      head: '11',
+      headReplace: 'CB',
+      tapeDirection: 'RL',
+    },
+    {
+      from: 1,
+      to: 1,
+      head: '00',
+      headReplace: 'CB',
+      tapeDirection: 'RL',
+    },
+    {
+      from: 1,
+      to: 2,
+      head: 'B1',
       headReplace: 'CB',
       tapeDirection: 'RL',
     },
   ];
 
+  const addStep = () => {
+    steps.push({
+      from: 0,
+      to: 0,
+      head: '0B',
+      headReplace: 'CB',
+      tapeDirection: 'RL',
+    });
+  };
+
   return (
-    <div className="App">
-      <CreateGraph diagramFileName="addition.json" steps={steps} />
+    <div
+      className="App"
+      onClick={() => {
+        addStep();
+      }}
+    >
+      <CreateGraph
+        diagramFileName="addition.json"
+        steps={steps}
+        duration={2000}
+      />
     </div>
   );
 }

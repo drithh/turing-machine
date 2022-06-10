@@ -5,8 +5,9 @@ import { useEffect, useState } from 'react';
 export const Node = (props: {
   node: Type.Node;
   active: Transition | undefined;
+  duration: number;
 }) => {
-  const { node, active } = props;
+  const { node, active, duration } = props;
   const translate = `translate(${node.cx}, ${node.cy})`;
   const variants = {
     active: {
@@ -22,10 +23,18 @@ export const Node = (props: {
   const [variant, setVariant] = useState<'active' | 'inactive'>('inactive');
 
   useEffect(() => {
-    if (active?.from === node.state) {
+    if (active?.from === node.state || active?.to === node.state) {
       setVariant('active');
     }
   }, [active, node]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (variant === 'active') {
+        setVariant('inactive');
+      }
+    }, duration);
+  });
 
   return (
     <g className="node" node-state={node.state} transform={translate}>
@@ -34,9 +43,6 @@ export const Node = (props: {
         strokeWidth={3}
         variants={variants}
         animate={variant}
-        onAnimationComplete={() => {
-          setVariant('inactive');
-        }}
       />
       <text
         y={-8}

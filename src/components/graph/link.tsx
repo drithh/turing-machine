@@ -7,10 +7,11 @@ interface Props {
   graph: Type.Graph;
   link: Type.Link;
   active: Transition | undefined;
+  duration: number;
 }
 
 export const Link = (props: Props) => {
-  const { graph, link, active } = props;
+  const { graph, link, active, duration } = props;
 
   const sourceLocation = graph.nodes.find(
     (node) => node.state === link.source.node
@@ -32,6 +33,7 @@ export const Link = (props: Props) => {
                 ? active
                 : undefined
             }
+            duration={duration}
           />
         ) : (
           <NormalArrow
@@ -44,6 +46,7 @@ export const Link = (props: Props) => {
                 ? active
                 : undefined
             }
+            duration={duration}
           />
         )
       ) : null}
