@@ -1,29 +1,27 @@
 import { Type } from './type';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { Transition } from '../type';
 
 interface Props {
   link: Type.Link;
   sourceLocation: Type.Node;
   targetLocation: Type.Node;
-  active?: boolean;
-  activeHead?: String;
+  active?: Transition;
 }
 
 export const NormalArrow = (props: Props) => {
-  const { link, sourceLocation, targetLocation, active, activeHead } = props;
+  const { link, sourceLocation, targetLocation, active } = props;
   const sourcePort = convertPort(link.source.port);
   const targetPort = convertPort(link.target.port);
 
   const [isActive, setIsActive] = useState<boolean>();
-
   useEffect(() => {
     setIsActive(active ? true : false);
   }, [active]);
-
   const linkVariants = {
     active: {
-      stroke: ['#fdba74', '#d8b4fe'],
+      stroke: '#fdba74',
       markerEnd: 'url(#active-arrow)',
     },
     inactive: {
@@ -34,15 +32,11 @@ export const NormalArrow = (props: Props) => {
 
   const textVariants = {
     active: {
-      opacity: [1, 0.6],
+      opacity: 1,
     },
     inactive: {
       opacity: 0.6,
     },
-  };
-
-  const transition = {
-    duration: 2,
   };
 
   return (
@@ -62,7 +56,6 @@ export const NormalArrow = (props: Props) => {
         onAnimationComplete={() => {
           setIsActive(false);
         }}
-        transition={transition}
       ></motion.line>
       <g
         className=" font-sans font-medium"
@@ -76,11 +69,10 @@ export const NormalArrow = (props: Props) => {
             <motion.text
               variants={textVariants}
               animate={
-                isActive && isHeadActive(activeHead, value)
+                isActive && isHeadActive(active?.head, value)
                   ? 'active'
                   : 'inactive'
               }
-              transition={transition}
               key={index}
               x={(sourceLocation.cx + targetLocation.cx) / 2}
               y={(sourceLocation.cy + targetLocation.cy) / 2}

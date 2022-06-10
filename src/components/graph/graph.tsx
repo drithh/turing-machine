@@ -10,14 +10,6 @@ interface GraphProps {
   steps?: Transition[];
 }
 
-const emptyStep = {
-  from: -1,
-  to: -1,
-  head: '',
-  headReplace: '',
-  tapeDirection: '',
-};
-
 export const CreateGraph = (props: GraphProps) => {
   const { diagramFileName, steps } = props;
   const [data, dataSet] = useState<any>(null);
@@ -26,14 +18,15 @@ export const CreateGraph = (props: GraphProps) => {
 
   const [step, setStep] = useState<number>(0);
 
-  const handleClick = () => {
-    if (steps) {
-      setActiveTransition(emptyStep);
-      setActiveTransition(steps[step]);
-      console.log(steps[step]);
-      setStep(step + 1);
-    }
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (steps) {
+        setActiveTransition(steps[step]);
+        setStep(step + 1);
+      }
+    }, 1500);
+    return () => clearInterval(interval);
+  }, [steps, step]);
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -52,7 +45,7 @@ export const CreateGraph = (props: GraphProps) => {
   }, [diagramFileName]);
 
   return (
-    <svg id="svg-canvas" width="1000" height="600" onClick={handleClick}>
+    <svg id="svg-canvas" width="1000" height="600">
       <Marker />
       {data
         ? data.nodes.map((node: Type.Node) => {

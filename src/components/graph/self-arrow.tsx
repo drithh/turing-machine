@@ -1,16 +1,16 @@
 import { Type } from './type';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { Transition } from '../type';
 
 interface Props {
   link: Type.Link;
   sourceLocation: Type.Node;
-  active?: boolean;
-  activeHead?: String;
+  active: Transition | undefined;
 }
 
 export const SelfArrow = (props: Props) => {
-  const { link, sourceLocation, active, activeHead } = props;
+  const { link, sourceLocation, active } = props;
 
   const selfArrowPosition = getSelfLink(link.source.port);
   const [isActive, setIsActive] = useState<boolean>();
@@ -21,7 +21,7 @@ export const SelfArrow = (props: Props) => {
 
   const linkVariants = {
     active: {
-      fill: ['#fdba74', '#d8b4fe'],
+      fill: '#fdba74',
       markerEnd: 'url(#active-self-arrow)',
     },
     inactive: {
@@ -32,15 +32,11 @@ export const SelfArrow = (props: Props) => {
 
   const textVariants = {
     active: {
-      opacity: [1, 0.7],
+      opacity: 1,
     },
     inactive: {
       opacity: 0.7,
     },
-  };
-
-  const transition = {
-    duration: 2,
   };
 
   return (
@@ -55,7 +51,6 @@ export const SelfArrow = (props: Props) => {
       <motion.path
         variants={linkVariants}
         animate={isActive ? 'active' : 'inactive'}
-        transition={transition}
         onAnimationComplete={() => {
           setIsActive(false);
         }}
@@ -73,11 +68,10 @@ export const SelfArrow = (props: Props) => {
           <motion.text
             variants={textVariants}
             animate={
-              isActive && isHeadActive(activeHead, value)
+              isActive && isHeadActive(active?.head, value)
                 ? 'active'
                 : 'inactive'
             }
-            transition={transition}
             key={index}
             x={0}
             y={0}

@@ -1,6 +1,7 @@
 import { Type } from './type';
 import { motion } from 'framer-motion';
 import { Transition } from '../type';
+import { useEffect, useState } from 'react';
 export const Node = (props: {
   node: Type.Node;
   active: Transition | undefined;
@@ -9,8 +10,8 @@ export const Node = (props: {
   const translate = `translate(${node.cx}, ${node.cy})`;
   const variants = {
     active: {
-      fill: ['#2D3748', '#1F5F77'],
-      stroke: ['#fdba74', '#d8b4fe'],
+      fill: '#2D3748',
+      stroke: '#fdba74',
     },
     inactive: {
       fill: '#1F5F77',
@@ -18,10 +19,13 @@ export const Node = (props: {
     },
   };
 
-  const transition = {
-    duration: 2,
-    times: [0, 1],
-  };
+  const [variant, setVariant] = useState<'active' | 'inactive'>('inactive');
+
+  useEffect(() => {
+    if (active?.from === node.state) {
+      setVariant('active');
+    }
+  }, [active, node]);
 
   return (
     <g className="node" node-state={node.state} transform={translate}>
@@ -29,8 +33,10 @@ export const Node = (props: {
         r={40}
         strokeWidth={3}
         variants={variants}
-        animate={active?.from === node.state ? 'active' : 'inactive'}
-        transition={transition}
+        animate={variant}
+        onAnimationComplete={() => {
+          setVariant('inactive');
+        }}
       />
       <text
         y={-8}
