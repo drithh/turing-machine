@@ -1,27 +1,71 @@
-import { TypeLink, TypeNode } from '../../type';
+import { Type } from './type';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
-export const NormalArrow = (props: {
-  link: TypeLink;
-  sourceLocation: TypeNode;
-  targetLocation: TypeNode;
-}) => {
-  const { link, sourceLocation, targetLocation } = props;
+interface Props {
+  link: Type.Link;
+  sourceLocation: Type.Node;
+  targetLocation: Type.Node;
+  active?: boolean;
+  activeHead?: String;
+}
+
+export const NormalArrow = (props: Props) => {
+  const { link, sourceLocation, targetLocation, active, activeHead } = props;
   const sourcePort = convertPort(link.source.port);
   const targetPort = convertPort(link.target.port);
-  console.log(sourceLocation, targetLocation);
+
+  const [isActive, setIsActive] = useState<boolean>();
+
+  useEffect(() => {
+    setIsActive(active ? true : false);
+  }, [active]);
+
+  const linkVariants = {
+    active: {
+      stroke: ['#fdba74', '#d8b4fe'],
+      markerEnd: 'url(#active-arrow)',
+    },
+    inactive: {
+      stroke: '#d8b4fe',
+      markerEnd: 'url(#arrow)',
+    },
+  };
+
+  const textVariants = {
+    active: {
+      opacity: [1, 0.6],
+    },
+    inactive: {
+      opacity: 0.6,
+    },
+  };
+
+  const transition = {
+    duration: 2,
+  };
+
   return (
-    <g>
-      <line
+    <g
+      className="link"
+      link-source={sourceLocation.state}
+      link-target={targetLocation.state}
+    >
+      <motion.line
         strokeWidth={4}
         x1={sourceLocation.cx + sourcePort.x}
         y1={sourceLocation.cy + sourcePort.y}
         x2={targetLocation.cx + targetPort.x}
         y2={targetLocation.cy + targetPort.y}
-        markerEnd="url(#arrow)"
-        className="stroke-purple-300"
-      ></line>
+        variants={linkVariants}
+        animate={isActive ? 'active' : 'inactive'}
+        onAnimationComplete={() => {
+          setIsActive(false);
+        }}
+        transition={transition}
+      ></motion.line>
       <g
-        className="fill-node font-sans font-medium"
+        className=" font-sans font-medium"
         textAnchor="middle"
         fontSize={24}
         dominantBaseline="central"
@@ -29,7 +73,14 @@ export const NormalArrow = (props: {
         {link.content.value.map((value, index) => {
           const length = link.content.value.length;
           return (
-            <text
+            <motion.text
+              variants={textVariants}
+              animate={
+                isActive && isHeadActive(activeHead, value)
+                  ? 'active'
+                  : 'inactive'
+              }
+              transition={transition}
               key={index}
               x={(sourceLocation.cx + targetLocation.cx) / 2}
               y={(sourceLocation.cy + targetLocation.cy) / 2}
@@ -43,12 +94,22 @@ export const NormalArrow = (props: {
               fontWeight="bold"
             >
               {value}
-            </text>
+            </motion.text>
           );
         })}
       </g>
     </g>
   );
+};
+
+const isHeadActive = (
+  activeHead: String | undefined,
+  transition: String
+): boolean => {
+  if (activeHead) {
+    return activeHead === transition.split('/')[0].trim();
+  }
+  return false;
 };
 
 type portLocation = {

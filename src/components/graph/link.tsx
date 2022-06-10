@@ -1,9 +1,19 @@
-import { Graph, TypeLink } from '../../type';
+import { Type } from './type';
 import { NormalArrow } from './normal-arrow';
 import { SelfArrow } from './self-arrow';
 
-export const Link = (props: { graph: Graph; link: TypeLink }) => {
-  const { graph, link } = props;
+interface Props {
+  graph: Type.Graph;
+  link: Type.Link;
+  activeNode: {
+    from?: number;
+    to?: number;
+  };
+  activeHead?: String;
+}
+
+export const Link = (props: Props) => {
+  const { graph, link, activeNode, activeHead } = props;
 
   const sourceLocation = graph.nodes.find(
     (node) => node.state === link.source.node
@@ -20,6 +30,8 @@ export const Link = (props: { graph: Graph; link: TypeLink }) => {
             key={link.source.node + link.target.node}
             link={link}
             sourceLocation={sourceLocation}
+            active={isActive(activeNode, link)}
+            activeHead={activeHead}
           />
         ) : (
           <NormalArrow
@@ -27,9 +39,20 @@ export const Link = (props: { graph: Graph; link: TypeLink }) => {
             link={link}
             sourceLocation={sourceLocation}
             targetLocation={targetLocation}
+            active={isActive(activeNode, link)}
+            activeHead={activeHead}
           />
         )
       ) : null}
     </>
+  );
+};
+
+const isActive = (
+  activeNode: { from?: number; to?: number },
+  link: Type.Link
+) => {
+  return (
+    activeNode?.from === link.source.node && activeNode?.to === link.target.node
   );
 };
