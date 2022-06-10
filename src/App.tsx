@@ -1,7 +1,7 @@
 import { CreateGraph } from './components/graph/graph';
 import './App.css';
 import { Transition } from './components/type';
-
+import { Tape } from './components/tape/tape';
 function App() {
   const steps: Transition[] = [
     {
@@ -72,10 +72,11 @@ function App() {
         addStep();
       }}
     >
+      <Tape />
       <CreateGraph
         diagramFileName="addition.json"
         steps={steps}
-        duration={2000}
+        duration={1000}
       />
     </div>
   );

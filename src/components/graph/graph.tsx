@@ -18,7 +18,6 @@ export const CreateGraph = (props: GraphProps) => {
   const [activeTransition, setActiveTransition] = useState<Transition>();
 
   const [step, setStep] = useState<number>(0);
-  console.log(steps);
 
   useEffect(() => {
     const interval = setInterval(() => {

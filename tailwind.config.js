@@ -14,6 +14,7 @@ module.exports = {
           indigo: '#2D3748',
           blue: '#1F5F77',
           cyan: '#008A94',
+          orange: '#FDBA74',
           meadow: '#28B595',
           green: '#8DDB82',
           yellow: '#F9F871',
