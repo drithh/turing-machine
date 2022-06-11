@@ -2,13 +2,64 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Square } from './square';
 import { motion } from 'framer-motion';
 
+type TapeData = {
+  id: number;
+  value?: string;
+};
+
 export const Tape = (props: {}) => {
-  const [positions, setPositions] = useState([
-    -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+  const [positions, setPositions] = useState<TapeData[]>([
+    {
+      id: -2,
+    },
+    {
+      id: -1,
+    },
+    {
+      id: 0,
+      value: '0',
+    },
+    {
+      id: 1,
+      value: '1',
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    },
+    {
+      id: 5,
+    },
+    {
+      id: 6,
+    },
+    {
+      id: 7,
+    },
+    {
+      id: 8,
+    },
+    {
+      id: 9,
+    },
+    {
+      id: 10,
+    },
+    {
+      id: 11,
+    },
+    {
+      id: 12,
+    },
   ]);
+
   const [head, setHead] = useState(0);
   const [tape, setTape] = useState(0);
-  const [goNegative, setGoNegative] = useState(false);
   const minTape = useRef(0);
 
   useEffect(() => {
@@ -17,10 +68,9 @@ export const Tape = (props: {}) => {
 
   const setTapeHead = (x: number) => {
     if (head + x < 0) {
-      setGoNegative(true);
-      if (positions[0] === tape - 2) {
+      if (positions[0].id === tape - 2) {
         // console.log('add left tape');
-        const position = positions[0] - 1;
+        const position = { id: positions[0].id - 1 } as TapeData;
         setPositions([position, ...positions]);
         setTape(tape + x);
       } else {
@@ -29,9 +79,9 @@ export const Tape = (props: {}) => {
     } else if (head + x > 10) {
       const last = positions.length - 1;
       // console.log(positions[last] - 10, tape + 2);
-      if (positions[last] - 10 === tape + 2) {
+      if (positions[last].id - 10 === tape + 2) {
         // console.log('add right tape');
-        const position = positions[last] + 1;
+        const position = { id: positions[last].id + 1 } as TapeData;
         setPositions([...positions, position]);
         setTape(tape + x);
       } else {
@@ -60,7 +110,7 @@ export const Tape = (props: {}) => {
   };
 
   return (
-    <div className="flex top-20 left-20 relative w-[48rem] h-40 overflow-hidden">
+    <div className="flex relative w-[48rem] h-40 overflow-hidden">
       <motion.div
         className="tape absolute top-0  flex"
         style={{
@@ -73,8 +123,8 @@ export const Tape = (props: {}) => {
         {positions.map((position) => {
           return (
             <Square
-              key={position}
-              blur={checkBlur(position)}
+              key={position.id}
+              blur={checkBlur(position.id)}
               position={position}
             />
           );

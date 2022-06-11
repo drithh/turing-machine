@@ -1,4 +1,9 @@
-export const Square = (props: { position: number; blur: string }) => {
+type TapeData = {
+  id: number;
+  value?: string;
+};
+
+export const Square = (props: { position: TapeData; blur: string }) => {
   const { position, blur } = props;
   return (
     <div
@@ -22,7 +27,10 @@ export const Square = (props: { position: number; blur: string }) => {
       }
     >
       <div className="absolute right-1 top-[-2px] opacity-90 font-medium font-sans">
-        {position}
+        {position.id}
+      </div>
+      <div className="relative flex place-content-center  place-items-center h-full text-3xl opacity-90 font-medium font-sans text-primary-blue">
+        <div className="absolute bottom-3">{position.value}</div>
       </div>
     </div>
   );
