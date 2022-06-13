@@ -61,7 +61,7 @@ export const NormalArrow = (props: Props) => {
         y2={targetLocation.cy + targetPort.y}
         variants={linkVariants}
         animate={isActive ? 'active' : 'inactive'}
-      ></motion.line>
+       />
       <g
         className=" font-sans font-medium"
         textAnchor="middle"

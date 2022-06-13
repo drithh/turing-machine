@@ -61,7 +61,7 @@ export const SelfArrow = (props: Props) => {
         strokeWidth={10}
         d="M16.067324553301635,-25.33458272201992A30,30,0,1,1,-13.906729954896745,-26.582002595018636L-12.284278126825457,-23.48076895893313A26.5,26.5,0,1,0,14.192803355416446,-22.37888140445093Z"
         transform={`rotate(${selfArrowPosition.rotation})`}
-      ></motion.path>
+       />
       <g
         className="fill-primary-indigo font-sans font-medium"
         textAnchor="middle"

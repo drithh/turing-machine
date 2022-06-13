@@ -135,20 +135,20 @@ export const Tape = (props: {}) => {
           x: head * 64,
         }}
         className="head w-16 absolute h-[5px] top-[4.5rem] left-[31px] bg-primary-orange"
-      ></motion.div>
+       />
       <div className="flex place-content-between flex-row absolute bottom-0">
         <div
           onClick={() => {
             setTapeHead(-1);
           }}
           className="w-8 h-8 bg-black"
-        ></div>
+         />
         <div
           onClick={() => {
             setTapeHead(1);
           }}
           className="w-8 h-8  bg-red-500 right-16"
-        ></div>
+         />
       </div>
     </div>
   );
