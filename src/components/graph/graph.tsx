@@ -31,22 +31,26 @@ export const CreateGraph = (props: GraphProps) => {
 
   useEffect(() => {
     async function fetchMyAPI() {
-      let response = await fetch(`diagram/${diagramFileName}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      });
-      await response.json().then((data: Type.Graph) => {
-        dataSet(data as Type.Graph);
-      });
+      if (diagramFileName !== 'selectoperation.json') {
+        let response = await fetch(`diagram/${diagramFileName}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        });
+        if (response.ok) {
+          await response.json().then((data: Type.Graph) => {
+            dataSet(data as Type.Graph);
+          });
+        }
+      }
     }
 
     fetchMyAPI();
   }, [diagramFileName]);
 
   return (
-    <svg id="svg-canvas" width="1000" height="600">
+    <svg id="svg-canvas" width="1366" height="600" className="overflow-auto">
       <Marker />
       {data
         ? data.nodes.map((node: Type.Node) => {

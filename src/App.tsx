@@ -3,61 +3,11 @@ import './App.css';
 import { Transition } from './components/type';
 import { Tape } from './components/tape/tape';
 import { Form } from './components/form/form';
-import { FormData } from './components/form/type';
+import { FormData } from './components/type';
 import { useEffect, useState } from 'react';
-
+import { AdditionMultiTrack } from './components/turing-machine/addition-multi-track';
 function App() {
-  const steps: Transition[] = [
-    {
-      from: 0,
-      to: 0,
-      head: '0B',
-      headReplace: 'CB',
-      tapeDirection: 'RL',
-    },
-    {
-      from: 0,
-      to: 0,
-      head: '1B',
-      headReplace: 'CB',
-      tapeDirection: 'RL',
-    },
-    {
-      from: 0,
-      to: 1,
-      head: 'CB',
-      headReplace: 'CB',
-      tapeDirection: 'RL',
-    },
-    {
-      from: 1,
-      to: 1,
-      head: '01',
-      headReplace: 'CB',
-      tapeDirection: 'RL',
-    },
-    {
-      from: 1,
-      to: 1,
-      head: '11',
-      headReplace: 'CB',
-      tapeDirection: 'RL',
-    },
-    {
-      from: 1,
-      to: 1,
-      head: '00',
-      headReplace: 'CB',
-      tapeDirection: 'RL',
-    },
-    {
-      from: 1,
-      to: 2,
-      head: 'B1',
-      headReplace: 'CB',
-      tapeDirection: 'RL',
-    },
-  ];
+  const [steps, setSteps] = useState<Transition[]>([]);
 
   const [formData, setFormData] = useState<FormData>({
     operation: 'Select Operation',
@@ -68,12 +18,20 @@ function App() {
   useEffect(() => {
     console.log(formData);
     if (formData.actionType) {
-      validateForm(formData);
+      if (validateForm(formData)) {
+        if (formData.operation === 'Addition - MultiTape') {
+          console.log('Addition - MultiTape');
+          const additionResult = new AdditionMultiTrack(formData.data);
+          additionResult.run();
+          setSteps(additionResult.getTransitions());
+          console.log(additionResult.getTransitions());
+        }
+      }
     }
   }, [formData]);
 
   return (
-    <div className="App  w-full max-w-[1366px] mx-auto mt-[20vh] flex flex-col gap-y-8">
+    <div className="App  w-full max-w-[1366px] mx-auto mt-[10vh] flex flex-col gap-y-8">
       <div className="flex xl:flex-row flex-col place-items-center gap-x-8">
         <div className="w-2/5">
           <div className="title font-sans text-[56px] text-primary-indigo font-bold pb-2 border-opacity-50 border-b border-b-primary-meadow ">
@@ -86,7 +44,9 @@ function App() {
         </div>
       </div>
       <CreateGraph
-        diagramFileName="addition.json"
+        diagramFileName={`${formData.operation
+          .replace(/ /g, '')
+          .toLowerCase()}.json`}
         steps={steps}
         duration={1000}
       />

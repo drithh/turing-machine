@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import { FormData } from './type';
+import { FormData } from '../type';
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
 }
@@ -13,8 +13,10 @@ export const Dropdown = (props: {
   const { setOperation, operation } = props;
 
   const operations: string[] = [
-    'Addition',
-    'Subtraction',
+    'Addition - SingleTrack',
+    'Addition - MultiTape',
+    'Subtraction - SingleTrack',
+    'Subtraction - MultiTape',
     'Multiplication',
     'Division',
     'Factorial',

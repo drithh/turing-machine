@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FormData, TwoInput, Temperature } from './type';
+import { FormData, TwoInput, Temperature } from '../type';
 
 export const Input = (props: {
   operation: FormData | undefined;
@@ -171,7 +171,8 @@ export const Input = (props: {
 
 const getInputCase = (operation: string) => {
   if (
-    operation === 'Addition' ||
+    operation === 'Addition - SingleTrack' ||
+    operation === 'Addition - MultiTape' ||
     operation === 'Subtraction' ||
     operation === 'Multiplication' ||
     operation === 'Division' ||

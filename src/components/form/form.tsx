@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Dropdown } from './dropdown';
 import { Input } from './input';
-import { FormData } from './type';
+import { FormData } from '../type';
 
 export const Form = (props: {
   operation: FormData;
