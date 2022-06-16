@@ -1,5 +1,5 @@
-import { FormData, Transition } from '../type';
-import { AdditionMultiTrack } from './addition-multi-track';
+import { FormData, Transition } from "../type";
+import { AdditionMultiTrack } from "./addition-multi-track";
 
 export type TuringMachinesResult = {
   transitions: Transition[];

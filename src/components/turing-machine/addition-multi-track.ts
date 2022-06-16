@@ -1,5 +1,5 @@
-import { TwoInput, Symbol, Direction, Transition } from '../type';
-import { TwoTape } from './tape';
+import { TwoInput, Symbol, Direction, Transition } from "../type";
+import { TwoTape } from "./tape";
 
 export class AdditionMultiTrack {
   constructor(inputSymbols: TwoInput) {
@@ -46,78 +46,78 @@ export class AdditionMultiTrack {
     let transition: Transition = {
       from: currentHead,
       to: -1,
-      head: this.twoTape.read().join(''),
-      headReplace: '',
-      tapeDirection: '',
+      head: this.twoTape.read().join(""),
+      headReplace: "",
+      tapeDirection: "",
     };
 
     switch (transition.from) {
       case 0:
         switch (transition.head) {
-          case '0B':
+          case "0B":
             transition.to = 0;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = "00";
+            transition.tapeDirection = "RR";
             break;
-          case '1B':
+          case "1B":
             transition.to = 0;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = "11";
+            transition.tapeDirection = "RR";
             break;
-          case 'CB':
+          case "CB":
             transition.to = 1;
-            transition.headReplace = 'CB';
-            transition.tapeDirection = 'RL';
+            transition.headReplace = "CB";
+            transition.tapeDirection = "RL";
             break;
         }
         break;
       case 1:
         switch (transition.head) {
-          case '01':
+          case "01":
             transition.to = 1;
-            transition.headReplace = '0B';
-            transition.tapeDirection = 'RL';
+            transition.headReplace = "0B";
+            transition.tapeDirection = "RL";
             break;
-          case '10':
+          case "10":
             transition.to = 1;
-            transition.headReplace = '1B';
-            transition.tapeDirection = 'RL';
+            transition.headReplace = "1B";
+            transition.tapeDirection = "RL";
             break;
-          case '0B':
+          case "0B":
             transition.to = 1;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = "00";
+            transition.tapeDirection = "RR";
             break;
-          case '1B':
+          case "1B":
             transition.to = 1;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = "11";
+            transition.tapeDirection = "RR";
             break;
-          case '00':
+          case "00":
             transition.to = 1;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'SR';
+            transition.headReplace = "00";
+            transition.tapeDirection = "SR";
             break;
-          case '11':
+          case "11":
             transition.to = 1;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'SR';
+            transition.headReplace = "11";
+            transition.tapeDirection = "SR";
 
             break;
-          case 'B1':
+          case "B1":
             transition.to = 2;
-            transition.headReplace = 'B1';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = "B1";
+            transition.tapeDirection = "RR";
             break;
-          case 'B0':
+          case "B0":
             transition.to = 2;
-            transition.headReplace = 'B0';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = "B0";
+            transition.tapeDirection = "RR";
             break;
-          case 'BB':
+          case "BB":
             transition.to = 2;
-            transition.headReplace = 'BB';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = "BB";
+            transition.tapeDirection = "RR";
             break;
         }
         break;
@@ -132,11 +132,11 @@ export class AdditionMultiTrack {
 const resolveInput = (input: TwoInput): Symbol[] => {
   let inputstring = new Array<string>();
   for (let i = 0; i < Math.abs(input.input1); i++) {
-    inputstring.push(input.input1 > 0 ? '1' : '0');
+    inputstring.push(input.input1 > 0 ? "1" : "0");
   }
-  inputstring.push('C');
+  inputstring.push("C");
   for (let i = 0; i < Math.abs(input.input2); i++) {
-    inputstring.push(input.input2 ? '1' : '0');
+    inputstring.push(input.input2 ? "1" : "0");
   }
   return inputstring as Symbol[];
 };
