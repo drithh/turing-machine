@@ -3,12 +3,12 @@ export namespace Type {
     state: number;
     cx: number;
     cy: number;
-    type: 'start' | 'normal' | 'final';
+    type: "start" | "normal" | "final";
   };
 
   type LinkTarget = {
     node: number;
-    port: 'T' | 'TR' | 'R' | 'BR' | 'B' | 'BL' | 'L' | 'TL';
+    port: "T" | "TR" | "R" | "BR" | "B" | "BL" | "L" | "TL";
   };
 
   type LinkContent = {

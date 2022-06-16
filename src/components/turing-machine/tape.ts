@@ -1,24 +1,24 @@
-import { Symbol, Direction } from '../type';
+import { Symbol, Direction } from "../type";
 
 export class OneTape {
-  constructor(symbols: Symbol[] = ['B']) {
+  constructor(symbols: Symbol[] = ["B"]) {
     this.tape = symbols;
   }
   private tape = new Array<Symbol>();
   private head = 0;
 
   public moveHead(direction: Direction) {
-    if (direction === 'L') {
+    if (direction === "L") {
       this.head--;
-    } else if (direction === 'R') {
+    } else if (direction === "R") {
       this.head++;
     }
     if (this.head < 0) {
       this.head = 0;
-      this.tape = ['B', ...this.tape];
+      this.tape = ["B", ...this.tape];
     }
     if (this.tape[this.head] === undefined) {
-      this.tape[this.head] = 'B';
+      this.tape[this.head] = "B";
     }
   }
 
