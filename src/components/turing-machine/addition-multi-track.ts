@@ -3,10 +3,10 @@ import { TwoTape } from './tape';
 
 export class AdditionMultiTrack {
   constructor(inputSymbols: TwoInput) {
-    const resolvedInputSymbols = resolveInput(inputSymbols);
-    this.twoTape = new TwoTape(resolvedInputSymbols);
+    this.inputSymbols = resolveInput(inputSymbols);
+    this.twoTape = new TwoTape(this.inputSymbols);
   }
-
+  private inputSymbols: Symbol[];
   private totalTape = 2;
   private twoTape: TwoTape;
 
@@ -36,6 +36,10 @@ export class AdditionMultiTrack {
 
   public getTotalTape() {
     return this.totalTape;
+  }
+
+  public getInputSymbols() {
+    return this.inputSymbols;
   }
 
   private getNextTransition = (currentHead: number) => {
@@ -126,13 +130,13 @@ export class AdditionMultiTrack {
 }
 
 const resolveInput = (input: TwoInput): Symbol[] => {
-  let inputString = new Array<string>();
+  let inputstring = new Array<string>();
   for (let i = 0; i < Math.abs(input.input1); i++) {
-    inputString.push(input.input1 > 0 ? '1' : '0');
+    inputstring.push(input.input1 > 0 ? '1' : '0');
   }
-  inputString.push('C');
+  inputstring.push('C');
   for (let i = 0; i < Math.abs(input.input2); i++) {
-    inputString.push(input.input2 ? '1' : '0');
+    inputstring.push(input.input2 ? '1' : '0');
   }
-  return inputString as Symbol[];
+  return inputstring as Symbol[];
 };

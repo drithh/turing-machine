@@ -2,9 +2,9 @@ export type Transition =
   | {
       from: number;
       to: number;
-      head: String;
-      headReplace: String;
-      tapeDirection: String;
+      head: string;
+      headReplace: string;
+      tapeDirection: string;
     }
   | undefined;
 

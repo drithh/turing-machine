@@ -100,8 +100,8 @@ export const NormalArrow = (props: Props) => {
 };
 
 const isHeadActive = (
-  activeHead: String | undefined,
-  transition: String
+  activeHead: string | undefined,
+  transition: string
 ): boolean => {
   if (activeHead) {
     return activeHead === transition.split('/')[0].trim();

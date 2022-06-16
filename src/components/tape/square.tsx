@@ -1,10 +1,15 @@
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import TextTransition, { presets } from 'react-text-transition';
+
 type TapeData = {
   id: number;
-  value?: string;
+  value: string;
 };
 
 export const Square = (props: { position: TapeData; blur: string }) => {
   const { position, blur } = props;
+
   return (
     <div
       className="relative w-16 h-16 border-l-0 border-primary-meadow border-2"
@@ -30,7 +35,11 @@ export const Square = (props: { position: TapeData; blur: string }) => {
         {position.id}
       </div>
       <div className="relative flex place-content-center  place-items-center h-full text-3xl opacity-90 font-medium font-sans text-primary-blue">
-        <div className="absolute bottom-3">{position.value}</div>
+        <TextTransition
+          noOverflow={true}
+          text={position.value}
+          springConfig={presets.wobbly}
+        />
       </div>
     </div>
   );
