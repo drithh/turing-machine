@@ -45,28 +45,28 @@ function App() {
   const [activeTransition, setActiveTransition] = useState<Transition>();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (
-        TuringMachinesResult &&
-        TuringMachinesResult.transitions.length > index
-      ) {
-        setActiveTransition(TuringMachinesResult.transitions[index]);
-        setIndex(index + 1);
-      }
-    }, duration);
-    return () => clearInterval(interval);
+    // const interval = setInterval(() => {
+    //   if (
+    //     TuringMachinesResult &&
+    //     TuringMachinesResult.transitions.length > index
+    //   ) {
+    //     setActiveTransition(TuringMachinesResult.transitions[index]);
+    //     setIndex(index + 1);
+    //   }
+    // }, duration);
+    // return () => clearInterval(interval);
   }, [TuringMachinesResult, duration, index]);
 
   return (
     <div className="App  w-full max-w-[1366px] mx-auto mt-[10vh] flex flex-col gap-y-8">
       <div className="flex xl:flex-row flex-col place-items-center gap-x-8 place-content-center">
-        <div className="w-2/5">
+        {/* <div className="w-2/5">
           <div className="title font-sans text-[56px] text-primary-indigo font-bold pb-2 border-opacity-50 border-b border-b-primary-meadow ">
             Turing Machine
           </div>
           <Form operation={formData} setOperation={setFormData} />
-        </div>
-        <div className="w-3/5 flex flex-col place-items-center gap-y-6 mt-20">
+        </div> */}
+        <div className="relative flex flex-col place-items-center gap-y-6 mt-20">
           {TuringMachinesResult?.inputSymbols &&
             Array.from(Array(TuringMachinesResult?.totalTape), (e, i) => {
               return (
