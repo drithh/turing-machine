@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/turing-machine/static/css/main.2ca523cf.css",
-    "main.js": "/turing-machine/static/js/main.932bf061.js",
-    "static/js/787.c5752b72.chunk.js": "/turing-machine/static/js/787.c5752b72.chunk.js",
-    "index.html": "/turing-machine/index.html",
-    "main.2ca523cf.css.map": "/turing-machine/static/css/main.2ca523cf.css.map",
-    "main.932bf061.js.map": "/turing-machine/static/js/main.932bf061.js.map",
-    "787.c5752b72.chunk.js.map": "/turing-machine/static/js/787.c5752b72.chunk.js.map"
+    "main.css": "/static/css/main.32649efc.css",
+    "main.js": "/static/js/main.9208e7cd.js",
+    "static/js/787.c5752b72.chunk.js": "/static/js/787.c5752b72.chunk.js",
+    "index.html": "/index.html",
+    "main.32649efc.css.map": "/static/css/main.32649efc.css.map",
+    "main.9208e7cd.js.map": "/static/js/main.9208e7cd.js.map",
+    "787.c5752b72.chunk.js.map": "/static/js/787.c5752b72.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2ca523cf.css",
-    "static/js/main.932bf061.js"
+    "static/css/main.32649efc.css",
+    "static/js/main.9208e7cd.js"
   ]
 }
