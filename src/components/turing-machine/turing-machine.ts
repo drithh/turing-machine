@@ -1,5 +1,5 @@
-import { FormData, Transition, Symbol } from '../type';
-import { AdditionMultiTape } from './addition-multi-tape';
+import { FormData, Transition, Symbol } from "../type";
+import { AdditionMultiTape } from "./addition-multi-tape";
 
 export type TuringMachinesResult = {
   transitions: Transition[];
@@ -11,19 +11,19 @@ export type TuringMachinesResult = {
 export class TuringMachines {
   constructor(formData: FormData) {
     this.formData = formData;
-    if (this.formData.operation !== 'Select Operation') {
+    if (this.formData.operation !== "Select Operation") {
       this.turingMachineName = convertOperationFormData(formData.operation);
       this.createturingMachine(this.turingMachineName);
     }
   }
 
   public createturingMachine = (turingMachineName: string) => {
-    if (turingMachineName === 'AdditionMultiTape') {
+    if (turingMachineName === "AdditionMultiTape") {
       this.turingMachine = new AdditionMultiTape();
     }
   };
 
-  private turingMachineName = '';
+  private turingMachineName = "";
 
   private turingMachine: AdditionMultiTape | undefined;
 
@@ -32,7 +32,7 @@ export class TuringMachines {
   };
 
   public getTotalTape() {
-    if (this.turingMachineName === 'AdditionMultiTape') {
+    if (this.turingMachineName === "AdditionMultiTape") {
       return AdditionMultiTape.totalTape;
     } else {
       return 0;
@@ -71,5 +71,5 @@ export class TuringMachines {
 }
 
 const convertOperationFormData = (operation: string) => {
-  return operation.replace(/ /g, '').replace('-', '');
+  return operation.replace(/ /g, "").replace("-", "");
 };

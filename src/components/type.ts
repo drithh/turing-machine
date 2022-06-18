@@ -27,16 +27,16 @@ export type FormData = {
 };
 
 export type Symbol =
-  | '0'
-  | '1'
-  | 'B'
-  | 'C'
-  | 'E'
-  | 'I'
-  | 'J'
-  | 'K'
-  | 'L'
-  | 'O'
-  | 'P';
+  | "0"
+  | "1"
+  | "B"
+  | "C"
+  | "E"
+  | "I"
+  | "J"
+  | "K"
+  | "L"
+  | "O"
+  | "P";
 
-export type Direction = 'L' | 'R' | 'S';
+export type Direction = "L" | "R" | "S";
