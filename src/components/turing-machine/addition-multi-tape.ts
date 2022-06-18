@@ -47,8 +47,6 @@ export class AdditionMultiTape {
   }
 
   public getLastHead() {
-    console.log(this.transitions);
-
     const directions = this.transitions.map((e) => {
       return [e?.tapeDirection[0], e?.tapeDirection[1]];
     });
@@ -157,7 +155,6 @@ export class AdditionMultiTape {
 }
 
 const resolveInput = (input: TwoInput): Symbol[] => {
-  console.log(input);
   let inputstring = new Array<string>();
   for (let i = 0; i < Math.abs(input.input1); i++) {
     inputstring.push(input.input1 > 0 ? '1' : '0');

@@ -25,15 +25,19 @@ export const Node = (props: {
   useEffect(() => {
     if (active?.from === node.state || active?.to === node.state) {
       setVariant('active');
+    } else {
+      setVariant('inactive');
     }
   }, [active, node]);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (variant === 'active') {
-        setVariant('inactive');
-      }
-    }, duration);
+    if (duration > -1) {
+      setTimeout(() => {
+        if (variant === 'active') {
+          setVariant('inactive');
+        }
+      }, duration);
+    }
   });
 
   return (

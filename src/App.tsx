@@ -31,6 +31,7 @@ function App() {
   const [reset, setReset] = useState<boolean>(false);
   const [activeTransition, setActiveTransition] = useState<Transition>();
   const [assignedHead, setAssignedHead] = useState<number[]>();
+  const lastSelected = useRef('');
 
   useEffect(() => {
     setTimeout(() => {
@@ -46,7 +47,17 @@ function App() {
     ) {
       setTuringMachines(new TuringMachines(formData));
 
-      setReset(true);
+      if (
+        !(
+          (formData.actionType === 'Simulate' &&
+            lastSelected.current === 'Debug') ||
+          (formData.actionType === 'Debug' &&
+            lastSelected.current === 'Simulate')
+        ) ||
+        isRunning.current === false
+      ) {
+        setReset(true);
+      }
     }
     if (formData.operation && isRunning.current === false) {
       if (turingMachines?.getOperation() !== formData.operation) {
@@ -76,6 +87,7 @@ function App() {
       }
 
       if (formData.actionType === 'Validate') {
+        lastSelected.current = 'Validate';
         setFormData({
           ...formData,
           actionType: '',
@@ -85,10 +97,13 @@ function App() {
         setIndex(0);
         setAssignedHead(turingMachinesResult.lastHead);
         setInputString(turingMachinesResult.tapeResult);
+        setTuringMachinesResult(undefined);
       }
 
       if (
-        formData.actionType === 'Simulate' &&
+        (formData.actionType === 'Simulate' ||
+          formData.actionType === 'Debug') &&
+        lastSelected.current === 'Validate' &&
         index === 0 &&
         isRunning.current === false
       ) {
@@ -102,7 +117,7 @@ function App() {
           turingMachinesResult.transitions.length > index
         ) {
           setAssignedHead([]);
-
+          lastSelected.current = 'Simulate';
           isRunning.current = true;
           setActiveTransition(turingMachinesResult.transitions[index]);
           setIndex(index + 1);
@@ -123,12 +138,44 @@ function App() {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [turingMachinesResult, duration, index]);
+  }, [turingMachinesResult, duration, index, formData.actionType]);
+
+  useEffect(() => {
+    if (turingMachinesResult && formData.actionType !== '') {
+      if (formData.actionType === 'Debug') {
+        lastSelected.current = 'Debug';
+        setFormData({
+          ...formData,
+          actionType: '',
+        });
+        if (isRunning.current === false) {
+          isRunning.current = true;
+          setIndex(0);
+        } else {
+          if (turingMachinesResult.transitions.length > index) {
+            setAssignedHead([]);
+
+            isRunning.current = true;
+            setActiveTransition(turingMachinesResult.transitions[index]);
+            setIndex(index + 1);
+          } else if (
+            turingMachinesResult &&
+            turingMachinesResult.transitions.length === index
+          ) {
+            isRunning.current = false;
+            setActiveTransition(undefined);
+            setIndex(0);
+          }
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formData.actionType, turingMachinesResult]);
 
   return (
-    <div className="App  w-full max-w-[1366px] mx-auto mt-[10vh] flex flex-col gap-y-8">
-      <div className="flex xl:flex-row flex-col place-items-center gap-x-8 place-content-center">
-        <div className="w-2/5">
+    <div className="App  w-full max-w-[1366px] mx-auto mt-[10vh] flex flex-col gap-y-8 xl:px-0 px-12">
+      <div className="flex xl:flex-row flex-col place-items-center gap-x-8 place-content-between">
+        <div className="w-full xl:w-2/5">
           <div className="title font-sans text-[56px] text-primary-indigo font-bold pb-2 border-opacity-50 border-b border-b-primary-meadow ">
             Turing Machine
           </div>

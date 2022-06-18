@@ -31,12 +31,13 @@ export const Tape = (props: {
     reset,
     assignedHead,
   } = props;
-
+  // if (index === 1) {
+  //   console.log(inputString);
+  // }
   const [positions, setPositions] = useState<TapeData[]>(initTape(inputString));
   const [head, setHead] = useState(0);
   const [tapeHead, setTapeHead] = useState(0);
   const [leftTapeSide, setLeftTapeSide] = useState(0);
-  const headRef = useRef<any>();
   if (assignedHead !== undefined && assignedHead !== head) {
     setHead(assignedHead);
   }

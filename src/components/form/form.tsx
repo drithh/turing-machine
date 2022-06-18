@@ -40,7 +40,7 @@ export const Form = (props: {
             }
           />
           <div className=" w-24 h-10 text-base  border text-opacity-70 text-primary-indigo font-medium flex place-content-center place-items-center border-gray-300 rounded-md bg-gray-100">
-            {operation.duration}ms
+            {operation.duration === -100 ? 0 : operation.duration}ms
           </div>
         </div>
       </div>

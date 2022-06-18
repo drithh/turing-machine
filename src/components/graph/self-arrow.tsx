@@ -20,11 +20,13 @@ export const SelfArrow = (props: Props) => {
     setIsActive(active ? true : false);
   }, [active]);
 
-  setTimeout(() => {
-    if (isActive) {
-      setIsActive(false);
-    }
-  }, duration);
+  if (duration > -1) {
+    setTimeout(() => {
+      if (isActive) {
+        setIsActive(false);
+      }
+    }, duration);
+  }
 
   const linkVariants = {
     active: {
