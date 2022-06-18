@@ -50,7 +50,7 @@ export const Form = (props: {
       <div className="buttons mt-4 flex place-content-between gap-x-4">
         <div className="wrapper flex gap-x-4">
           <button
-            className="text-primary-indigo font-medium text-sm w-24  bg-slate-100 rounded-md px-4 py-2 hover:bg-slate-200 duration-200"
+            className="text-primary-indigo font-medium text-sm w-32  bg-slate-100 rounded-md px-4 py-2 hover:bg-slate-200 duration-200"
             onClick={() =>
               setOperation({
                 data: operation?.data,
@@ -60,10 +60,10 @@ export const Form = (props: {
               })
             }
           >
-            Validate
+            Show Result
           </button>
           <button
-            className="text-primary-indigo font-medium text-sm w-24 bg-slate-100 rounded-md px-4 py-2 hover:bg-slate-200 duration-200"
+            className="text-primary-indigo font-medium text-sm w-32 bg-slate-100 rounded-md px-4 py-2 hover:bg-slate-200 duration-200"
             onClick={() =>
               setOperation({
                 data: operation?.data,
@@ -92,7 +92,7 @@ export const Form = (props: {
       </div>
       <div className="buttons mt-2 flex place-content-between gap-x-4">
         <button
-          className="text-primary-indigo font-medium text-sm w-52 bg-slate-100 rounded-md px-4 h-9 mt-2 hover:bg-slate-200 duration-200"
+          className="text-primary-indigo font-medium text-sm w-[17rem] bg-slate-100 rounded-md px-4 h-9 mt-2 hover:bg-slate-200 duration-200"
           onClick={() => {
             setIsTransitionShow(!isTransitionShow);
           }}
