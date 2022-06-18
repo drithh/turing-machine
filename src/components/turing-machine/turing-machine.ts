@@ -1,6 +1,6 @@
-import { FormData, Transition, Symbol } from '../type';
-import { AdditionMultiTape } from './addition-multitape';
-import { SubtractionMultiTape } from './subtraction-multitape';
+import { FormData, Transition, Symbol } from "../type";
+import { AdditionMultiTape } from "./addition-multitape";
+import { SubtractionMultiTape } from "./subtraction-multitape";
 
 export type TuringMachinesResult = {
   transitions: Transition[];
@@ -12,21 +12,21 @@ export type TuringMachinesResult = {
 export class TuringMachines {
   constructor(formData: FormData) {
     this.formData = formData;
-    if (this.formData.operation !== 'Select Operation') {
+    if (this.formData.operation !== "Select Operation") {
       this.turingMachineName = convertOperationFormData(formData.operation);
       this.createturingMachine(this.turingMachineName);
     }
   }
 
   public createturingMachine = (turingMachineName: string) => {
-    if (turingMachineName === 'AdditionMultiTape') {
+    if (turingMachineName === "AdditionMultiTape") {
       this.turingMachine = new AdditionMultiTape();
-    } else if (turingMachineName === 'SubtractionMultiTape') {
+    } else if (turingMachineName === "SubtractionMultiTape") {
       this.turingMachine = new SubtractionMultiTape();
     }
   };
 
-  private turingMachineName = '';
+  private turingMachineName = "";
 
   private turingMachine: AdditionMultiTape | SubtractionMultiTape | undefined;
 
@@ -35,9 +35,9 @@ export class TuringMachines {
   };
 
   public getTotalTape() {
-    if (this.turingMachineName === 'AdditionMultiTape') {
+    if (this.turingMachineName === "AdditionMultiTape") {
       return AdditionMultiTape.totalTape;
-    } else if (this.turingMachineName === 'SubtractionMultiTape') {
+    } else if (this.turingMachineName === "SubtractionMultiTape") {
       return SubtractionMultiTape.totalTape;
     } else {
       return 0;
@@ -83,5 +83,5 @@ export class TuringMachines {
 }
 
 const convertOperationFormData = (operation: string) => {
-  return operation.replace(/ /g, '').replace('-', '');
+  return operation.replace(/ /g, "").replace("-", "");
 };

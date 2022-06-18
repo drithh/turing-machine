@@ -2,7 +2,7 @@ module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
     './src/components/**/*.{js,jsx,ts,tsx}',
-    './public/index.html',
+    './public/index.html'
   ],
   theme: {
     extend: {
@@ -16,16 +16,16 @@ module.exports = {
           orange: '#FDBA74',
           meadow: '#28B595',
           green: '#8DDB82',
-          yellow: '#F9F871',
-        },
+          yellow: '#F9F871'
+        }
       },
       fontFamily: {
-        sans: ['Segoe UI'],
-      },
-    },
+        sans: ['Segoe UI']
+      }
+    }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [require('tailwind-scrollbar-hide')],
-};
+  plugins: [require('tailwind-scrollbar-hide')]
+}
