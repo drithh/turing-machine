@@ -173,7 +173,8 @@ const getInputCase = (operation: string) => {
   if (
     operation === 'Addition - SingleTrack' ||
     operation === 'Addition - MultiTape' ||
-    operation === 'Subtraction' ||
+    operation === 'Subtraction - SingleTrack' ||
+    operation === 'Subtraction - MultiTape' ||
     operation === 'Multiplication' ||
     operation === 'Division' ||
     operation === 'Power'

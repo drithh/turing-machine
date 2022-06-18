@@ -18,6 +18,7 @@ export const CreateGraph = (props: GraphProps) => {
   useEffect(() => {
     async function fetchMyAPI() {
       if (diagramFileName !== 'selectoperation.json') {
+        console.log(diagramFileName);
         let response = await fetch(`diagram/${diagramFileName}`, {
           headers: {
             'Content-Type': 'application/json',

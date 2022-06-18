@@ -1,13 +1,16 @@
-import { useState } from 'react';
 import { Dropdown } from './dropdown';
 import { Input } from './input';
 import { FormData } from '../type';
+import { Legend } from './legend';
 
 export const Form = (props: {
   operation: FormData;
   setOperation: React.Dispatch<React.SetStateAction<FormData>>;
+  isTransitionShow: boolean;
+  setIsTransitionShow: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { operation, setOperation } = props;
+  const { operation, setOperation, isTransitionShow, setIsTransitionShow } =
+    props;
 
   return (
     <div className="my-6">
@@ -86,6 +89,17 @@ export const Form = (props: {
         >
           Simulate
         </button>
+      </div>
+      <div className="buttons mt-2 flex place-content-between gap-x-4">
+        <button
+          className="text-primary-indigo font-medium text-sm w-52 bg-slate-100 rounded-md px-4 h-9 mt-2 hover:bg-slate-200 duration-200"
+          onClick={() => {
+            setIsTransitionShow(!isTransitionShow);
+          }}
+        >
+          Show Transitions
+        </button>
+        <Legend />
       </div>
     </div>
   );

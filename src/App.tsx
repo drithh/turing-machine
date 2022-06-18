@@ -9,6 +9,7 @@ import {
   TuringMachines,
   TuringMachinesResult,
 } from './components/turing-machine/turing-machine';
+import { motion } from 'framer-motion';
 
 function App() {
   const [formData, setFormData] = useState<FormData>({
@@ -32,6 +33,8 @@ function App() {
   const [activeTransition, setActiveTransition] = useState<Transition>();
   const [assignedHead, setAssignedHead] = useState<number[]>();
   const lastSelected = useRef('');
+  const [isTransitionShow, setIsTransitionShow] = useState<boolean>(false);
+  const [lastTransitions, setLastTransitons] = useState<Transition[]>([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -68,6 +71,7 @@ function App() {
       if (turingMachines) {
         if (formData.actionType && validateForm(formData)) {
           setTuringMachinesResult(turingMachines.run());
+          setLastTransitons(turingMachines.getTransitions());
         }
       }
     }
@@ -179,7 +183,12 @@ function App() {
           <div className="title font-sans text-[56px] text-primary-indigo font-bold pb-2 border-opacity-50 border-b border-b-primary-meadow ">
             Turing Machine
           </div>
-          <Form operation={formData} setOperation={setFormData} />
+          <Form
+            operation={formData}
+            setOperation={setFormData}
+            isTransitionShow={isTransitionShow}
+            setIsTransitionShow={setIsTransitionShow}
+          />
         </div>
         <div className="relative flex flex-col place-items-center gap-y-6 mt-20">
           {Array.from(Array(turingMachines?.getTotalTape()), (e, i) => {
@@ -197,13 +206,40 @@ function App() {
           })}
         </div>
       </div>
-      <CreateGraph
-        diagramFileName={`${formData.operation
-          .replace(/ /g, '')
-          .toLowerCase()}.json`}
-        activeTransition={activeTransition}
-        duration={duration}
-      />
+      <div className="flex place-content-between mb-20">
+        {isTransitionShow && (
+          <motion.div className="min-w-[20rem] h-[37.5rem] overflow-y-auto scroll-m-0 border-x px-4 border-primary-meadow border-opacity-50 flex flex-col scrollbar-hide">
+            <div className="text-center py-2 font-sans border-y border-primary-meadow px-4 font-medium border-opacity-30">
+              Transitions
+            </div>
+            {lastTransitions.map((transition, i) => {
+              return (
+                <div
+                  key={i}
+                  className={
+                    'px-4 border-b border-primary-meadow border-opacity-30 w-full py-2 '
+                  }
+                >
+                  <span>
+                    δ (q<sub>{transition?.from}</sub>, {transition?.head})
+                  </span>
+                  <span>
+                    {'  '} ={'  '}(q<sub>{transition?.to}</sub>,{' '}
+                    {transition?.headReplace}, {transition?.tapeDirection})
+                  </span>
+                </div>
+              );
+            })}
+          </motion.div>
+        )}
+        <CreateGraph
+          diagramFileName={`${formData.operation
+            .replace(/ /g, '')
+            .toLowerCase()}.json`}
+          activeTransition={activeTransition}
+          duration={duration}
+        />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,59 @@
+{
+  "nodes": [
+    {
+      "state": 0,
+      "cx": 200,
+      "cy": 150,
+      "type": "start"
+    },
+    {
+      "state": 1,
+      "cx": 500,
+      "cy": 150,
+      "type": "normal"
+    },
+    {
+      "state": 2,
+      "cx": 800,
+      "cy": 150,
+      "type": "final"
+    }
+  ],
+  "links": [
+    {
+      "source": { "node": 0, "port": "B" },
+      "target": { "node": 0, "port": "B" },
+      "content": {
+        "value": ["0B/ 00, RR", "1B/ 11, RR"]
+      }
+    },
+    {
+      "source": { "node": 0, "port": "R" },
+      "target": { "node": 1, "port": "L" },
+      "content": {
+        "value": ["CB / CB, RL"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "B" },
+      "target": { "node": 1, "port": "B" },
+      "content": {
+        "value": [
+          "00/ 0B, RL",
+          "11/ 1B, RL",
+          "0B/ 01, RR",
+          "1B/ 10, RR",
+          "01/ 01, SR",
+          "10/ 10, SR"
+        ]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "R" },
+      "target": { "node": 2, "port": "L" },
+      "content": {
+        "value": ["B1/ B1, RR", "B0/ B0, RR", "BB/ BB, RR"]
+      }
+    }
+  ]
+}

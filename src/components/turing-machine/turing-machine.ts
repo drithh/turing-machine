@@ -1,5 +1,6 @@
 import { FormData, Transition, Symbol } from '../type';
-import { AdditionMultiTape } from './addition-multi-tape';
+import { AdditionMultiTape } from './addition-multitape';
+import { SubtractionMultiTape } from './subtraction-multitape';
 
 export type TuringMachinesResult = {
   transitions: Transition[];
@@ -20,12 +21,14 @@ export class TuringMachines {
   public createturingMachine = (turingMachineName: string) => {
     if (turingMachineName === 'AdditionMultiTape') {
       this.turingMachine = new AdditionMultiTape();
+    } else if (turingMachineName === 'SubtractionMultiTape') {
+      this.turingMachine = new SubtractionMultiTape();
     }
   };
 
   private turingMachineName = '';
 
-  private turingMachine: AdditionMultiTape | undefined;
+  private turingMachine: AdditionMultiTape | SubtractionMultiTape | undefined;
 
   public setFormData = (formData: FormData) => {
     this.formData = formData;
@@ -34,6 +37,8 @@ export class TuringMachines {
   public getTotalTape() {
     if (this.turingMachineName === 'AdditionMultiTape') {
       return AdditionMultiTape.totalTape;
+    } else if (this.turingMachineName === 'SubtractionMultiTape') {
+      return SubtractionMultiTape.totalTape;
     } else {
       return 0;
     }
@@ -41,6 +46,13 @@ export class TuringMachines {
 
   public getOperation() {
     return this.formData.operation;
+  }
+
+  public getTransitions() {
+    if (this.turingMachine) {
+      return this.turingMachine.getTransitions();
+    }
+    return [];
   }
 
   public getActionType() {
