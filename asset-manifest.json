@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/turing-machine/static/css/main.c51dc470.css",
-    "main.js": "/turing-machine/static/js/main.a631c50a.js",
+    "main.css": "/turing-machine/static/css/main.2ca523cf.css",
+    "main.js": "/turing-machine/static/js/main.932bf061.js",
     "static/js/787.c5752b72.chunk.js": "/turing-machine/static/js/787.c5752b72.chunk.js",
     "index.html": "/turing-machine/index.html",
-    "main.c51dc470.css.map": "/turing-machine/static/css/main.c51dc470.css.map",
-    "main.a631c50a.js.map": "/turing-machine/static/js/main.a631c50a.js.map",
+    "main.2ca523cf.css.map": "/turing-machine/static/css/main.2ca523cf.css.map",
+    "main.932bf061.js.map": "/turing-machine/static/js/main.932bf061.js.map",
     "787.c5752b72.chunk.js.map": "/turing-machine/static/js/787.c5752b72.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c51dc470.css",
-    "static/js/main.a631c50a.js"
+    "static/css/main.2ca523cf.css",
+    "static/js/main.932bf061.js"
   ]
 }
