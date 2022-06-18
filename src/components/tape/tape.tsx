@@ -1,9 +1,11 @@
-import React, { useEffect, useState, useRef, Component } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Square } from './square';
 import { motion } from 'framer-motion';
 import { Transition } from '../type';
 import gradientFilter from '../../images/gradient.png';
 import * as Scroll from 'react-scroll';
+import { useDraggable } from 'react-use-draggable-scroll';
+
 let scroll = Scroll.animateScroll;
 type TapeData = {
   id: number;
@@ -15,65 +17,89 @@ export const Tape = (props: {
   duration: number;
   inputString?: string[];
   index: number;
+  reset: boolean;
+  assignedHead?: number;
 }) => {
-  const { activeTransition, duration, inputString, index } = props;
-  const [positions, setPositions] = useState<TapeData[]>(initTape(inputString));
+  const ref =
+    useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
+  const { events } = useDraggable(ref); // Now we pass the reference to the useDraggable hook:
+  const {
+    activeTransition,
+    duration,
+    inputString,
+    index,
+    reset,
+    assignedHead,
+  } = props;
 
+  const [positions, setPositions] = useState<TapeData[]>(initTape(inputString));
   const [head, setHead] = useState(0);
-  const [tape, setTape] = useState(0);
   const [tapeHead, setTapeHead] = useState(0);
   const [leftTapeSide, setLeftTapeSide] = useState(0);
-  const minTape = useRef(0);
+  const headRef = useRef<any>();
+  if (assignedHead !== undefined && assignedHead !== head) {
+    setHead(assignedHead);
+  }
+
+  if (reset) {
+    if (head !== 0 && tapeHead !== 0) {
+      setPositions(initTape(inputString));
+      setHead(0);
+      setTapeHead(0);
+      setLeftTapeSide(0);
+    }
+  }
 
   const scrollTape = useRef(null);
   useEffect(() => {
     scroll.scrollMore(576, {
       containerId: `container-tabs-${index}`,
       horizontal: true,
-      duration: 2,
+      duration: 1,
     });
   }, [index]);
 
   let lastPositions: TapeData[] = [];
 
-  useEffect(() => {
-    minTape.current = Math.min(minTape.current, tape);
-  }, [tape]);
-
   const moveTapeHead = (x: number) => {
-    setTapeHead(tapeHead + x);
-    const nextHead = head + x;
     if (x === -1 && tapeHead === leftTapeSide) {
       scrollMore(false);
-      setHead(head + x);
       setLeftTapeSide(leftTapeSide + x);
     } else if (x === 1 && tapeHead === 10 + leftTapeSide) {
       const last = positions[positions.length - 1].id;
       if (last <= head + 1) {
         const position = { id: last + 1, value: 'B' } as TapeData;
-        setPositions([...positions, position]);
+        if (lastPositions) {
+          setPositions([...lastPositions, position]);
+        } else {
+          setPositions([...positions, position]);
+        }
       }
       setLeftTapeSide(leftTapeSide + x);
       scrollMore(true);
-      setHead(head + x);
-    } else {
-      setHead(head + x);
     }
-    console.log({
-      firstPosition: positions[0].id,
-      nextHead: nextHead,
-      leftTapeSide: leftTapeSide,
-      tapeHead: tapeHead,
-    });
+    setTapeHead(tapeHead + x);
+    setHead(head + x);
+    // console.log({
+    //   firstPosition: positions[0].id,
+    //   nextHead: nextHead,
+    //   leftTapeSide: leftTapeSide,
+    //   tapeHead: tapeHead,
+    // });
   };
+
+  useEffect(() => {
+    setPositions(initTape(inputString));
+  }, [inputString]);
 
   const setHeadValue = (value: string) => {
     const headPositions = positions.map((position, index) => {
-      if (index === head + 2 + tape) {
+      if (index === head + 10) {
         return { ...position, value };
       }
       return position;
     });
+
     setPositions(headPositions);
     lastPositions = headPositions;
   };
@@ -91,10 +117,11 @@ export const Tape = (props: {
 
   const scrollMore = (isRight: boolean) => {
     const to = isRight ? 65 : -65;
+
     scroll.scrollMore(to, {
       containerId: `container-tabs-${index}`,
       horizontal: true,
-      duration: 200,
+      duration: duration / 10,
       smooth: 'easeOutCubic',
     });
   };
@@ -116,7 +143,12 @@ export const Tape = (props: {
         className="w-16 h-16 absolute -right-8 z-10 -scale-x-100"
       />
       <div
-        className="flex relative w-[48rem] h-32 overflow-x-scroll"
+        {...events}
+        ref={ref}
+        // onScroll={(e) => {
+        //   console.log('scroll', e.currentTarget.scrollLeft);
+        // }}
+        className="flex relative w-[48rem] h-32 overflow-x-hidden"
         id={`container-tabs-${index}`}
       >
         <motion.div
@@ -137,7 +169,7 @@ export const Tape = (props: {
           className="head w-16 absolute h-[5px] top-[4.5rem] left-[31px] bg-primary-orange"
         ></motion.div>
       </div>
-      <div className="flex place-content-between flex-row bottom-0">
+      {/* <div className="flex place-content-between flex-row bottom-0">
         <div
           onClick={() => {
             moveTapeHead(-1);
@@ -150,13 +182,13 @@ export const Tape = (props: {
           }}
           className="w-8 h-8  bg-red-500 right-16"
         ></div>
-      </div>
+      </div> */}
     </div>
   );
 };
 
 const initTape = (inputString?: string[]): TapeData[] => {
-  const arraySize = Math.max(inputString?.length ?? 0, 22);
+  const arraySize = Math.max(inputString?.length ?? 0, 12) + 10;
   return new Array(arraySize).fill(0).map((_, i) => {
     return {
       id: i - 10,

@@ -1,19 +1,19 @@
 import { TwoInput, Symbol, Direction, Transition } from '../type';
 import { TwoTape } from './tape';
 
-export class AdditionMultiTrack {
-  constructor(inputSymbols: TwoInput) {
+export class AdditionMultiTape {
+  public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
     this.twoTape = new TwoTape(this.inputSymbols);
   }
-  private inputSymbols: Symbol[];
-  private totalTape = 2;
-  private twoTape: TwoTape;
+  private inputSymbols: Symbol[] = [];
+  static totalTape = 2;
+  private twoTape: TwoTape = new TwoTape([]);
 
   private transitions = new Array<Transition>();
   private lastTransition: Transition;
 
-  public run() {
+  public async run() {
     do {
       const transition = this.getNextTransition(
         this.lastTransition ? this.lastTransition.to : 0
@@ -30,16 +30,43 @@ export class AdditionMultiTrack {
     } while (this.lastTransition !== undefined);
   }
 
+  public getResult() {
+    return [this.twoTape.all().tape1, this.twoTape.all().tape2];
+  }
+
   public getTransitions() {
     return this.transitions;
   }
 
   public getTotalTape() {
-    return this.totalTape;
+    return AdditionMultiTape.totalTape;
   }
 
   public getInputSymbols() {
     return this.inputSymbols;
+  }
+
+  public getLastHead() {
+    console.log(this.transitions);
+
+    const directions = this.transitions.map((e) => {
+      return [e?.tapeDirection[0], e?.tapeDirection[1]];
+    });
+    let first = 0;
+    let second = 0;
+    directions.forEach((e) => {
+      if (e[0] === 'L') {
+        first--;
+      } else if (e[0] === 'R') {
+        first++;
+      }
+      if (e[1] === 'L') {
+        second--;
+      } else if (e[1] === 'R') {
+        second++;
+      }
+    });
+    return [first, second];
   }
 
   private getNextTransition = (currentHead: number) => {
@@ -130,13 +157,14 @@ export class AdditionMultiTrack {
 }
 
 const resolveInput = (input: TwoInput): Symbol[] => {
+  console.log(input);
   let inputstring = new Array<string>();
   for (let i = 0; i < Math.abs(input.input1); i++) {
     inputstring.push(input.input1 > 0 ? '1' : '0');
   }
   inputstring.push('C');
   for (let i = 0; i < Math.abs(input.input2); i++) {
-    inputstring.push(input.input2 ? '1' : '0');
+    inputstring.push(input.input2 > 0 ? '1' : '0');
   }
   return inputstring as Symbol[];
 };

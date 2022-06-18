@@ -9,8 +9,6 @@ export const Form = (props: {
 }) => {
   const { operation, setOperation } = props;
 
-  const [duration, setDuration] = useState('2000');
-
   return (
     <div className="my-6">
       <div className="flex place-items-center gap-x-4">
@@ -33,11 +31,16 @@ export const Form = (props: {
             min="0"
             max="4000"
             step="200"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
+            value={operation.duration}
+            onChange={(e) =>
+              setOperation({
+                ...operation,
+                duration: parseInt(e.target.value, 10),
+              })
+            }
           />
           <div className=" w-24 h-10 text-base  border text-opacity-70 text-primary-indigo font-medium flex place-content-center place-items-center border-gray-300 rounded-md bg-gray-100">
-            {duration}ms
+            {operation.duration}ms
           </div>
         </div>
       </div>
@@ -50,6 +53,7 @@ export const Form = (props: {
                 data: operation?.data,
                 operation: operation?.operation,
                 actionType: 'Validate',
+                duration: operation.duration,
               })
             }
           >
@@ -62,6 +66,7 @@ export const Form = (props: {
                 data: operation?.data,
                 operation: operation?.operation,
                 actionType: 'Debug',
+                duration: operation.duration,
               })
             }
           >
@@ -75,7 +80,7 @@ export const Form = (props: {
               data: operation?.data,
               operation: operation?.operation,
               actionType: 'Simulate',
-              duration: parseInt(duration, 10),
+              duration: operation.duration,
             })
           }
         >

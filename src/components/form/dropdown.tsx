@@ -7,7 +7,7 @@ function classNames(...classes: any) {
 }
 
 export const Dropdown = (props: {
-  operation: FormData | undefined;
+  operation: FormData;
   setOperation: React.Dispatch<React.SetStateAction<FormData>>;
 }) => {
   const { setOperation, operation } = props;
@@ -29,7 +29,7 @@ export const Dropdown = (props: {
     <Menu as="div" className="relative inline-block text-left">
       <div className="pt-2">
         <Menu.Button className=" inline-flex place-content-between place-items-center min-w-[14rem] w-fit rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-lg font-medium text-primary-indigo hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-          {operation?.operation}
+          {operation.operation}
           <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
         </Menu.Button>
       </div>
@@ -52,9 +52,10 @@ export const Dropdown = (props: {
                     <button
                       onClick={() => {
                         setOperation({
-                          actionType: operation?.actionType,
-                          data: operation?.data,
+                          actionType: operation.actionType,
+                          data: operation.data,
                           operation: item,
+                          duration: operation.duration,
                         });
                       }}
                       className={classNames(

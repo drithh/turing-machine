@@ -23,7 +23,7 @@ export type FormData = {
   operation: string;
   data: any;
   actionType: any;
-  duration?: number;
+  duration: number;
 };
 
 export type Symbol =
