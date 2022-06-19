@@ -9,10 +9,12 @@ interface Props {
   targetLocation: Type.Node;
   active?: Transition;
   duration: number;
+  totalTape: number;
 }
 
 export const NormalArrow = (props: Props) => {
-  const { link, sourceLocation, targetLocation, active, duration } = props;
+  const { link, sourceLocation, targetLocation, active, duration, totalTape } =
+    props;
   const sourcePort = convertPort(link.source.port);
   const targetPort = convertPort(link.target.port);
 
@@ -83,16 +85,14 @@ export const NormalArrow = (props: Props) => {
               key={index}
               x={(sourceLocation.cx + targetLocation.cx) / 2}
               y={(sourceLocation.cy + targetLocation.cy) / 2}
-              dx={
-                link.content.offset ? link.content.offset.x : 0
-              }
+              dx={link.content.offset ? link.content.offset.x : 0}
               dy={
                 (length > 1 ? length * -6 : -12) +
                 24 * index +
                 (link.content.offset ? link.content.offset.y : 0)
               }
               fontSize={16}
-              textLength="5em"
+              textLength={`${3 + (totalTape - 1) * 2}em`}
               fontWeight="bold"
             >
               {value}

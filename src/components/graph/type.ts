@@ -26,6 +26,7 @@ export namespace Type {
   };
 
   export type Graph = {
+    totalTape: number;
     nodes: Node[];
     links: Link[];
   };

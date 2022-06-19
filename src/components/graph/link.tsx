@@ -8,10 +8,11 @@ interface Props {
   link: Type.Link;
   active: Transition | undefined;
   duration: number;
+  totalTape: number;
 }
 
 export const Link = (props: Props) => {
-  const { graph, link, active, duration } = props;
+  const { graph, link, active, duration, totalTape } = props;
 
   const sourceLocation = graph.nodes.find(
     (node) => node.state === link.source.node
@@ -25,9 +26,10 @@ export const Link = (props: Props) => {
       {sourceLocation && targetLocation ? (
         sourceLocation === targetLocation ? (
           <SelfArrow
-            key={link.source.node + link.target.node}
+            key={link.source.node + link.target.node + link.source.port}
             link={link}
             sourceLocation={sourceLocation}
+            totalTape={totalTape}
             active={
               isActive({ from: active?.from, to: active?.to }, link)
                 ? active
@@ -37,10 +39,11 @@ export const Link = (props: Props) => {
           />
         ) : (
           <NormalArrow
-            key={link.source.node + link.target.node}
+            key={link.source.node + link.target.node + link.source.port}
             link={link}
             sourceLocation={sourceLocation}
             targetLocation={targetLocation}
+            totalTape={totalTape}
             active={
               isActive({ from: active?.from, to: active?.to }, link)
                 ? active

@@ -17,12 +17,17 @@ export const Dropdown = (props: {
     'Addition - MultiTape',
     'Subtraction - SingleTrack',
     'Subtraction - MultiTape',
-    'Multiplication',
-    'Division',
-    'Factorial',
-    'Binary Logarithm',
-    'Power',
-    'Temperature Conversion',
+    'Multiplication - SingleTrack',
+    'Multiplication - MultiTape',
+    'Division - SingleTrack',
+    'Division - MultiTape',
+    'Factorial - MultiTrack',
+    'Factorial - MutliTape',
+    'Power - MultiTrack',
+    'Power - MultiTape',
+    'Binary Logarithm - MultiTrack',
+    'Binary Logarithm - MultiTape',
+    'Temperature Conversion - MultiTrack',
   ];
 
   return (

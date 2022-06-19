@@ -8,10 +8,11 @@ interface Props {
   sourceLocation: Type.Node;
   active: Transition | undefined;
   duration: number;
+  totalTape: number;
 }
 
 export const SelfArrow = (props: Props) => {
-  const { link, sourceLocation, active, duration } = props;
+  const { link, sourceLocation, active, duration, totalTape } = props;
 
   const selfArrowPosition = getSelfLink(link.source.port);
   const [isActive, setIsActive] = useState<boolean>();
@@ -92,7 +93,7 @@ export const SelfArrow = (props: Props) => {
               (link.content.offset ? link.content.offset.y : 0)
             }
             fontSize={16}
-            textLength="5em"
+            textLength={`${3 + (totalTape - 1) * 2}em`}
             fontWeight="bold"
           >
             {value}
