@@ -83,6 +83,9 @@ export const NormalArrow = (props: Props) => {
               key={index}
               x={(sourceLocation.cx + targetLocation.cx) / 2}
               y={(sourceLocation.cy + targetLocation.cy) / 2}
+              dx={
+                link.content.offset ? link.content.offset.x : 0
+              }
               dy={
                 (length > 1 ? length * -6 : -12) +
                 24 * index +

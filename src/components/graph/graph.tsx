@@ -37,7 +37,7 @@ export const CreateGraph = (props: GraphProps) => {
   }, [diagramFileName]);
 
   return (
-    <svg id="svg-canvas" width="1366" height="600" className="overflow-auto">
+    <svg id="svg-canvas" width="3000" height="3000" >
       <Marker />
       {data
         ? data.nodes.map((node: Type.Node) => {
