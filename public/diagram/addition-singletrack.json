@@ -61,7 +61,7 @@
       "target": { "node": 0, "port": "L" },
       "content": {
         "offset": { "x": 35, "y": 35 },
-        "value": ["1/ 1, R","0/ 0, R","C/ C, R","E/ E, R"]
+        "value": ["1/ 1, R", "0/ 0, R", "C/ C, R", "E/ E, R"]
       }
     },
     {
@@ -76,9 +76,7 @@
       "target": { "node": 2, "port": "L" },
       "content": {
         "offset": { "x": -50, "y": -10 },
-        "value": [
-          "0/B, L"
-        ]
+        "value": ["0/B, L"]
       }
     },
     {
@@ -108,16 +106,16 @@
       "source": { "node": 4, "port": "B" },
       "target": { "node": 4, "port": "B" },
       "content": {
-        "offset": { "x": 0, "y":-15 },
-        "value": ["0/0,R","B/B,R"]
+        "offset": { "x": 0, "y": -15 },
+        "value": ["0/0,R", "B/B,R"]
       }
     },
     {
       "source": { "node": 5, "port": "T" },
       "target": { "node": 5, "port": "T" },
       "content": {
-        "offset": { "x": 0, "y":135 },
-        "value": ["1/1,R","B/B,R"]
+        "offset": { "x": 0, "y": 135 },
+        "value": ["1/1,R", "B/B,R"]
       }
     },
     {
@@ -165,7 +163,7 @@
       "target": { "node": 6, "port": "T" },
       "content": {
         "offset": { "x": 0, "y": 125 },
-        "value": ["E/E,L","0/0,L"]
+        "value": ["E/E,L", "0/0,L"]
       }
     },
     {
@@ -173,7 +171,7 @@
       "target": { "node": 7, "port": "B" },
       "content": {
         "offset": { "x": 0, "y": 0 },
-        "value": ["E/E,L","1/1,L"]
+        "value": ["E/E,L", "1/1,L"]
       }
     },
     {
@@ -181,7 +179,7 @@
       "target": { "node": 0, "port": "TR" },
       "content": {
         "offset": { "x": 0, "y": -50 },
-        "value": ["1/ E, R","B/ 0, R"]
+        "value": ["1/ E, R", "B/ 0, R"]
       }
     },
     {
@@ -189,7 +187,7 @@
       "target": { "node": 0, "port": "BR" },
       "content": {
         "offset": { "x": 0, "y": 50 },
-        "value": ["0/ E, R","B/ 1, R"]
+        "value": ["0/ E, R", "B/ 1, R"]
       }
     },
     {
@@ -197,7 +195,7 @@
       "target": { "node": 6, "port": "B" },
       "content": {
         "offset": { "x": 0, "y": 0 },
-        "value": ["E/ E, L","1/ 1, S"]
+        "value": ["E/ E, L", "1/ 1, S"]
       }
     },
     {
@@ -205,7 +203,7 @@
       "target": { "node": 7, "port": "T" },
       "content": {
         "offset": { "x": 0, "y": 0 },
-        "value": ["E/ E, L","0/ 0, S"]
+        "value": ["E/ E, L", "0/ 0, S"]
       }
     }
   ]

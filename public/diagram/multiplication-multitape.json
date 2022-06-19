@@ -30,19 +30,14 @@
       "source": { "node": 0, "port": "B" },
       "target": { "node": 0, "port": "B" },
       "content": {
-        "value": [
-          "0BB/ 00B, RRS", 
-          "1BB/ 11B, RRS"
-        ]
+        "value": ["0BB/ 00B, RRS", "1BB/ 11B, RRS"]
       }
     },
     {
       "source": { "node": 0, "port": "R" },
       "target": { "node": 1, "port": "L" },
       "content": {
-        "value": [
-          "CBB / CBB, RLS"
-        ]
+        "value": ["CBB / CBB, RLS"]
       }
     },
     {
@@ -61,34 +56,31 @@
       "source": { "node": 1, "port": "TR" },
       "target": { "node": 2, "port": "BR" },
       "content": {
-        "offset": { 
-          "x": 50, 
-          "y": 0 
+        "offset": {
+          "x": 50,
+          "y": 0
         },
-        "value": ["1BB/ 1BB, RRS","0BB/ 0BB, RRS"]
+        "value": ["1BB/ 1BB, RRS", "0BB/ 0BB, RRS"]
       }
     },
     {
       "source": { "node": 2, "port": "BL" },
       "target": { "node": 1, "port": "TL" },
       "content": {
-        "offset": { 
-          "x": -50, 
-          "y": 0 
+        "offset": {
+          "x": -50,
+          "y": 0
         },
-        "value": [
-          "1BB/ 1BB, RLS",
-          "0BB/ 0BB, RLS"
-        ]
+        "value": ["1BB/ 1BB, RLS", "0BB/ 0BB, RLS"]
       }
     },
     {
       "source": { "node": 2, "port": "T" },
       "target": { "node": 2, "port": "T" },
       "content": {
-        "offset": { 
-          "x": 0, 
-          "y": 70 
+        "offset": {
+          "x": 0,
+          "y": 70
         },
         "value": [
           "11B/ 111, SRR",
@@ -102,28 +94,22 @@
       "source": { "node": 2, "port": "R" },
       "target": { "node": 3, "port": "TL" },
       "content": {
-        "offset": { 
-          "x": 0, 
-          "y": -20 
+        "offset": {
+          "x": 0,
+          "y": -20
         },
-        "value": [
-          "B1B/ B1B, SSS",
-          "B0B/ B0B, SSS"
-        ]
+        "value": ["B1B/ B1B, SSS", "B0B/ B0B, SSS"]
       }
     },
     {
       "source": { "node": 1, "port": "R" },
       "target": { "node": 3, "port": "BL" },
       "content": {
-        "offset": { 
-          "x": 0, 
-          "y": 20 
+        "offset": {
+          "x": 0,
+          "y": 20
         },
-        "value": [
-          "B1B/ B1B, SSS",
-          "B0B/ B0B, SSS"
-        ]
+        "value": ["B1B/ B1B, SSS", "B0B/ B0B, SSS"]
       }
     }
   ]

@@ -102,7 +102,7 @@
       "source": { "node": 2, "port": "L" },
       "target": { "node": 2, "port": "L" },
       "content": {
-        "offset": { "x": 40, "y":75 },
+        "offset": { "x": 40, "y": 75 },
         "value": ["E/E,R"]
       }
     },
@@ -110,7 +110,7 @@
       "source": { "node": 2, "port": "TR" },
       "target": { "node": 3, "port": "L" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["1/E,R"]
       }
     },
@@ -118,7 +118,7 @@
       "source": { "node": 2, "port": "BR" },
       "target": { "node": 4, "port": "L" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["0/E,R"]
       }
     },
@@ -126,7 +126,7 @@
       "source": { "node": 3, "port": "T" },
       "target": { "node": 3, "port": "T" },
       "content": {
-        "offset": { "x": 0, "y":150 },
+        "offset": { "x": 0, "y": 150 },
         "value": ["1/1,R"]
       }
     },
@@ -134,7 +134,7 @@
       "source": { "node": 4, "port": "B" },
       "target": { "node": 4, "port": "B" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["0/0,R"]
       }
     },
@@ -142,7 +142,7 @@
       "source": { "node": 3, "port": "R" },
       "target": { "node": 5, "port": "L" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["C/C,R"]
       }
     },
@@ -150,7 +150,7 @@
       "source": { "node": 4, "port": "R" },
       "target": { "node": 6, "port": "L" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["C/C,R"]
       }
     },
@@ -158,7 +158,7 @@
       "source": { "node": 5, "port": "T" },
       "target": { "node": 5, "port": "T" },
       "content": {
-        "offset": { "x": 0, "y":150 },
+        "offset": { "x": 0, "y": 150 },
         "value": ["0/0,R"]
       }
     },
@@ -166,7 +166,7 @@
       "source": { "node": 6, "port": "B" },
       "target": { "node": 6, "port": "B" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["1/1,R"]
       }
     },
@@ -174,7 +174,7 @@
       "source": { "node": 5, "port": "R" },
       "target": { "node": 7, "port": "L" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["B/0,L"]
       }
     },
@@ -182,7 +182,7 @@
       "source": { "node": 6, "port": "R" },
       "target": { "node": 8, "port": "L" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["B/1,L"]
       }
     },
@@ -190,7 +190,7 @@
       "source": { "node": 7, "port": "T" },
       "target": { "node": 7, "port": "T" },
       "content": {
-        "offset": { "x": 0, "y":150 },
+        "offset": { "x": 0, "y": 150 },
         "value": ["0/0,L"]
       }
     },
@@ -198,7 +198,7 @@
       "source": { "node": 8, "port": "B" },
       "target": { "node": 8, "port": "B" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["1/1,L"]
       }
     },
@@ -206,7 +206,7 @@
       "source": { "node": 7, "port": "R" },
       "target": { "node": 9, "port": "L" },
       "content": {
-        "offset": { "x": 0, "y":0},
+        "offset": { "x": 0, "y": 0 },
         "value": ["C/C,L"]
       }
     },
@@ -214,7 +214,7 @@
       "source": { "node": 8, "port": "R" },
       "target": { "node": 10, "port": "L" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["C/C,L"]
       }
     },
@@ -222,7 +222,7 @@
       "source": { "node": 9, "port": "BR" },
       "target": { "node": 11, "port": "T" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["1/1,L"]
       }
     },
@@ -230,10 +230,9 @@
       "source": { "node": 10, "port": "TR" },
       "target": { "node": 11, "port": "B" },
       "content": {
-        "offset": { "x": 0, "y":0 },
+        "offset": { "x": 0, "y": 0 },
         "value": ["0/0,L"]
       }
     }
-    
   ]
 }

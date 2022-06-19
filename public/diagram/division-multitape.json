@@ -68,55 +68,70 @@
       "source": { "node": 4, "port": "B" },
       "target": { "node": 1, "port": "TL" },
       "content": {
-        "offset" : {
+        "offset": {
           "x": -15,
           "y": -15
         },
-        "value": ["11B/ 111, SSR","01B/ 010, SSR","10B/ 100, SSR","00B/ 001, SSR"]
+        "value": [
+          "11B/ 111, SSR",
+          "01B/ 010, SSR",
+          "10B/ 100, SSR",
+          "00B/ 001, SSR"
+        ]
       }
     },
     {
       "source": { "node": 1, "port": "TR" },
       "target": { "node": 2, "port": "B" },
       "content": {
-        "offset" : {
+        "offset": {
           "x": 15,
           "y": 0
         },
-        "value": ["B1B/ B1B, LSS","B0B/ B0B, LSS"]
+        "value": ["B1B/ B1B, LSS", "B0B/ B0B, LSS"]
       }
     },
     {
       "source": { "node": 2, "port": "T" },
       "target": { "node": 3, "port": "BR" },
       "content": {
-        "offset" : {
+        "offset": {
           "x": 15,
           "y": -15
         },
-        "value": ["11B/ 111, SSR","01B/ 010, SSR","10B/ 100, SSR","00B/ 001, SSR"]
+        "value": [
+          "11B/ 111, SSR",
+          "01B/ 010, SSR",
+          "10B/ 100, SSR",
+          "00B/ 001, SSR"
+        ]
       }
     },
     {
       "source": { "node": 3, "port": "T" },
       "target": { "node": 3, "port": "T" },
       "content": {
-        "offset" : {
+        "offset": {
           "x": 0,
           "y": 50
         },
-        "value": ["11B/ 11B, LLS","01B/ 01B, LLS","10B/ 10B, LLS","00B/ 00B, LLS"]
+        "value": [
+          "11B/ 11B, LLS",
+          "01B/ 01B, LLS",
+          "10B/ 10B, LLS",
+          "00B/ 00B, LLS"
+        ]
       }
     },
     {
       "source": { "node": 3, "port": "BL" },
       "target": { "node": 4, "port": "T" },
       "content": {
-        "offset" : {
+        "offset": {
           "x": -15,
           "y": -15
         },
-        "value": ["C1B/ C1B, RSS","C0B/ C0B, RSS"]
+        "value": ["C1B/ C1B, RSS", "C0B/ C0B, RSS"]
       }
     },
     {
@@ -130,33 +145,38 @@
       "source": { "node": 3, "port": "R" },
       "target": { "node": 5, "port": "TL" },
       "content": {
-        "offset" : {
+        "offset": {
           "x": 15,
           "y": -70
         },
-        "value": ["CBB/ BBB, RRS","1BB/ 1BB, SSS","0BB/ 0BB, SSS"]
+        "value": ["CBB/ BBB, RRS", "1BB/ 1BB, SSS", "0BB/ 0BB, SSS"]
       }
     },
     {
       "source": { "node": 1, "port": "R" },
       "target": { "node": 5, "port": "BL" },
       "content": {
-        "offset" : {
+        "offset": {
           "x": 15,
           "y": 60
         },
-        "value": ["BBB/ BBB, LRS","1BB/ 1BB, SSS","0BB/ 0BB, SSS"]
+        "value": ["BBB/ BBB, LRS", "1BB/ 1BB, SSS", "0BB/ 0BB, SSS"]
       }
     },
     {
       "source": { "node": 5, "port": "R" },
       "target": { "node": 5, "port": "R" },
       "content": {
-        "offset" : {
+        "offset": {
           "x": -40,
           "y": 30
         },
-        "value": ["11B/ 111, SSS","01B/ 010, SSS","10B/ 100, SSS","00B/ 001, SSS"]
+        "value": [
+          "11B/ 111, SSS",
+          "01B/ 010, SSS",
+          "10B/ 100, SSS",
+          "00B/ 001, SSS"
+        ]
       }
     }
   ]
