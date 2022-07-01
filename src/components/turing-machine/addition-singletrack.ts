@@ -267,6 +267,8 @@ export class AdditionSingleTrack {
             transition.headReplace = 'B';
             transition.tapeDirection = 'L';
             break;
+          default :
+            break;
         }
         break;
     }

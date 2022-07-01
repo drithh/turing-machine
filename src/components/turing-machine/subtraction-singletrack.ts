@@ -294,6 +294,8 @@ export class SubtractionSingleTrack {
             transition.headReplace = 'B';
             transition.tapeDirection = 'L';
             break;
+          default :
+            break;
         }
         break;
     }

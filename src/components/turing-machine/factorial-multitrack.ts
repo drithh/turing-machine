@@ -31,7 +31,7 @@ export class FactorialMultiTrack {
   }
 
   public getResult() {
-    return [this.tapes.all().tape1, this.tapes.all().tape2];
+    return [this.tapes.all().tape1, this.tapes.all().tape2,, this.tapes.all().tape3];
   }
 
   public getTransitions() {
@@ -435,6 +435,22 @@ export class FactorialMultiTrack {
                 transition.headReplace = 'ZX1';
                 transition.tapeDirection = 'RRR';
                 break;
+                // NEWWW 20:08
+                // NEWWW 20:08
+                // NEWWW 20:08
+                // NEWWW 20:08
+                // NEWWW 20:08
+                // NEWWW 20:08
+              case 'BX1':
+                transition.to = 10;
+                transition.headReplace = 'BX1';
+                transition.tapeDirection = 'RRR';
+                break;
+                // NEWWW 20:08
+                // NEWWW 20:08
+                // NEWWW 20:08
+                // NEWWW 20:08
+                // NEWWW 20:08
                 
               case 'BBB':
                 transition.to = 8;
@@ -632,11 +648,11 @@ export class FactorialMultiTrack {
           
           case 21:
             switch (transition.head) {
-              case '1B1':
-                transition.to = 21;
-                transition.headReplace = '1B1';
-                transition.tapeDirection = 'RRR';
-                break;
+              // case '1B1':
+              //   transition.to = 21;
+              //   transition.headReplace = '1B1';
+              //   transition.tapeDirection = 'RRR';
+              //   break;
               case 'ZB1':
                 transition.to = 21;
                 transition.headReplace = '1B1';
@@ -644,15 +660,18 @@ export class FactorialMultiTrack {
                 break;
               case 'Y11':
                 transition.to = 21;
-                transition.headReplace = '1B1';
+                transition.headReplace = '111';
                 transition.tapeDirection = 'RRR';
                 break;
 
               case 'Z11':
                 transition.to = 21;
-                transition.headReplace = '1B1';
+                // transition.headReplace = '1B1';
+                transition.headReplace = '111';
                 transition.tapeDirection = 'RRR';
                 break;
+                default:
+                  break;
             }
           break;
     }
