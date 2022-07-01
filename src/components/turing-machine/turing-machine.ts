@@ -217,11 +217,35 @@ export class TuringMachines {
         TapeResult: this.turingMachine.getResult(),
         lastHead: this.turingMachine.getLastHead(),
       };
+      let result = 0;
+
+      turingMachineResult.TapeResult[1].forEach((element: string) => {
+        result += convertText(element);
+      });
+      console.log(result);
       console.log(turingMachineResult);
       return turingMachineResult;
     }
   }
 }
+
+const convertText = (text: string) => {
+  switch (text) {
+    case 'P':
+      return 100;
+    case 'O':
+      return 10;
+    case 'I':
+      return 1;
+    case 'U':
+      return -100;
+    case 'Y':
+      return -10;
+    case 'T':
+      return -1;
+  }
+  return 0;
+};
 
 const convertOperationFormData = (operation: string) => {
   return operation.replace(/ /g, '').replace('-', '');
