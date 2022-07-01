@@ -4,11 +4,11 @@ import { TwoTape } from './tape';
 export class AdditionMultiTape {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.twoTape = new TwoTape(this.inputSymbols);
+    this.tapes = new TwoTape(this.inputSymbols);
   }
   private inputSymbols: Symbol[] = [];
   static totalTape = 2;
-  private twoTape: TwoTape = new TwoTape([]);
+  private tapes: TwoTape = new TwoTape([]);
 
   private transitions = new Array<Transition>();
   private lastTransition: Transition;
@@ -19,8 +19,8 @@ export class AdditionMultiTape {
         this.lastTransition ? this.lastTransition.to : 0
       );
       if (transition !== false) {
-        this.twoTape.write([...transition.headReplace] as Symbol[]);
-        this.twoTape.moveHead([...transition.tapeDirection] as Direction[]);
+        this.tapes.write([...transition.headReplace] as Symbol[]);
+        this.tapes.moveHead([...transition.tapeDirection] as Direction[]);
 
         this.transitions.push(transition);
         this.lastTransition = transition;
@@ -31,7 +31,7 @@ export class AdditionMultiTape {
   }
 
   public getResult() {
-    return [this.twoTape.all().tape1, this.twoTape.all().tape2];
+    return [this.tapes.all().tape1, this.tapes.all().tape2];
   }
 
   public getTransitions() {
@@ -71,7 +71,7 @@ export class AdditionMultiTape {
     let transition: Transition = {
       from: currentHead,
       to: -1,
-      head: this.twoTape.read().join(''),
+      head: this.tapes.read().join(''),
       headReplace: '',
       tapeDirection: '',
     };

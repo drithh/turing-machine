@@ -1,14 +1,14 @@
-import { TwoInput, Symbol, Direction, Transition } from '../type';
-import { TwoTape } from './tape';
+import { Symbol, Direction, Transition, TwoInput } from '../type';
+import { OneTape } from './tape';
 
-export class DivisionMultiTape {
+export class AdditionSingletrack {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.twoTape = new TwoTape(this.inputSymbols);
+    this.tapes = new OneTape(this.inputSymbols);
   }
   private inputSymbols: Symbol[] = [];
-  static totalTape = 3;
-  private twoTape: TwoTape = new TwoTape([]);
+  static totalTape = 1;
+  private tapes: OneTape = new OneTape([]);
 
   private transitions = new Array<Transition>();
   private lastTransition: Transition;
@@ -19,8 +19,8 @@ export class DivisionMultiTape {
         this.lastTransition ? this.lastTransition.to : 0
       );
       if (transition !== false) {
-        this.twoTape.write([...transition.headReplace] as Symbol[]);
-        this.twoTape.moveHead([...transition.tapeDirection] as Direction[]);
+        this.tapes.write(transition.headReplace as Symbol);
+        this.tapes.moveHead(transition.tapeDirection as Direction);
 
         this.transitions.push(transition);
         this.lastTransition = transition;
@@ -31,7 +31,7 @@ export class DivisionMultiTape {
   }
 
   public getResult() {
-    return [this.twoTape.all().tape1, this.twoTape.all().tape2];
+    return [this.tapes.all()];
   }
 
   public getTransitions() {
@@ -39,7 +39,7 @@ export class DivisionMultiTape {
   }
 
   public getTotalTape() {
-    return DivisionMultiTape.totalTape;
+    return AdditionSingletrack.totalTape;
   }
 
   public getInputSymbols() {
@@ -71,7 +71,7 @@ export class DivisionMultiTape {
     let transition: Transition = {
       from: currentHead,
       to: -1,
-      head: this.twoTape.read().join(''),
+      head: this.tapes.read(),
       headReplace: '',
       tapeDirection: '',
     };
@@ -98,34 +98,34 @@ export class DivisionMultiTape {
         break;
       case 1:
         switch (transition.head) {
-          case '01':
+          case '00':
             transition.to = 1;
             transition.headReplace = '0B';
             transition.tapeDirection = 'RL';
             break;
-          case '10':
+          case '11':
             transition.to = 1;
             transition.headReplace = '1B';
             transition.tapeDirection = 'RL';
             break;
           case '0B':
             transition.to = 1;
-            transition.headReplace = '00';
+            transition.headReplace = '01';
             transition.tapeDirection = 'RR';
             break;
           case '1B':
             transition.to = 1;
-            transition.headReplace = '11';
+            transition.headReplace = '10';
             transition.tapeDirection = 'RR';
             break;
-          case '00':
+          case '01':
             transition.to = 1;
-            transition.headReplace = '00';
+            transition.headReplace = '01';
             transition.tapeDirection = 'SR';
             break;
-          case '11':
+          case '10':
             transition.to = 1;
-            transition.headReplace = '11';
+            transition.headReplace = '10';
             transition.tapeDirection = 'SR';
 
             break;

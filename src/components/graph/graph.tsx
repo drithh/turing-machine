@@ -38,14 +38,12 @@ export const CreateGraph = (props: GraphProps) => {
         0
       );
       setSize({ width, height });
-      console.log({ width, height });
     }
   }, [data]);
 
   useEffect(() => {
     async function fetchMyAPI() {
       if (diagramFileName !== 'selectoperation.json') {
-        console.log(diagramFileName);
         let response = await fetch(`diagram/${diagramFileName}`, {
           headers: {
             'Content-Type': 'application/json',

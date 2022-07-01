@@ -32,7 +32,7 @@ function App() {
   const [reset, setReset] = useState<boolean>(false);
   const [activeTransition, setActiveTransition] = useState<Transition>();
   const [assignedHead, setAssignedHead] = useState<number[]>();
-  const lastSelected = useRef('');
+  const lastForm = useRef<FormData>(formData);
   const [isTransitionShow, setIsTransitionShow] = useState<boolean>(false);
   const [lastTransitions, setLastTransitons] = useState<Transition[]>([]);
 
@@ -49,33 +49,29 @@ function App() {
       formData.actionType !== turingMachines?.getActionType()
     ) {
       setTuringMachines(new TuringMachines(formData));
-
       if (
         !(
           (formData.actionType === 'Simulate' &&
-            lastSelected.current === 'Debug') ||
+            lastForm.current?.actionType === 'Debug') ||
           (formData.actionType === 'Debug' &&
-            lastSelected.current === 'Simulate')
+            lastForm.current?.actionType === 'Simulate')
         ) ||
         isRunning.current === false
       ) {
         setReset(true);
       }
     }
-    if (formData.operation && isRunning.current === false) {
-      if (turingMachines?.getOperation() !== formData.operation) {
-        setTuringMachines(new TuringMachines(formData));
-      } else {
-        turingMachines.setFormData(formData);
-      }
-      if (turingMachines) {
-        if (formData.actionType && validateForm(formData)) {
-          setTuringMachinesResult(turingMachines.run());
-          setLastTransitons(turingMachines.getTransitions());
-        }
+    if (formData.operation !== lastForm.current.operation) {
+      setTuringMachines(new TuringMachines(formData));
+    } else {
+      turingMachines?.setFormData(formData);
+    }
+    if (turingMachines) {
+      if (formData.actionType && validateForm(formData)) {
+        setTuringMachinesResult(turingMachines.run());
+        setLastTransitons(turingMachines.getTransitions());
       }
     }
-
     setDuration(formData.duration === undefined ? 2000 : formData.duration);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData]);
@@ -91,7 +87,7 @@ function App() {
       }
 
       if (formData.actionType === 'Validate') {
-        lastSelected.current = 'Validate';
+        lastForm.current = formData;
         setFormData({
           ...formData,
           actionType: '',
@@ -107,7 +103,7 @@ function App() {
       if (
         (formData.actionType === 'Simulate' ||
           formData.actionType === 'Debug') &&
-        lastSelected.current === 'Validate' &&
+        lastForm.current?.actionType === 'Validate' &&
         index === 0 &&
         isRunning.current === false
       ) {
@@ -121,7 +117,7 @@ function App() {
           turingMachinesResult.transitions.length > index
         ) {
           setAssignedHead([]);
-          lastSelected.current = 'Simulate';
+          lastForm.current = formData;
           isRunning.current = true;
           setActiveTransition(turingMachinesResult.transitions[index]);
           setIndex(index + 1);
@@ -147,7 +143,7 @@ function App() {
   useEffect(() => {
     if (turingMachinesResult && formData.actionType !== '') {
       if (formData.actionType === 'Debug') {
-        lastSelected.current = 'Debug';
+        lastForm.current = formData;
         setFormData({
           ...formData,
           actionType: '',
@@ -236,7 +232,7 @@ function App() {
           diagramFileName={`${formData.operation
             .replace(/ /g, '')
             .toLowerCase()}.json`}
-          // diagramFileName="multiplication-singletrack.json"
+          // diagramFileName="division-multitape.json"
           activeTransition={activeTransition}
           duration={duration}
         />

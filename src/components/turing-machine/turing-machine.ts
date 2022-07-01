@@ -1,6 +1,8 @@
 import { FormData, Transition, Symbol } from '../type';
 import { AdditionMultiTape } from './addition-multitape';
+import { AdditionSingletrack } from './addition-singletrack';
 import { SubtractionMultiTape } from './subtraction-multitape';
+import { SubtractionSingletrack } from './subtraction-singletrack';
 
 export type TuringMachinesResult = {
   transitions: Transition[];
@@ -21,14 +23,25 @@ export class TuringMachines {
   public createturingMachine = (turingMachineName: string) => {
     if (turingMachineName === 'AdditionMultiTape') {
       this.turingMachine = new AdditionMultiTape();
+    } else if (turingMachineName === 'AdditionSingleTrack') {
+      console.log(turingMachineName);
+
+      this.turingMachine = new AdditionSingletrack();
     } else if (turingMachineName === 'SubtractionMultiTape') {
       this.turingMachine = new SubtractionMultiTape();
+    } else if (turingMachineName === 'SubtractionSingleTrack') {
+      this.turingMachine = new SubtractionSingletrack();
     }
   };
 
   private turingMachineName = '';
 
-  private turingMachine: AdditionMultiTape | SubtractionMultiTape | undefined;
+  private turingMachine:
+    | AdditionMultiTape
+    | AdditionSingletrack
+    | SubtractionMultiTape
+    | SubtractionSingletrack
+    | undefined;
 
   public setFormData = (formData: FormData) => {
     this.formData = formData;
@@ -37,8 +50,12 @@ export class TuringMachines {
   public getTotalTape() {
     if (this.turingMachineName === 'AdditionMultiTape') {
       return AdditionMultiTape.totalTape;
+    } else if (this.turingMachineName === 'AdditionSingletrack') {
+      return AdditionSingletrack.totalTape;
     } else if (this.turingMachineName === 'SubtractionMultiTape') {
       return SubtractionMultiTape.totalTape;
+    } else if (this.turingMachineName === 'SubtractionSingletrack') {
+      return SubtractionSingletrack.totalTape;
     } else {
       return 0;
     }
@@ -77,6 +94,7 @@ export class TuringMachines {
         tapeResult: this.turingMachine.getResult(),
         lastHead: this.turingMachine.getLastHead(),
       };
+      console.log(turingMachineResult);
       return turingMachineResult;
     }
   }
