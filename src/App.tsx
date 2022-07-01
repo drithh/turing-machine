@@ -229,10 +229,10 @@ function App() {
           </motion.div>
         )}
         <CreateGraph
-          diagramFileName={`${formData.operation
-            .replace(/ /g, '')
-            .toLowerCase()}.json`}
-          // diagramFileName="division-multitape.json"
+          // diagramFileName={`${formData.operation
+          //   .replace(/ /g, '')
+          //   .toLowerCase()}.json`}
+          diagramFileName="multiplication-singletrack.json"
           activeTransition={activeTransition}
           duration={duration}
         />

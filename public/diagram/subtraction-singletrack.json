@@ -58,6 +58,12 @@
     {
       "state": 9,
       "cx": 1100,
+      "cy": 600,
+      "type": "normal"
+    },
+    {
+      "state": 10,
+      "cx": 1100,
       "cy": 450,
       "type": "final"
     }
@@ -143,7 +149,7 @@
     },
     {
       "source": { "node": 1, "port": "R" },
-      "target": { "node": 9, "port": "L" },
+      "target": { "node": 10, "port": "L" },
       "content": {
         "offset": { "x": 0, "y": 0 },
         "value": ["C/ B, L"]
@@ -159,17 +165,17 @@
     },
     {
       "source": { "node": 5, "port": "R" },
-      "target": { "node": 9, "port": "BL" },
+      "target": { "node": 9, "port": "L" },
       "content": {
-        "offset": { "x": 50, "y": 45 },
-        "value": ["C/1,R"]
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/0,R"]
       }
     },
     {
       "source": { "node": 6, "port": "T" },
       "target": { "node": 6, "port": "T" },
       "content": {
-        "offset": { "x": 0, "y": 125 },
+        "offset": { "x": 0, "y": 150 },
         "value": ["E/E,L", "1/1,L"]
       }
     },
@@ -223,18 +229,26 @@
     },
     {
       "source": { "node": 8, "port": "B" },
-      "target": { "node": 9, "port": "T" },
+      "target": { "node": 10, "port": "T" },
       "content": {
         "offset": { "x": 0, "y": 0 },
         "value": ["B/B,R"]
       }
     },
     {
-      "source": { "node": 9, "port": "R" },
-      "target": { "node": 9, "port": "R" },
+      "source": { "node": 9, "port": "B" },
+      "target": { "node": 9, "port": "B" },
       "content": {
-        "offset": { "x": -45, "y": 70 },
-        "value": ["E/B,L"]
+        "offset": { "x": 0, "y": 0 },
+        "value": ["1/0,R"]
+      }
+    },
+    {
+      "source": { "node": 9, "port": "T" },
+      "target": { "node": 10, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 20 },
+        "value": ["B/B,R"]
       }
     }
   ]
