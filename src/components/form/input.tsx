@@ -175,14 +175,25 @@ const getInputCase = (operation: string) => {
     operation === 'Addition - MultiTape' ||
     operation === 'Subtraction - SingleTrack' ||
     operation === 'Subtraction - MultiTape' ||
-    operation === 'Multiplication' ||
-    operation === 'Division' ||
-    operation === 'Power'
+    operation === 'Multiplication - MultiTape' ||
+    operation === 'Multiplication - SingleTrack' ||
+    operation === 'Division - MultiTape' ||
+    operation === 'Division - SingleTrack' ||
+    operation === 'Power - MultiTape' ||
+    operation === 'Power - MultiTrack'
   ) {
     return 2;
-  } else if (operation === 'Factorial' || operation === 'Binary Logarithm') {
+  } else if (
+    operation === 'Factorial - MultiTape' ||
+    operation === 'Factorial - MultiTrack' ||
+    operation === 'Binary Logarithm - MultiTape' ||
+    operation === 'Binary Logarithm - MultiTrack'
+  ) {
     return 1;
-  } else if (operation === 'Temperature Conversion') {
+  } else if (
+    operation === 'Temperature Conversion - MultiTape' ||
+    operation === 'Temperature Conversion - MultiTrack'
+  ) {
     return 3;
   } else {
     return 0;
