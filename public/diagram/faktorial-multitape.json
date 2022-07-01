@@ -1,0 +1,191 @@
+{
+  "totalTape": 3,
+  "nodes": [
+    {
+      "state": 0,
+      "cx": 250,
+      "cy": 150,
+      "type": "start"
+    },
+    {
+      "state": 1,
+      "cx": 500,
+      "cy": 150,
+      "type": "normal"
+    },
+    {
+      "state": 2,
+      "cx": 500,
+      "cy": 450,
+      "type": "normal"
+    },
+    {
+      "state": 3,
+      "cx": 850,
+      "cy": 450,
+      "type": "normal"
+    },
+    {
+      "state": 4,
+      "cx": 250,
+      "cy": 450,
+      "type": "final"
+    }
+  ],
+  "links": [
+    {
+      "source": { "node": 0, "port": "T" },
+      "target": { "node": 0, "port": "T" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 100
+        },
+        "value": [
+          "1BB/ 1EE, SSR","1EB/ 1E1, RSR","BEB/ BEB, LSL","1E1/ 1E1, SSL"
+        ]
+      }
+    },
+    {
+      "source": { "node": 0, "port": "R" },
+      "target": { "node": 1, "port": "L" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": ["1EE/ EEE, LSS"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "T" },
+      "target": { "node": 1, "port": "T" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 150
+        },
+        "value": [
+          "1EE/ 1EE, LSS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "B" },
+      "target": { "node": 2, "port": "T" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "BEE / BEE, RRR"
+        ]
+      }
+    },
+    {
+      "source": { "node": 0, "port": "B" },
+      "target": { "node": 4, "port": "T" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "BBB/ BB1, SSS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 4, "port": "B" },
+      "target": { "node": 4, "port": "B" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "EEE/ 1BB, RSS","EBB/ 1BB, RSS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "L" },
+      "target": { "node": 4, "port": "R" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "E11/ 111, RLL","EB1/ EB1, SLL"
+        ]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "B" },
+      "target": { "node": 2, "port": "B" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "11B/ 111, SRR","111/ 111, SRR","1B1/ 111, SRR"
+        ]
+      }
+    },
+    {
+      "source": { "node": 3, "port": "T" },
+      "target": { "node": 1, "port": "BR" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "1EE/ EEE, LSS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "BR" },
+      "target": { "node": 3, "port": "BL" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 60
+        },
+        "value": [
+          "1BB/ 1BB, RLS","E1B/ E1B, SLS","EBB/ EBB, SLS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 3, "port": "TL" },
+      "target": { "node": 2, "port": "TR" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": -30
+        },
+        "value": [
+          "1EB/ 1EB. RRS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 3, "port": "B" },
+      "target": { "node": 3, "port": "B" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": -40
+        },
+        "value": [
+          "11B/ 111, SLR","E1B/ E1B, SLS","EEB/ EEB, SSL","EE1/ EE1. SSL","EEE/ EEE. LSS"
+        ]
+      }
+    }
+  ]
+}

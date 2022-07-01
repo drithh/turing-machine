@@ -232,7 +232,7 @@ function App() {
           // diagramFileName={`${formData.operation
           //   .replace(/ /g, '')
           //   .toLowerCase()}.json`}
-          diagramFileName="pangkat-multitape.json"
+          diagramFileName="faktorial-multitape.json"
           activeTransition={activeTransition}    
           duration={duration}
         />
