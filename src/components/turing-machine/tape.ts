@@ -86,20 +86,16 @@ export class ThreeTape {
   private tape2 = new OneTape();
   private tape3 = new OneTape();
 
-  public moveHead(
-    tape1Direction: Direction,
-    tape2Direction: Direction,
-    tape3Direction: Direction
-  ) {
-    this.tape1.moveHead(tape1Direction);
-    this.tape2.moveHead(tape2Direction);
-    this.tape3.moveHead(tape3Direction);
+  public moveHead(directions: Array<Direction>) {
+    this.tape1.moveHead(directions[0]);
+    this.tape2.moveHead(directions[1]);
+    this.tape3.moveHead(directions[2]);
   }
 
-  public write(tape1Symbol: Symbol, tape2Symbol: Symbol, tape3Symbol: Symbol) {
-    this.tape1.write(tape1Symbol);
-    this.tape2.write(tape2Symbol);
-    this.tape3.write(tape3Symbol);
+  public write(symbols: Symbol[]) {
+    this.tape1.write(symbols[0]);
+    this.tape2.write(symbols[1]);
+    this.tape3.write(symbols[2]);
   }
 
   public read() {

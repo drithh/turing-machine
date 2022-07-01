@@ -22,11 +22,12 @@ export const Dropdown = (props: {
     'Division - SingleTrack',
     'Division - MultiTape',
     'Factorial - MultiTrack',
-    'Factorial - MutliTape',
+    'Factorial - MultiTape',
     'Power - MultiTrack',
     'Power - MultiTape',
     'Binary Logarithm - MultiTrack',
     'Binary Logarithm - MultiTape',
+    'Temperature Conversion - MultiTape',
     'Temperature Conversion - MultiTrack',
   ];
 

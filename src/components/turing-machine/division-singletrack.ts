@@ -163,5 +163,6 @@ const resolveInput = (input: TwoInput): Symbol[] => {
   for (let i = 0; i < Math.abs(input.input2); i++) {
     inputstring.push(input.input2 > 0 ? '1' : '0');
   }
+  inputstring.push('C');
   return inputstring as Symbol[];
 };

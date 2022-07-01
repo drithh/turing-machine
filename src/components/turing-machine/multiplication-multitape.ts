@@ -1,14 +1,14 @@
 import { TwoInput, Symbol, Direction, Transition } from '../type';
-import { TwoTape } from './tape';
+import { ThreeTape } from './tape';
 
 export class MultiplicationMultiTape {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new TwoTape(this.inputSymbols);
+    this.tapes = new ThreeTape(this.inputSymbols);
   }
   private inputSymbols: Symbol[] = [];
-  static totalTape = 2;
-  private tapes: TwoTape = new TwoTape([]);
+  static totalTape = 3;
+  private tapes: ThreeTape = new ThreeTape([]);
 
   private transitions = new Array<Transition>();
   private lastTransition: Transition;

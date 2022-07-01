@@ -1,8 +1,8 @@
-import { TwoInput, Symbol, Direction, Transition } from '../type';
+import { Symbol, Direction, Transition } from '../type';
 import { ThreeTape } from './tape';
 
-export class DivisionMultiTape {
-  public setup(inputSymbols: TwoInput) {
+export class FactorialMultiTape {
+  public setup(inputSymbols: number) {
     this.inputSymbols = resolveInput(inputSymbols);
     this.tapes = new ThreeTape(this.inputSymbols);
   }
@@ -39,7 +39,7 @@ export class DivisionMultiTape {
   }
 
   public getTotalTape() {
-    return DivisionMultiTape.totalTape;
+    return FactorialMultiTape.totalTape;
   }
 
   public getInputSymbols() {
@@ -98,34 +98,34 @@ export class DivisionMultiTape {
         break;
       case 1:
         switch (transition.head) {
-          case '00':
+          case '01':
             transition.to = 1;
             transition.headReplace = '0B';
             transition.tapeDirection = 'RL';
             break;
-          case '11':
+          case '10':
             transition.to = 1;
             transition.headReplace = '1B';
             transition.tapeDirection = 'RL';
             break;
           case '0B':
             transition.to = 1;
-            transition.headReplace = '01';
+            transition.headReplace = '00';
             transition.tapeDirection = 'RR';
             break;
           case '1B':
             transition.to = 1;
-            transition.headReplace = '10';
+            transition.headReplace = '11';
             transition.tapeDirection = 'RR';
             break;
-          case '01':
+          case '00':
             transition.to = 1;
-            transition.headReplace = '01';
+            transition.headReplace = '00';
             transition.tapeDirection = 'SR';
             break;
-          case '10':
+          case '11':
             transition.to = 1;
-            transition.headReplace = '10';
+            transition.headReplace = '11';
             transition.tapeDirection = 'SR';
 
             break;
@@ -154,14 +154,10 @@ export class DivisionMultiTape {
   };
 }
 
-const resolveInput = (input: TwoInput): Symbol[] => {
+const resolveInput = (input: number): Symbol[] => {
   let inputstring = new Array<string>();
-  for (let i = 0; i < Math.abs(input.input1); i++) {
-    inputstring.push(input.input1 > 0 ? '1' : '0');
-  }
-  inputstring.push('C');
-  for (let i = 0; i < Math.abs(input.input2); i++) {
-    inputstring.push(input.input2 > 0 ? '1' : '0');
+  for (let i = 0; i < Math.abs(input); i++) {
+    inputstring.push(input > 0 ? '1' : '0');
   }
   return inputstring as Symbol[];
 };

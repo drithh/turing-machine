@@ -202,7 +202,7 @@ function App() {
           })}
         </div>
       </div>
-      <div className="flex place-content-between mb-20">
+      <div className="flex place-content-between mb-20 relative min-h-[30rem]">
         {isTransitionShow && (
           <motion.div className="min-w-[20rem] h-[37.5rem] overflow-y-auto scroll-m-0 border-x px-4 border-primary-meadow border-opacity-50 flex flex-col scrollbar-hide">
             <div className="text-center py-2 font-sans border-y border-primary-meadow px-4 font-medium border-opacity-30">
