@@ -79,74 +79,156 @@ export class FactorialMultiTape {
     switch (transition.from) {
       case 0:
         switch (transition.head) {
-          case '0B':
+          case '1BB':
             transition.to = 0;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = '1EE';
+            transition.tapeDirection = 'SSR';
             break;
-          case '1B':
+          case '1EB':
             transition.to = 0;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = '1E1';
+            transition.tapeDirection = 'RSR';
             break;
-          case 'CB':
+          case 'BEB':
+            transition.to = 0;
+            transition.headReplace = 'BEB';
+            transition.tapeDirection = 'LSL';
+            break;
+          case '1E1':
+            transition.to = 0;
+            transition.headReplace = '1E1';
+            transition.tapeDirection = 'SSL';
+            break;
+            
+          case '1EE':
             transition.to = 1;
-            transition.headReplace = 'CB';
-            transition.tapeDirection = 'RL';
+            transition.headReplace = 'EEE';
+            transition.tapeDirection = 'LSS';
+            break;
+            
+          case 'BBB':
+            transition.to = 4;
+            transition.headReplace = 'BB1';
+            transition.tapeDirection = 'SSS';
             break;
         }
         break;
       case 1:
         switch (transition.head) {
-          case '01':
+          case '1EE':
             transition.to = 1;
-            transition.headReplace = '0B';
-            transition.tapeDirection = 'RL';
+            transition.headReplace = '1EE';
+            transition.tapeDirection = 'LSS';
             break;
-          case '10':
-            transition.to = 1;
-            transition.headReplace = '1B';
-            transition.tapeDirection = 'RL';
-            break;
-          case '0B':
-            transition.to = 1;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'RR';
-            break;
-          case '1B':
-            transition.to = 1;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'RR';
-            break;
-          case '00':
-            transition.to = 1;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'SR';
-            break;
-          case '11':
-            transition.to = 1;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'SR';
-
-            break;
-          case 'B1':
+          case 'BEE':
             transition.to = 2;
-            transition.headReplace = 'B1';
-            transition.tapeDirection = 'RR';
-            break;
-          case 'B0':
-            transition.to = 2;
-            transition.headReplace = 'B0';
-            transition.tapeDirection = 'RR';
-            break;
-          case 'BB':
-            transition.to = 2;
-            transition.headReplace = 'BB';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = 'BEE';
+            transition.tapeDirection = 'RRR';
             break;
         }
         break;
       case 2:
+        switch (transition.head) {
+          case '11B':
+            transition.to = 2;
+            transition.headReplace = '111';
+            transition.tapeDirection = 'SRR';
+            break;
+          case '111':
+            transition.to = 2;
+            transition.headReplace = '111';
+            transition.tapeDirection = 'SRR';
+            break;
+          case '1B1':
+            transition.to = 2;
+            transition.headReplace = '111';
+            transition.tapeDirection = 'SRR';
+            break;
+
+          case '1BB':
+            transition.to = 3;
+            transition.headReplace = '1BB';
+            transition.tapeDirection = 'RLS';
+            break;
+          case 'E1B':
+            transition.to = 3;
+            transition.headReplace = 'E1B';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'EBB':
+            transition.to = 3;
+            transition.headReplace = 'EBB';
+            transition.tapeDirection = 'SLS';
+            break;
+            
+          case 'E11':
+            transition.to = 4;
+            transition.headReplace = '111';
+            transition.tapeDirection = 'RLL';
+            break;
+          case 'EB1':
+            transition.to = 4;
+            transition.headReplace = 'EB1';
+            transition.tapeDirection = 'SLL';
+            break;
+        }
+        break;
+      case 3:
+        switch (transition.head) {
+          case '1EE':
+            transition.to = 1;
+            transition.headReplace = 'EEE';
+            transition.tapeDirection = 'LSS';
+            break;
+
+          case '1EB':
+            transition.to = 2;
+            transition.headReplace = '1EB';
+            transition.tapeDirection = 'RRS';
+            break;
+
+          case '11B':
+            transition.to = 3;
+            transition.headReplace = '111';
+            transition.tapeDirection = 'SLR';
+            break;
+          case 'E1B':
+            transition.to = 3;
+            transition.headReplace = 'E1B';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'EEB':
+            transition.to = 3;
+            transition.headReplace = 'EEB';
+            transition.tapeDirection = 'SSL';
+            break;
+          case 'EE1':
+            transition.to = 3;
+            transition.headReplace = 'EE1';
+            transition.tapeDirection = 'SSL';
+            break;
+          case 'EEE':
+            transition.to = 3;
+            transition.headReplace = 'EEE';
+            transition.tapeDirection = 'LSS';
+            break;
+        }
+        break;
+      case 4:
+        switch (transition.head) {
+          case 'EEE':
+            transition.to = 4;
+            transition.headReplace = '1BB';
+            transition.tapeDirection = 'RSS';
+            break;
+          case 'EBB':
+            transition.to = 4;
+            transition.headReplace = '1BB';
+            transition.tapeDirection = 'RSS';
+            break;
+          default:
+            break;
+        }
         break;
     }
 

@@ -280,6 +280,8 @@ export class DivisionMultiTape {
                     transition.headReplace = '001';
                     transition.tapeDirection = 'SSS';
                     break;
+                  default:
+                    break;
                 }
                   break;
 
