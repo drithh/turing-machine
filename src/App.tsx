@@ -232,8 +232,8 @@ function App() {
           // diagramFileName={`${formData.operation
           //   .replace(/ /g, '')
           //   .toLowerCase()}.json`}
-          diagramFileName="multiplication-singletrack.json"
-          activeTransition={activeTransition}
+          diagramFileName="pangkat-multitape.json"
+          activeTransition={activeTransition}    
           duration={duration}
         />
       </div>
