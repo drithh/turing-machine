@@ -76,77 +76,198 @@ export class AdditionSingleTrack {
       tapeDirection: '',
     };
 
+
     switch (transition.from) {
       case 0:
         switch (transition.head) {
-          case '0B':
+          case '1':
             transition.to = 0;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
             break;
-          case '1B':
+          case '0':
             transition.to = 0;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
             break;
-          case 'CB':
+          case 'C':
+            transition.to = 0;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 0;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'R';
+            break;
+          case 'B':
             transition.to = 1;
-            transition.headReplace = 'CB';
-            transition.tapeDirection = 'RL';
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'L';
             break;
         }
         break;
       case 1:
         switch (transition.head) {
-          case '00':
-            transition.to = 1;
-            transition.headReplace = '0B';
-            transition.tapeDirection = 'RL';
-            break;
-          case '11':
-            transition.to = 1;
-            transition.headReplace = '1B';
-            transition.tapeDirection = 'RL';
-            break;
-          case '0B':
-            transition.to = 1;
-            transition.headReplace = '01';
-            transition.tapeDirection = 'RR';
-            break;
-          case '1B':
-            transition.to = 1;
-            transition.headReplace = '10';
-            transition.tapeDirection = 'RR';
-            break;
-          case '01':
-            transition.to = 1;
-            transition.headReplace = '01';
-            transition.tapeDirection = 'SR';
-            break;
-          case '10':
-            transition.to = 1;
-            transition.headReplace = '10';
-            transition.tapeDirection = 'SR';
-
-            break;
-          case 'B1':
+          case '0':
             transition.to = 2;
-            transition.headReplace = 'B1';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'L';
             break;
-          case 'B0':
-            transition.to = 2;
-            transition.headReplace = 'B0';
-            transition.tapeDirection = 'RR';
+          case 'C':
+            transition.to = 8;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'L';
             break;
-          case 'BB':
-            transition.to = 2;
-            transition.headReplace = 'BB';
-            transition.tapeDirection = 'RR';
+          case '1':
+            transition.to = 3;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'L';
             break;
         }
         break;
       case 2:
+        switch (transition.head) {
+          case '0':
+            transition.to = 2;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'L';
+            break;
+          case 'C':
+            transition.to = 4;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+        }
+        break;
+      case 3:
+        switch (transition.head) {
+          case '1':
+            transition.to = 3;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+          case 'C':
+            transition.to = 5;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+        }
+        break;
+      case 4:
+        switch (transition.head) {
+          case '0':
+            transition.to = 4;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+          case 'B':
+            transition.to = 4;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case 'C':
+            transition.to = 8;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 6;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+          case '1':
+            transition.to = 6;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'S';
+            break;
+        }
+        break;
+      case 5:
+        switch (transition.head) {
+          case '1':
+            transition.to = 5;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+          case 'B':
+            transition.to = 5;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case 'C':
+            transition.to = 8;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 7;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+          case '0':
+            transition.to = 7;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'S';
+            break;
+        }
+        break;
+      case 6:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 6;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+          case '0':
+            transition.to = 6;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'L';
+            break;
+          case '1':
+            transition.to = 0;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'R';
+            break;
+          case 'B':
+            transition.to = 0;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+        }
+        break;
+      case 7:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 7;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+          case '1':
+            transition.to = 7;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+          case '0':
+            transition.to = 0;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'R';
+            break;
+          case 'B':
+            transition.to = 0;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+        }
+        break;
+      case 8:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 8;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
     }
 
