@@ -1,14 +1,14 @@
-import { Symbol, Direction, Transition, TwoInput } from '../type';
-import { OneTape } from './tape';
+import { TwoInput, Symbol, Direction, Transition } from '../type';
+import { TwoTape } from './tape';
 
-export class SubtractionSingleTrack {
+export class DivisionMultiTape {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new OneTape(this.inputSymbols);
+    this.tapes = new TwoTape(this.inputSymbols);
   }
   private inputSymbols: Symbol[] = [];
-  static totalTape = 1;
-  private tapes: OneTape = new OneTape([]);
+  static totalTape = 2;
+  private tapes: TwoTape = new TwoTape([]);
 
   private transitions = new Array<Transition>();
   private lastTransition: Transition;
@@ -19,8 +19,8 @@ export class SubtractionSingleTrack {
         this.lastTransition ? this.lastTransition.to : 0
       );
       if (transition !== false) {
-        this.tapes.write(transition.headReplace as Symbol);
-        this.tapes.moveHead(transition.tapeDirection as Direction);
+        this.tapes.write([...transition.headReplace] as Symbol[]);
+        this.tapes.moveHead([...transition.tapeDirection] as Direction[]);
 
         this.transitions.push(transition);
         this.lastTransition = transition;
@@ -31,7 +31,7 @@ export class SubtractionSingleTrack {
   }
 
   public getResult() {
-    return [this.tapes.all()];
+    return [this.tapes.all().tape1, this.tapes.all().tape2];
   }
 
   public getTransitions() {
@@ -39,7 +39,7 @@ export class SubtractionSingleTrack {
   }
 
   public getTotalTape() {
-    return SubtractionSingleTrack.totalTape;
+    return DivisionMultiTape.totalTape;
   }
 
   public getInputSymbols() {
@@ -71,7 +71,7 @@ export class SubtractionSingleTrack {
     let transition: Transition = {
       from: currentHead,
       to: -1,
-      head: this.tapes.read(),
+      head: this.tapes.read().join(''),
       headReplace: '',
       tapeDirection: '',
     };

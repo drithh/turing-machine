@@ -1,7 +1,7 @@
 import { Symbol, Direction, Transition, TwoInput } from '../type';
 import { OneTape } from './tape';
 
-export class AdditionSingletrack {
+export class AdditionSingleTrack {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
     this.tapes = new OneTape(this.inputSymbols);
@@ -39,7 +39,7 @@ export class AdditionSingletrack {
   }
 
   public getTotalTape() {
-    return AdditionSingletrack.totalTape;
+    return AdditionSingleTrack.totalTape;
   }
 
   public getInputSymbols() {

@@ -1,13 +1,17 @@
 import { FormData, Transition, Symbol } from '../type';
 import { AdditionMultiTape } from './addition-multitape';
-import { AdditionSingletrack } from './addition-singletrack';
+import { AdditionSingleTrack } from './addition-singletrack';
+import { DivisionMultiTape } from './division-multitape';
+import { DivisionSingleTrack } from './division-singletrack';
+import { MultiplicationMultiTape } from './multiplication-multitape';
+import { MultiplicationSingleTrack } from './multiplication-singletrack';
 import { SubtractionMultiTape } from './subtraction-multitape';
-import { SubtractionSingletrack } from './subtraction-singletrack';
+import { SubtractionSingleTrack } from './subtraction-singletrack';
 
 export type TuringMachinesResult = {
   transitions: Transition[];
   inputSymbols: string[];
-  tapeResult: Symbol[][];
+  TapeResult: Symbol[][];
   lastHead: number[];
 };
 
@@ -21,16 +25,24 @@ export class TuringMachines {
   }
 
   public createturingMachine = (turingMachineName: string) => {
+    console.log(turingMachineName);
+
     if (turingMachineName === 'AdditionMultiTape') {
       this.turingMachine = new AdditionMultiTape();
     } else if (turingMachineName === 'AdditionSingleTrack') {
-      console.log(turingMachineName);
-
-      this.turingMachine = new AdditionSingletrack();
+      this.turingMachine = new AdditionSingleTrack();
     } else if (turingMachineName === 'SubtractionMultiTape') {
       this.turingMachine = new SubtractionMultiTape();
     } else if (turingMachineName === 'SubtractionSingleTrack') {
-      this.turingMachine = new SubtractionSingletrack();
+      this.turingMachine = new SubtractionSingleTrack();
+    } else if (turingMachineName === 'MultiplicationMultiTape') {
+      this.turingMachine = new MultiplicationMultiTape();
+    } else if (turingMachineName === 'MultiplicationSingleTrack') {
+      this.turingMachine = new MultiplicationSingleTrack();
+    } else if (turingMachineName === 'DivisionMultiTape') {
+      this.turingMachine = new DivisionMultiTape();
+    } else if (turingMachineName === 'DivisionSingleTrack') {
+      this.turingMachine = new DivisionSingleTrack();
     }
   };
 
@@ -38,9 +50,13 @@ export class TuringMachines {
 
   private turingMachine:
     | AdditionMultiTape
-    | AdditionSingletrack
+    | AdditionSingleTrack
     | SubtractionMultiTape
-    | SubtractionSingletrack
+    | SubtractionSingleTrack
+    | MultiplicationMultiTape
+    | MultiplicationSingleTrack
+    | DivisionMultiTape
+    | DivisionSingleTrack
     | undefined;
 
   public setFormData = (formData: FormData) => {
@@ -50,12 +66,20 @@ export class TuringMachines {
   public getTotalTape() {
     if (this.turingMachineName === 'AdditionMultiTape') {
       return AdditionMultiTape.totalTape;
-    } else if (this.turingMachineName === 'AdditionSingletrack') {
-      return AdditionSingletrack.totalTape;
+    } else if (this.turingMachineName === 'AdditionSingleTrack') {
+      return AdditionSingleTrack.totalTape;
     } else if (this.turingMachineName === 'SubtractionMultiTape') {
       return SubtractionMultiTape.totalTape;
-    } else if (this.turingMachineName === 'SubtractionSingletrack') {
-      return SubtractionSingletrack.totalTape;
+    } else if (this.turingMachineName === 'SubtractionSingleTrack') {
+      return SubtractionSingleTrack.totalTape;
+    } else if (this.turingMachineName === 'MultiplicationMultiTape') {
+      return MultiplicationMultiTape.totalTape;
+    } else if (this.turingMachineName === 'MultiplicationSingleTrack') {
+      return MultiplicationSingleTrack.totalTape;
+    } else if (this.turingMachineName === 'DivisionMultiTape') {
+      return DivisionMultiTape.totalTape;
+    } else if (this.turingMachineName === 'DivisionSingleTrack') {
+      return DivisionSingleTrack.totalTape;
     } else {
       return 0;
     }
@@ -91,7 +115,7 @@ export class TuringMachines {
       const turingMachineResult: TuringMachinesResult = {
         transitions: this.turingMachine.getTransitions(),
         inputSymbols: this.turingMachine.getInputSymbols(),
-        tapeResult: this.turingMachine.getResult(),
+        TapeResult: this.turingMachine.getResult(),
         lastHead: this.turingMachine.getLastHead(),
       };
       console.log(turingMachineResult);

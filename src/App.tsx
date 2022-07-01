@@ -96,7 +96,7 @@ function App() {
         setActiveTransition(undefined);
         setIndex(0);
         setAssignedHead(turingMachinesResult.lastHead);
-        setInputString(turingMachinesResult.tapeResult);
+        setInputString(turingMachinesResult.TapeResult);
         setTuringMachinesResult(undefined);
       }
 
