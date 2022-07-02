@@ -48,10 +48,11 @@ export class MultiplicationMultiTape {
 
   public getLastHead() {
     const directions = this.transitions.map((e) => {
-      return [e?.tapeDirection[0], e?.tapeDirection[1]];
+      return [e?.tapeDirection[0], e?.tapeDirection[1], e?.tapeDirection[2]];
     });
     let first = 0;
     let second = 0;
+    let third = 0;
     directions.forEach((e) => {
       if (e[0] === 'L') {
         first--;
@@ -63,8 +64,14 @@ export class MultiplicationMultiTape {
       } else if (e[1] === 'R') {
         second++;
       }
+      if (e[2] === 'L') {
+        third--;
+      }
+      if (e[2] === 'R') {
+        third++;
+      }
     });
-    return [first, second];
+    return [first, second, third];
   }
 
   private getNextTransition = (currentHead: number) => {
@@ -142,57 +149,56 @@ export class MultiplicationMultiTape {
             transition.tapeDirection = 'SSS';
             break;
         }
-          break;
-        case 2:
-          switch (transition.head) {
-            case '11B':
-              transition.to = 2;
-              transition.headReplace = '111';
-              transition.tapeDirection = 'SRR';
-              break;
-            case '00B':
-              transition.to = 2;
-              transition.headReplace = '001';
-              transition.tapeDirection = 'SRR';
-              break;
-  
-            case '01B':
-              transition.to = 2;
-              transition.headReplace = '010';
-              transition.tapeDirection = 'SRR';
-              break;
-            case '10B':
-              transition.to = 2;
-              transition.headReplace = '100';
-              transition.tapeDirection = 'SRR';
-              break;
-  
-            case '1BB':
-              transition.to = 1;
-              transition.headReplace = '1BB';
-              transition.tapeDirection = 'RLS';
-              break;
-            case '0BB':
-              transition.to = 1;
-              transition.headReplace = '0BB';
-              transition.tapeDirection = 'RLS';
-              break;
-  
-            case 'B1B':
-              transition.to = 3;
-              transition.headReplace = 'B1B';
-              transition.tapeDirection = 'SSS';
-              break;
-            case 'B0B':
-              transition.to = 3;
-              transition.headReplace = 'B0B';
-              transition.tapeDirection = 'SSS';
-              break;
-          }
+        break;
+      case 2:
+        switch (transition.head) {
+          case '11B':
+            transition.to = 2;
+            transition.headReplace = '111';
+            transition.tapeDirection = 'SRR';
             break;
-          case 3:
+          case '00B':
+            transition.to = 2;
+            transition.headReplace = '001';
+            transition.tapeDirection = 'SRR';
             break;
 
+          case '01B':
+            transition.to = 2;
+            transition.headReplace = '010';
+            transition.tapeDirection = 'SRR';
+            break;
+          case '10B':
+            transition.to = 2;
+            transition.headReplace = '100';
+            transition.tapeDirection = 'SRR';
+            break;
+
+          case '1BB':
+            transition.to = 1;
+            transition.headReplace = '1BB';
+            transition.tapeDirection = 'RLS';
+            break;
+          case '0BB':
+            transition.to = 1;
+            transition.headReplace = '0BB';
+            transition.tapeDirection = 'RLS';
+            break;
+
+          case 'B1B':
+            transition.to = 3;
+            transition.headReplace = 'B1B';
+            transition.tapeDirection = 'SSS';
+            break;
+          case 'B0B':
+            transition.to = 3;
+            transition.headReplace = 'B0B';
+            transition.tapeDirection = 'SSS';
+            break;
+        }
+        break;
+      case 3:
+        break;
     }
 
     return transition.to === -1 ? false : transition;

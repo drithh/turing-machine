@@ -48,10 +48,11 @@ export class FactorialMultiTape {
 
   public getLastHead() {
     const directions = this.transitions.map((e) => {
-      return [e?.tapeDirection[0], e?.tapeDirection[1]];
+      return [e?.tapeDirection[0], e?.tapeDirection[1], e?.tapeDirection[2]];
     });
     let first = 0;
     let second = 0;
+    let third = 0;
     directions.forEach((e) => {
       if (e[0] === 'L') {
         first--;
@@ -63,8 +64,14 @@ export class FactorialMultiTape {
       } else if (e[1] === 'R') {
         second++;
       }
+      if (e[2] === 'L') {
+        third--;
+      }
+      if (e[2] === 'R') {
+        third++;
+      }
     });
-    return [first, second];
+    return [first, second, third];
   }
 
   private getNextTransition = (currentHead: number) => {
@@ -99,13 +106,13 @@ export class FactorialMultiTape {
             transition.headReplace = '1E1';
             transition.tapeDirection = 'SSL';
             break;
-            
+
           case '1EE':
             transition.to = 1;
             transition.headReplace = 'EEE';
             transition.tapeDirection = 'LSS';
             break;
-            
+
           case 'BBB':
             transition.to = 4;
             transition.headReplace = 'BB1';
@@ -160,7 +167,7 @@ export class FactorialMultiTape {
             transition.headReplace = 'EBB';
             transition.tapeDirection = 'SLS';
             break;
-            
+
           case 'E11':
             transition.to = 4;
             transition.headReplace = '111';
