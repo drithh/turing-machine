@@ -31,7 +31,11 @@ export class MultiplicationMultiTape {
   }
 
   public getResult() {
-    return [this.tapes.all().tape1, this.tapes.all().tape2];
+    return [
+      this.tapes.all().tape1,
+      this.tapes.all().tape2,
+      this.tapes.all().tape3,
+    ];
   }
 
   public getTransitions() {
