@@ -4,7 +4,7 @@ import { ThreeTape } from './tape';
 export class TemperatureConversionMultiTape {
   public setup(inputSymbols: Temperature) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new ThreeTape(this.inputSymbols);
+    this.tapes = new ThreeTape(resolveInput(inputSymbols));
   }
   private inputSymbols: Symbol[] = [];
   static totalTape = 3;
@@ -31,7 +31,11 @@ export class TemperatureConversionMultiTape {
   }
 
   public getResult() {
-    return [this.tapes.all().tape1, this.tapes.all().tape2];
+    return [
+      this.tapes.all().tape1,
+      this.tapes.all().tape2,
+      this.tapes.all().tape3,
+    ];
   }
 
   public getTransitions() {
@@ -48,10 +52,11 @@ export class TemperatureConversionMultiTape {
 
   public getLastHead() {
     const directions = this.transitions.map((e) => {
-      return [e?.tapeDirection[0], e?.tapeDirection[1]];
+      return [e?.tapeDirection[0], e?.tapeDirection[1], e?.tapeDirection[2]];
     });
     let first = 0;
     let second = 0;
+    let third = 0;
     directions.forEach((e) => {
       if (e[0] === 'L') {
         first--;
@@ -63,8 +68,14 @@ export class TemperatureConversionMultiTape {
       } else if (e[1] === 'R') {
         second++;
       }
+      if (e[2] === 'L') {
+        third--;
+      }
+      if (e[2] === 'R') {
+        third++;
+      }
     });
-    return [first, second];
+    return [first, second, third];
   }
 
   private getNextTransition = (currentHead: number) => {
@@ -461,7 +472,7 @@ export class TemperatureConversionMultiTape {
       case 20:
         switch (transition.head) {
           case 'FBB':
-            transition.to = 150;
+            transition.to = 99;
             transition.headReplace = 'FBB';
             transition.tapeDirection = 'RRS';
             break;
@@ -489,7 +500,6 @@ export class TemperatureConversionMultiTape {
         }
         break;
       case 23:
-        console.log(transition.head);
         switch (transition.head) {
           case 'BBB':
             transition.to = 24;
@@ -555,7 +565,7 @@ export class TemperatureConversionMultiTape {
       case 30:
         switch (transition.head) {
           case 'BBB':
-            transition.to = 150;
+            transition.to = 99;
             transition.headReplace = 'BIB';
             transition.tapeDirection = 'SRS';
             break;
@@ -1070,7 +1080,7 @@ export class TemperatureConversionMultiTape {
       case 62:
         switch (transition.head) {
           case 'CBB':
-            transition.to = 150;
+            transition.to = 99;
             transition.headReplace = 'CBB';
             transition.tapeDirection = 'RSS';
             break;
@@ -1180,7 +1190,7 @@ export class TemperatureConversionMultiTape {
       case 72:
         switch (transition.head) {
           case 'BBB':
-            transition.to = 150;
+            transition.to = 99;
             transition.headReplace = 'BTB';
             transition.tapeDirection = 'SRS';
             break;
@@ -1275,9 +1285,355 @@ export class TemperatureConversionMultiTape {
       case 82:
         switch (transition.head) {
           case 'BBB':
-            transition.to = 150;
+            transition.to = 99;
             transition.headReplace = 'BOB';
             transition.tapeDirection = 'SRS';
+            break;
+        }
+        break;
+      case 99:
+        switch (transition.head) {
+          case 'BBB':
+            transition.to = 100;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'SLS';
+            break;
+        }
+        break;
+      case 100:
+        switch (transition.head) {
+          case 'BPB':
+            transition.to = 100;
+            transition.headReplace = 'BEP';
+            transition.tapeDirection = 'SLR';
+            break;
+          case 'BUB':
+            transition.to = 100;
+            transition.headReplace = 'BUB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BOB':
+            transition.to = 100;
+            transition.headReplace = 'BOB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BYB':
+            transition.to = 100;
+            transition.headReplace = 'BYB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BIB':
+            transition.to = 100;
+            transition.headReplace = 'BIB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BTB':
+            transition.to = 100;
+            transition.headReplace = 'BTB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BBB':
+            transition.to = 101;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'SRL';
+            break;
+        }
+        break;
+      case 101:
+        switch (transition.head) {
+          case 'BUP':
+            transition.to = 101;
+            transition.headReplace = 'BEB';
+            transition.tapeDirection = 'SRL';
+            break;
+          case 'BOP':
+            transition.to = 101;
+            transition.headReplace = 'BOP';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BYP':
+            transition.to = 101;
+            transition.headReplace = 'BYP';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BIP':
+            transition.to = 101;
+            transition.headReplace = 'BIP';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BTP':
+            transition.to = 101;
+            transition.headReplace = 'BTP';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BEP':
+            transition.to = 101;
+            transition.headReplace = 'BEP';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BUB':
+            transition.to = 101;
+            transition.headReplace = 'BEU';
+            transition.tapeDirection = 'SRR';
+            break;
+          case 'BOB':
+            transition.to = 101;
+            transition.headReplace = 'BOB';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BYB':
+            transition.to = 101;
+            transition.headReplace = 'BYB';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BIB':
+            transition.to = 101;
+            transition.headReplace = 'BIB';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BTB':
+            transition.to = 101;
+            transition.headReplace = 'BTB';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BEB':
+            transition.to = 101;
+            transition.headReplace = 'BEB';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BBP':
+            transition.to = 102;
+            transition.headReplace = 'BBP';
+            transition.tapeDirection = 'SLR';
+            break;
+          case 'BBB':
+            transition.to = 102;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'SLS';
+            break;
+        }
+        break;
+      case 102:
+        switch (transition.head) {
+          case 'BOB':
+            transition.to = 102;
+            transition.headReplace = 'BEO';
+            transition.tapeDirection = 'SLR';
+            break;
+          case 'BYB':
+            transition.to = 102;
+            transition.headReplace = 'BYB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BIB':
+            transition.to = 102;
+            transition.headReplace = 'BIB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BTB':
+            transition.to = 102;
+            transition.headReplace = 'BTB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BEB':
+            transition.to = 102;
+            transition.headReplace = 'BEB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BBB':
+            transition.to = 103;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'SRL';
+            break;
+        }
+        break;
+      case 103:
+        switch (transition.head) {
+          case 'BYO':
+            transition.to = 103;
+            transition.headReplace = 'BEB';
+            transition.tapeDirection = 'SRL';
+            break;
+          case 'BIO':
+            transition.to = 103;
+            transition.headReplace = 'BIO';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BTO':
+            transition.to = 103;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BEO':
+            transition.to = 103;
+            transition.headReplace = 'BEO';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BYB':
+            transition.to = 103;
+            transition.headReplace = 'BEY';
+            transition.tapeDirection = 'SRR';
+            break;
+          case 'BIB':
+            transition.to = 103;
+            transition.headReplace = 'BIB';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BTB':
+            transition.to = 103;
+            transition.headReplace = 'BTB';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BEB':
+            transition.to = 103;
+            transition.headReplace = 'BEB';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BYU':
+            transition.to = 103;
+            transition.headReplace = 'BYU';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BIU':
+            transition.to = 103;
+            transition.headReplace = 'BIU';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BTU':
+            transition.to = 103;
+            transition.headReplace = 'BTU';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BEU':
+            transition.to = 103;
+            transition.headReplace = 'BEU';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BIP':
+            transition.to = 103;
+            transition.headReplace = 'BIP';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BTP':
+            transition.to = 103;
+            transition.headReplace = 'BTP';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BEP':
+            transition.to = 103;
+            transition.headReplace = 'BEP';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BYP':
+            transition.to = 104;
+            transition.headReplace = 'BYO';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BBO':
+            transition.to = 112;
+            transition.headReplace = 'BBO';
+            transition.tapeDirection = 'SLR';
+            break;
+          case 'BBB':
+            transition.to = 112;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'SLS';
+            break;
+        }
+        break;
+      case 104:
+        switch (transition.head) {
+          case 'BYB':
+            transition.to = 104;
+            transition.headReplace = 'BYO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 105:
+        switch (transition.head) {
+          case 'BYB':
+            transition.to = 105;
+            transition.headReplace = 'BYO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 106:
+        switch (transition.head) {
+          case 'BYB':
+            transition.to = 106;
+            transition.headReplace = 'BYO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 107:
+        switch (transition.head) {
+          case 'BYB':
+            transition.to = 107;
+            transition.headReplace = 'BYO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 108:
+        switch (transition.head) {
+          case 'BYB':
+            transition.to = 108;
+            transition.headReplace = 'BYO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 109:
+        switch (transition.head) {
+          case 'BYB':
+            transition.to = 109;
+            transition.headReplace = 'BYO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 110:
+        switch (transition.head) {
+          case 'BYB':
+            transition.to = 111;
+            transition.headReplace = 'BYO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 111:
+        switch (transition.head) {
+          case 'BYB':
+            transition.to = 103;
+            transition.headReplace = 'BYO';
+            transition.tapeDirection = 'SSS';
+            break;
+        }
+        break;
+      case 112:
+        switch (transition.head) {
+          case 'BIB':
+            transition.to = 112;
+            transition.headReplace = 'BEI';
+            transition.tapeDirection = 'SLR';
+            break;
+          case 'BTB':
+            transition.to = 112;
+            transition.headReplace = 'BTB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BEB':
+            transition.to = 112;
+            transition.headReplace = 'BEB';
+            transition.tapeDirection = 'SLS';
+            break;
+          case 'BBB':
+            transition.to = 113;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'SRL';
             break;
         }
         break;
@@ -1324,29 +1680,30 @@ const goLeftFill = (head: string, state: number): [number, string, string] => {
 };
 
 const resolveInput = (input: Temperature): Symbol[] => {
+  let temperature = input.temperature;
   let inputstring = new Array<string>();
-  while (input.temperature !== 0) {
-    if (input.temperature > 0) {
-      if (input.temperature >= 100) {
+  while (temperature !== 0) {
+    if (temperature > 0) {
+      if (temperature >= 100) {
         inputstring.push('P');
-        input.temperature -= 100;
-      } else if (input.temperature >= 10) {
+        temperature -= 100;
+      } else if (temperature >= 10) {
         inputstring.push('O');
-        input.temperature -= 10;
+        temperature -= 10;
       } else {
         inputstring.push('I');
-        input.temperature -= 1;
+        temperature -= 1;
       }
-    } else if (input.temperature < 0) {
-      if (input.temperature <= -100) {
+    } else if (temperature < 0) {
+      if (temperature <= -100) {
         inputstring.push('U');
-        input.temperature += 100;
-      } else if (input.temperature <= -10) {
+        temperature += 100;
+      } else if (temperature <= -10) {
         inputstring.push('Y');
-        input.temperature += 10;
+        temperature += 10;
       } else {
         inputstring.push('T');
-        input.temperature += 1;
+        temperature += 1;
       }
     }
   }

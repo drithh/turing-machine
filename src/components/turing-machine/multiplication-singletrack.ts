@@ -4,7 +4,7 @@ import { OneTape } from './tape';
 export class MultiplicationSingleTrack {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new OneTape(this.inputSymbols);
+    this.tapes = new OneTape(resolveInput(inputSymbols));
   }
   private inputSymbols: Symbol[] = [];
   static totalTape = 1;
@@ -78,7 +78,7 @@ export class MultiplicationSingleTrack {
             transition.headReplace = 'B';
             transition.tapeDirection = 'R';
             break;
-            
+
           case 'C':
             transition.to = 16;
             transition.headReplace = 'B';
@@ -236,7 +236,7 @@ export class MultiplicationSingleTrack {
             transition.headReplace = '1';
             transition.tapeDirection = 'L';
             break;
-            
+
           case 'E':
             transition.to = 12;
             transition.headReplace = '1';
@@ -251,7 +251,7 @@ export class MultiplicationSingleTrack {
             transition.headReplace = '0';
             transition.tapeDirection = 'L';
             break;
-            
+
           case 'E':
             transition.to = 13;
             transition.headReplace = '0';
@@ -321,8 +321,8 @@ export class MultiplicationSingleTrack {
             transition.headReplace = 'B';
             transition.tapeDirection = 'R';
             break;
-          
-            case '0':
+
+          case '0':
             transition.to = 14;
             transition.headReplace = '0';
             transition.tapeDirection = 'L';
@@ -371,11 +371,6 @@ export class MultiplicationSingleTrack {
             transition.to = 16;
             transition.headReplace = 'B';
             transition.tapeDirection = 'S';
-            break;
-          case 'B':
-            transition.to = 16;
-            transition.headReplace = 'B';
-            transition.tapeDirection = 'R';
             break;
           default:
             break;
@@ -520,7 +515,7 @@ export class MultiplicationSingleTrack {
             transition.headReplace = '0';
             transition.tapeDirection = 'L';
             break;
-            
+
           case 'E':
             transition.to = 28;
             transition.headReplace = '0';
@@ -535,7 +530,7 @@ export class MultiplicationSingleTrack {
             transition.headReplace = '1';
             transition.tapeDirection = 'L';
             break;
-            
+
           case 'E':
             transition.to = 29;
             transition.headReplace = '1';
@@ -605,8 +600,8 @@ export class MultiplicationSingleTrack {
             transition.headReplace = 'B';
             transition.tapeDirection = 'R';
             break;
-          
-            case '1':
+
+          case '1':
             transition.to = 30;
             transition.headReplace = '1';
             transition.tapeDirection = 'L';

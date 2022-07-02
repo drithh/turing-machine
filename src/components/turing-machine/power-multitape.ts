@@ -4,7 +4,7 @@ import { ThreeTape } from './tape';
 export class PowerMultiTape {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new ThreeTape(this.inputSymbols);
+    this.tapes = new ThreeTape(resolveInput(inputSymbols));
   }
   private inputSymbols: Symbol[] = [];
   static totalTape = 3;
@@ -105,13 +105,13 @@ export class PowerMultiTape {
             transition.headReplace = '1EE';
             transition.tapeDirection = 'RSS';
             break;
-            
+
           case 'CEE':
             transition.to = 1;
             transition.headReplace = 'CEE';
             transition.tapeDirection = 'RSS';
             break;
-            
+
           case 'CBB':
             transition.to = 5;
             transition.headReplace = 'CB1';
@@ -151,7 +151,7 @@ export class PowerMultiTape {
             transition.headReplace = '1EE';
             transition.tapeDirection = 'LSS';
             break;
-            
+
           case 'BEE':
             transition.to = 3;
             transition.headReplace = 'BEE';
@@ -176,7 +176,7 @@ export class PowerMultiTape {
             transition.headReplace = '111';
             transition.tapeDirection = 'SRR';
             break;
-            
+
           case '1BB':
             transition.to = 4;
             transition.headReplace = '1BB';
@@ -201,7 +201,7 @@ export class PowerMultiTape {
             transition.headReplace = 'EEE';
             transition.tapeDirection = 'LSS';
             break;
-            
+
           case '1EB':
             transition.to = 3;
             transition.headReplace = '1EB';

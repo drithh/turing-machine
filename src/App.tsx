@@ -70,7 +70,7 @@ function App() {
     setActiveTransition(undefined);
     setTuringMachinesResult(undefined);
     setAssignedHead([0, 0, 0]);
-    setInputString([]);
+    setInputString([[], [], []]);
     turingMachines.current = new TuringMachines(operation);
   };
 
@@ -79,6 +79,7 @@ function App() {
     if (turingMachines.current) {
       turingMachines.current.setup(data);
       setTuringMachinesResult(turingMachines.current.run());
+
       setLastTransitons(turingMachines.current.getTransitions());
     }
   };

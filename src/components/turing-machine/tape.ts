@@ -1,7 +1,11 @@
+import { symbol } from 'd3';
 import { Symbol, Direction } from '../type';
 
 export class OneTape {
   constructor(symbols: Symbol[] = ['B']) {
+    if (symbols.length === 0) {
+      symbols = ['B'];
+    }
     this.tape = symbols;
   }
   private tape = new Array<Symbol>();

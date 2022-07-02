@@ -4,7 +4,7 @@ import { OneTape } from './tape';
 export class DivisionSingleTrack {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new OneTape(this.inputSymbols);
+    this.tapes = new OneTape(resolveInput(inputSymbols));
   }
   private inputSymbols: Symbol[] = [];
   static totalTape = 1;
@@ -533,7 +533,7 @@ export class DivisionSingleTrack {
             transition.headReplace = 'E';
             transition.tapeDirection = 'R';
             break;
-    
+
           case 'C':
             transition.to = 25;
             transition.headReplace = 'C';
@@ -553,7 +553,7 @@ export class DivisionSingleTrack {
             transition.headReplace = 'E';
             transition.tapeDirection = 'R';
             break;
-    
+
           case 'C':
             transition.to = 26;
             transition.headReplace = 'C';
@@ -568,13 +568,13 @@ export class DivisionSingleTrack {
             transition.headReplace = 'E';
             transition.tapeDirection = 'L';
             break;
-    
+
           case 'C':
             transition.to = 27;
             transition.headReplace = 'C';
             transition.tapeDirection = 'R';
             break;
-    
+
           case '0':
             transition.to = 30;
             transition.headReplace = 'E';
@@ -589,13 +589,13 @@ export class DivisionSingleTrack {
             transition.headReplace = 'E';
             transition.tapeDirection = 'L';
             break;
-    
+
           case 'C':
             transition.to = 28;
             transition.headReplace = 'C';
             transition.tapeDirection = 'R';
             break;
-    
+
           case '1':
             transition.to = 31;
             transition.headReplace = 'E';
@@ -625,7 +625,7 @@ export class DivisionSingleTrack {
             transition.headReplace = '1';
             transition.tapeDirection = 'R';
             break;
-    
+
           case 'B':
             transition.to = 29;
             transition.headReplace = '0';
@@ -655,7 +655,7 @@ export class DivisionSingleTrack {
             transition.headReplace = '1';
             transition.tapeDirection = 'R';
             break;
-    
+
           case 'B':
             transition.to = 29;
             transition.headReplace = '1';
@@ -680,7 +680,7 @@ export class DivisionSingleTrack {
             transition.headReplace = 'C';
             transition.tapeDirection = 'L';
             break;
-    
+
           case 'B':
             transition.to = 0;
             transition.headReplace = 'B';
@@ -705,7 +705,7 @@ export class DivisionSingleTrack {
             transition.headReplace = 'C';
             transition.tapeDirection = 'L';
             break;
-    
+
           case 'B':
             transition.to = 32;
             transition.headReplace = 'B';
@@ -730,7 +730,7 @@ export class DivisionSingleTrack {
             transition.headReplace = 'C';
             transition.tapeDirection = 'L';
             break;
-    
+
           case 'B':
             transition.to = 33;
             transition.headReplace = 'B';
@@ -745,7 +745,7 @@ export class DivisionSingleTrack {
             transition.headReplace = 'B';
             transition.tapeDirection = 'R';
             break;
-    
+
           case 'C':
             transition.to = 36;
             transition.headReplace = 'B';
@@ -760,7 +760,7 @@ export class DivisionSingleTrack {
             transition.headReplace = 'B';
             transition.tapeDirection = 'R';
             break;
-    
+
           case 'C':
             transition.to = 37;
             transition.headReplace = 'B';
@@ -775,7 +775,7 @@ export class DivisionSingleTrack {
             transition.headReplace = '1';
             transition.tapeDirection = 'R';
             break;
-    
+
           case 'C':
             transition.to = 23;
             transition.headReplace = 'C';
@@ -790,7 +790,7 @@ export class DivisionSingleTrack {
             transition.headReplace = '1';
             transition.tapeDirection = 'R';
             break;
-    
+
           case 'C':
             transition.to = 24;
             transition.headReplace = 'C';
@@ -815,7 +815,7 @@ export class DivisionSingleTrack {
             transition.headReplace = 'B';
             transition.tapeDirection = 'R';
             break;
-    
+
           case 'C':
             transition.to = 18;
             transition.headReplace = '0';
@@ -840,7 +840,7 @@ export class DivisionSingleTrack {
             transition.headReplace = 'B';
             transition.tapeDirection = 'R';
             break;
-    
+
           case 'C':
             transition.to = 18;
             transition.headReplace = '1';

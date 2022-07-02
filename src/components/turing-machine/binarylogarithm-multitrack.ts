@@ -4,7 +4,7 @@ import { ThreeTape } from './tape';
 export class BinaryLogarithmMultiTrack {
   public setup(inputSymbols: number) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new ThreeTape(this.inputSymbols);
+    this.tapes = new ThreeTape(resolveInput(inputSymbols));
   }
   private inputSymbols: Symbol[] = [];
   static totalTape = 3;

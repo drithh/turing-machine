@@ -4,7 +4,7 @@ import { TwoTape } from './tape';
 export class AdditionMultiTape {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new TwoTape(this.inputSymbols);
+    this.tapes = new TwoTape(resolveInput(inputSymbols));
   }
   private inputSymbols: Symbol[] = [];
   static totalTape = 2;

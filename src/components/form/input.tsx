@@ -77,12 +77,10 @@ export const Input = (props: {
                 let from = 'C';
                 let to = 'C';
                 setData({
-                  data: {
-                    temperature: parseInt(e.target.value, 10),
-                    from: data?.from ? data.from : from,
-                    to: data?.to ? data.to : to,
-                  } as Temperature,
-                });
+                  temperature: parseInt(e.target.value, 10),
+                  from: data?.from ? data.from : from,
+                  to: data?.to ? data.to : to,
+                } as Temperature);
               }}
             />
             <div className="conversion-wrapper absolute pr-3 inset-y-0 right-0 flex gap-x-4">
@@ -92,12 +90,10 @@ export const Input = (props: {
                   className=" h-full focus:outline-none py-0 !shadow-none pl-2 pr-4 pb-1 border-transparent bg-transparent text-primary-indigo text-base  font-medium "
                   onChange={(e) => {
                     setData({
-                      data: {
-                        temperature: data?.temperature,
-                        from: e.target.value,
-                        to: data?.to,
-                      } as Temperature,
-                    });
+                      temperature: data?.temperature,
+                      from: e.target.value,
+                      to: data?.to,
+                    } as Temperature);
                   }}
                 >
                   <option>C</option>
@@ -114,12 +110,10 @@ export const Input = (props: {
                   className=" h-full focus:outline-none py-0 !shadow-none pl-2 pr-4 pb-1 border-transparent bg-transparent text-primary-indigo text-base  font-medium "
                   onChange={(e) => {
                     setData({
-                      data: {
-                        temperature: data?.temperature,
-                        from: data?.from,
-                        to: e.target.value,
-                      } as Temperature,
-                    });
+                      temperature: data?.temperature,
+                      from: data?.from,
+                      to: e.target.value,
+                    } as Temperature);
                   }}
                 >
                   <option>C</option>

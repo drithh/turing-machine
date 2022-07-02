@@ -201,7 +201,7 @@ export class TuringMachines {
         default:
           break;
       }
-
+      console.log('aman');
       this.turingMachine.run();
       const turingMachineResult: TuringMachinesResult = {
         transitions: this.turingMachine.getTransitions(),
@@ -210,10 +210,14 @@ export class TuringMachines {
         lastHead: this.turingMachine.getLastHead(),
       };
       let result = 0;
-
-      turingMachineResult.TapeResult[1].forEach((element: string) => {
-        result += convertText(element);
-      });
+      if (this.turingMachineName === 'TemperatureConversionMultiTape') {
+        turingMachineResult.TapeResult[1].forEach((element: string) => {
+          result += convertText(element);
+        });
+        turingMachineResult.TapeResult[2].forEach((element: string) => {
+          result += convertText(element);
+        });
+      }
       console.log(result);
       console.log(turingMachineResult);
       return turingMachineResult;

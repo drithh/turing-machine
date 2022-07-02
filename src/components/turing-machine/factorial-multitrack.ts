@@ -4,7 +4,7 @@ import { ThreeTape } from './tape';
 export class FactorialMultiTrack {
   public setup(inputSymbols: number) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new ThreeTape(this.inputSymbols);
+    this.tapes = new ThreeTape(resolveInput(inputSymbols));
   }
   private inputSymbols: Symbol[] = [];
   static totalTape = 3;
@@ -96,7 +96,7 @@ export class FactorialMultiTrack {
             transition.tapeDirection = 'RRR';
             break;
           case 'BBB':
-            transition.to = 21;
+            transition.to = 18;
             transition.headReplace = 'BB1';
             transition.tapeDirection = 'SSS';
             break;
@@ -152,7 +152,7 @@ export class FactorialMultiTrack {
             transition.tapeDirection = 'RRR';
             break;
           case '1B1':
-            transition.to = 21;
+            transition.to = 18;
             transition.headReplace = '1B1';
             transition.tapeDirection = 'SSS';
             break;
@@ -279,7 +279,7 @@ export class FactorialMultiTrack {
             break;
 
           case 'BBB':
-            transition.to = 21;
+            transition.to = 18;
             transition.headReplace = 'BBB';
             transition.tapeDirection = 'RRR';
             break;
@@ -534,11 +534,11 @@ export class FactorialMultiTrack {
           // THIS
           // THIS
           // THIS
-          case '1B1':
-            transition.to = 18;
-            transition.headReplace = '1B1';
-            transition.tapeDirection = 'SSS';
-            break;
+          // case '1B1':
+          //   transition.to = XXX(18);
+          //   transition.headReplace = '1B1';
+          //   transition.tapeDirection = 'SSS';
+          //   break;
         }
         break;
 
@@ -648,9 +648,9 @@ export class FactorialMultiTrack {
             transition.headReplace = 'Z11';
             transition.tapeDirection = 'LLL';
             break;
-            //NEWNENWNEWNENW
-            //NEWNENWNEWNENW
-            //NEWNENWNEWNENW
+          //NEWNENWNEWNENW
+          //NEWNENWNEWNENW
+          //NEWNENWNEWNENW
           case 'BBB':
             transition.to = 7;
             transition.headReplace = 'BBB';
@@ -659,27 +659,27 @@ export class FactorialMultiTrack {
         }
         break;
 
-      case 21:
+      case 18:
         switch (transition.head) {
           // case '1B1':
-          //   transition.to = 21;
+          //   transition.to = 18;
           //   transition.headReplace = '1B1';
           //   transition.tapeDirection = 'RRR';
           //   break;
           case 'ZB1':
-            transition.to = 21;
+            transition.to = 18;
             transition.headReplace = '1B1';
             transition.tapeDirection = 'RRR';
             break;
           case 'Y11':
-            transition.to = 21;
+            transition.to = 18;
             // transition.headReplace = '111';
             transition.headReplace = '1B1';
             transition.tapeDirection = 'RRR';
             break;
 
           case 'Z11':
-            transition.to = 21;
+            transition.to = 18;
             // transition.headReplace = '111';
             transition.headReplace = '1B1';
             transition.tapeDirection = 'RRR';
