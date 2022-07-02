@@ -51,20 +51,14 @@ export class SubtractionSingleTrack {
       return [e?.tapeDirection[0], e?.tapeDirection[1]];
     });
     let first = 0;
-    let second = 0;
     directions.forEach((e) => {
       if (e[0] === 'L') {
         first--;
       } else if (e[0] === 'R') {
         first++;
       }
-      if (e[1] === 'L') {
-        second--;
-      } else if (e[1] === 'R') {
-        second++;
-      }
     });
-    return [first, second];
+    return [first];
   }
 
   private getNextTransition = (currentHead: number) => {
@@ -153,35 +147,35 @@ export class SubtractionSingleTrack {
             break;
         }
         break;
-        case 4:
-          switch (transition.head) {
-            case '1':
-              transition.to = 4;
-              transition.headReplace = '1';
-              transition.tapeDirection = 'R';
-              break;
-            case 'B':
-              transition.to = 4;
-              transition.headReplace = 'B';
-              transition.tapeDirection = 'R';
-              break;
-            case 'C':
-              transition.to = 8;
-              transition.headReplace = '1';
-              transition.tapeDirection = 'R';
-              break;
-            case 'E':
-              transition.to = 6;
-              transition.headReplace = 'E';
-              transition.tapeDirection = 'L';
-              break;
-            case '0':
-              transition.to = 6;
-              transition.headReplace = '0';
-              transition.tapeDirection = 'S';
-              break;
-          }
-          break;
+      case 4:
+        switch (transition.head) {
+          case '1':
+            transition.to = 4;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+          case 'B':
+            transition.to = 4;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case 'C':
+            transition.to = 8;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 6;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+          case '0':
+            transition.to = 6;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'S';
+            break;
+        }
+        break;
       case 5:
         switch (transition.head) {
           case '0':
@@ -189,7 +183,7 @@ export class SubtractionSingleTrack {
             transition.headReplace = '0';
             transition.tapeDirection = 'R';
             break;
-            case 'B':
+          case 'B':
             transition.to = 5;
             transition.headReplace = 'B';
             transition.tapeDirection = 'R';
@@ -211,31 +205,31 @@ export class SubtractionSingleTrack {
             break;
         }
         break;
-        case 6:
-          switch (transition.head) {
-            case 'E':
-              transition.to = 6;
-              transition.headReplace = 'E';
-              transition.tapeDirection = 'L';
-              break;
-            case '1':
-              transition.to = 6;
-              transition.headReplace = '1';
-              transition.tapeDirection = 'L';
-              break;
-            case '0':
-              transition.to = 0;
-              transition.headReplace = 'E';
-              transition.tapeDirection = 'R';
-              break;
-            case 'B':
-              transition.to = 0;
-              transition.headReplace = '1';
-              transition.tapeDirection = 'R';
-              break;
-          }
-          break;
-        case 7:
+      case 6:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 6;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+          case '1':
+            transition.to = 6;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+          case '0':
+            transition.to = 0;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'R';
+            break;
+          case 'B':
+            transition.to = 0;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+        }
+        break;
+      case 7:
         switch (transition.head) {
           case 'E':
             transition.to = 7;
@@ -293,6 +287,8 @@ export class SubtractionSingleTrack {
             transition.to = 10;
             transition.headReplace = 'B';
             transition.tapeDirection = 'L';
+            break;
+          default:
             break;
         }
         break;

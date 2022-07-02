@@ -175,40 +175,41 @@ export class TuringMachines {
   public run() {
     if (this.turingMachine) {
       // if (this.formData.data.input1) {
-
       //   const data: TwoInput = this.formData.data;
       //   this.turingMachine.setup(data);
       // } else if (this.formData.data.temperature) {
       // } else {
-      // }
-      this.turingMachine.setup(this.formData.data);
+      //   this.turingMachine.setup(data);
 
-      // switch (this.turingMachineName) {
-      //   case 'AdditionMultiTape':
-      //   case 'AdditionSingleTrack':
-      //   case 'SubtractionMultiTape':
-      //   case 'MultiplicationMultiTape':
-      //   case 'SubtractionSingleTrack':
-      //   case 'MultiplicationSingleTrack':
-      //   case 'DivisionMultiTape':
-      //   case 'DivisionSingleTrack':
-      //   case 'PowerMultiTape':
-      //   case 'PowerMultiTrack':
-      //     this.turingMachine.setup(this.formData.data);
-      //     break;
-      //   case 'FactorialMultiTape':
-      //   case 'FactorialMultiTrack':
-      //   case 'BinaryLogarithmMultiTape':
-      //   case 'BinaryLogarithmMultiTrack':
-      //     this.turingMachine.setup(this.formData.data);
-      //     break;
-      //   case 'TemperatureConversionMultiTape':
-      //   case 'TemperatureConversionMultiTrack':
-      //     this.turingMachine.setup(this.formData.data);
-      //     break;
-      //   default:
-      //     break;
       // }
+      // this.turingMachine.setup(this.formData.data);
+
+      switch (this.turingMachineName) {
+        case 'AdditionMultiTape':
+        case 'AdditionSingleTrack':
+        case 'SubtractionMultiTape':
+        case 'MultiplicationMultiTape':
+        case 'SubtractionSingleTrack':
+        case 'MultiplicationSingleTrack':
+        case 'DivisionMultiTape':
+        case 'DivisionSingleTrack':
+        case 'PowerMultiTape':
+        case 'PowerMultiTrack':
+          this.turingMachine.setup(this.formData.data);
+          break;
+        case 'FactorialMultiTape':
+        case 'FactorialMultiTrack':
+        case 'BinaryLogarithmMultiTape':
+        case 'BinaryLogarithmMultiTrack':
+          this.turingMachine.setup(this.formData.data);
+          break;
+        case 'TemperatureConversionMultiTape':
+        case 'TemperatureConversionMultiTrack':
+          this.turingMachine.setup(this.formData.data);
+          break;
+        default:
+          break;
+      }
 
       this.turingMachine.run();
       const turingMachineResult: TuringMachinesResult = {

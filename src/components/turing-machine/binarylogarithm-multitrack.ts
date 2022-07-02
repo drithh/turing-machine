@@ -48,10 +48,11 @@ export class BinaryLogarithmMultiTrack {
 
   public getLastHead() {
     const directions = this.transitions.map((e) => {
-      return [e?.tapeDirection[0], e?.tapeDirection[1]];
+      return [e?.tapeDirection[0], e?.tapeDirection[1], e?.tapeDirection[2]];
     });
     let first = 0;
     let second = 0;
+    let third = 0;
     directions.forEach((e) => {
       if (e[0] === 'L') {
         first--;
@@ -63,8 +64,14 @@ export class BinaryLogarithmMultiTrack {
       } else if (e[1] === 'R') {
         second++;
       }
+      if (e[2] === 'L') {
+        third--;
+      }
+      if (e[2] === 'R') {
+        third++;
+      }
     });
-    return [first, second];
+    return [first, second, third];
   }
 
   private getNextTransition = (currentHead: number) => {

@@ -250,13 +250,7 @@ const validateForm = (formData: FormData) => {
     formData.actionType = undefined;
     alert('Please enter input value');
     return false;
-  } else if (
-    (formData.data.input1 &&
-      (formData.data.input2 === undefined || isNaN(formData.data.input2))) ||
-    (formData.data.input2 &&
-      (formData.data.input1 === undefined || isNaN(formData.data.input1))) ||
-    (isNaN(formData.data.input1) && isNaN(formData.data.input2))
-  ) {
+  } else if (!formData.data) {
     formData.actionType = undefined;
     alert('Please enter input value');
     return false;

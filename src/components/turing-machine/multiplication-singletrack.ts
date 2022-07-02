@@ -51,20 +51,14 @@ export class MultiplicationSingleTrack {
       return [e?.tapeDirection[0], e?.tapeDirection[1]];
     });
     let first = 0;
-    let second = 0;
     directions.forEach((e) => {
       if (e[0] === 'L') {
         first--;
       } else if (e[0] === 'R') {
         first++;
       }
-      if (e[1] === 'L') {
-        second--;
-      } else if (e[1] === 'R') {
-        second++;
-      }
     });
-    return [first, second];
+    return [first];
   }
 
   private getNextTransition = (currentHead: number) => {
