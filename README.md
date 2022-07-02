@@ -2,15 +2,28 @@
 
 ## Operation supported by the simulator
 
-- [ ] Addition - SingleTrack
+- [x] Addition - SingleTrack
 - [x] Addition - MultiTape
-- [ ] Subtraction - SingleTrack
+- [x] Subtraction - SingleTrack
 - [x] Subtraction - MultiTape
-- [ ] Multiplication - SingleTrack
-- [ ] Multiplication - MultiTape
-- [ ] Division - SingleTrack
-- [ ] Division - MultiTape
-- [ ] Factorial
+- [x] Multiplication - SingleTrack
+- [x] Multiplication - MultiTape
+- [x] Division - SingleTrack
+- [x] Division - MultiTape
+- [x] Factorial - MultiTape
+- [x] Factorial - MultiTrack
+- [x] Power - MultiTape
+- [x] BinaryLogarithm - MultiTape
+- [x] TemperatureConversion - MultiTape
+
+## Installation
+
+Download node.js and npm from [here](https://nodejs.org/en/download/).\
+Run the following command to install the dependencies:
+
+```
+npm install
+```
 
 ## Available Scripts
 

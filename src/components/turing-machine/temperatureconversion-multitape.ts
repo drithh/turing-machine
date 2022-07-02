@@ -474,7 +474,7 @@ export class TemperatureConversionMultiTape {
           case 'FBB':
             transition.to = 99;
             transition.headReplace = 'FBB';
-            transition.tapeDirection = 'RRS';
+            transition.tapeDirection = 'RSS';
             break;
         }
         break;
@@ -1635,6 +1635,221 @@ export class TemperatureConversionMultiTape {
             transition.headReplace = 'BBB';
             transition.tapeDirection = 'SRL';
             break;
+        }
+        break;
+      case 113:
+        switch (transition.head) {
+          case 'BTI':
+            transition.to = 113;
+            transition.headReplace = 'BEB';
+            transition.tapeDirection = 'SRL';
+            break;
+          case 'BEI':
+            transition.to = 113;
+            transition.headReplace = 'BEI';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BTB':
+            transition.to = 113;
+            transition.headReplace = 'BTT';
+            transition.tapeDirection = 'SRR';
+            break;
+          case 'BEB':
+            transition.to = 113;
+            transition.headReplace = 'BEB';
+            transition.tapeDirection = 'SRS';
+            break;
+          case 'BTY':
+            transition.to = 113;
+            transition.headReplace = 'BTY';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BEY':
+            transition.to = 113;
+            transition.headReplace = 'BEY';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BEP':
+            transition.to = 113;
+            transition.headReplace = 'BEP';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BEO':
+            transition.to = 113;
+            transition.headReplace = 'BEO';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BTO':
+            transition.to = 114;
+            transition.headReplace = 'BTI';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BTP':
+            transition.to = 122;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BBB':
+            transition.to = 131;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'SSR';
+            break;
+          case 'BBI':
+            transition.to = 131;
+            transition.headReplace = 'BBI';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 114:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 115;
+            transition.headReplace = 'BTI';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 115:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 116;
+            transition.headReplace = 'BTI';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 116:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 117;
+            transition.headReplace = 'BTI';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 117:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 118;
+            transition.headReplace = 'BTI';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 118:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 119;
+            transition.headReplace = 'BTI';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 119:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 120;
+            transition.headReplace = 'BTI';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 120:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 121;
+            transition.headReplace = 'BTI';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 121:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 113;
+            transition.headReplace = 'BTI';
+            transition.tapeDirection = 'SSS';
+        }
+        break;
+      case 122:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 123;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 123:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 124;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 124:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 125;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 125:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 126;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 126:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 127;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 127:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 128;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 128:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 129;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 129:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 130;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SSR';
+            break;
+        }
+        break;
+      case 130:
+        switch (transition.head) {
+          case 'BTB':
+            transition.to = 113;
+            transition.headReplace = 'BTO';
+            transition.tapeDirection = 'SSR';
         }
         break;
     }

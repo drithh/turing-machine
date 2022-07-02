@@ -80,8 +80,8 @@ export const CreateGraph = (props: GraphProps) => {
         <svg
           id="svg-canvas"
           width={size.width}
-          height={size.height}
-          viewBox={`0 0 ${size.width} ${size.height}`}
+          height={size.height + 100}
+          viewBox={`0 0 ${size.width} ${size.height + 100}`}
         >
           <Marker />
           {data
@@ -118,7 +118,7 @@ export const CreateGraph = (props: GraphProps) => {
         </svg>
       ) : (
         <div className="text-center flex place-content-center w-full h-full place-items-center absolute inset-0">
-          <div className="text-2xl">Nah bro it's too big to display</div>
+          <div className="text-2xl">Nah bro it's too big to draw 💀💀</div>
         </div>
       )}
     </div>
