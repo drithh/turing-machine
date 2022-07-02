@@ -1,0 +1,255 @@
+{
+  "totalTape": 1,
+  "nodes": [
+    {
+      "state": 0,
+      "cx": 200,
+      "cy": 450,
+      "type": "start"
+    },
+    {
+      "state": 1,
+      "cx": 450,
+      "cy": 450,
+      "type": "normal"
+    },
+    {
+      "state": 2,
+      "cx": 650,
+      "cy": 300,
+      "type": "normal"
+    },
+    {
+      "state": 3,
+      "cx": 650,
+      "cy": 600,
+      "type": "normal"
+    },
+    {
+      "state": 4,
+      "cx": 850,
+      "cy": 300,
+      "type": "normal"
+    },
+    {
+      "state": 5,
+      "cx": 850,
+      "cy": 600,
+      "type": "normal"
+    },
+    {
+      "state": 6,
+      "cx": 850,
+      "cy": 150,
+      "type": "normal"
+    },
+    {
+      "state": 7,
+      "cx": 850,
+      "cy": 750,
+      "type": "normal"
+    },
+    {
+      "state": 8,
+      "cx": 1100,
+      "cy": 300,
+      "type": "normal"
+    },
+    {
+      "state": 9,
+      "cx": 1100,
+      "cy": 600,
+      "type": "normal"
+    },
+    {
+      "state": 10,
+      "cx": 1100,
+      "cy": 450,
+      "type": "final"
+    }
+  ],
+  "links": [
+    {
+      "source": { "node": 0, "port": "L" },
+      "target": { "node": 0, "port": "L" },
+      "content": {
+        "offset": { "x": 35, "y": 35 },
+        "value": ["1/ 1, R", "0/ 0, R", "C/ C, R", "E/ E, R"]
+      }
+    },
+    {
+      "source": { "node": 0, "port": "R" },
+      "target": { "node": 1, "port": "L" },
+      "content": {
+        "value": ["B/ B, L"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "TR" },
+      "target": { "node": 2, "port": "L" },
+      "content": {
+        "offset": { "x": -50, "y": -10 },
+        "value": ["0/B, L"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "BR" },
+      "target": { "node": 3, "port": "L" },
+      "content": {
+        "offset": { "x": -50, "y": 25 },
+        "value": ["1/B, L"]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "B" },
+      "target": { "node": 2, "port": "B" },
+      "content": {
+        "value": ["0/ 0, L"]
+      }
+    },
+    {
+      "source": { "node": 3, "port": "T" },
+      "target": { "node": 3, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 150 },
+        "value": ["1/ 1, L"]
+      }
+    },
+    {
+      "source": { "node": 4, "port": "B" },
+      "target": { "node": 4, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": -15 },
+        "value": ["1/1,R", "B/B,R"]
+      }
+    },
+    {
+      "source": { "node": 5, "port": "T" },
+      "target": { "node": 5, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 135 },
+        "value": ["0/0,R", "B/B,R"]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "R" },
+      "target": { "node": 4, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/ C, L"]
+      }
+    },
+    {
+      "source": { "node": 3, "port": "R" },
+      "target": { "node": 5, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/ C, L"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "R" },
+      "target": { "node": 10, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/ B, L"]
+      }
+    },
+    {
+      "source": { "node": 4, "port": "R" },
+      "target": { "node": 8, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/1,R"]
+      }
+    },
+    {
+      "source": { "node": 5, "port": "R" },
+      "target": { "node": 9, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/0,R"]
+      }
+    },
+    {
+      "source": { "node": 6, "port": "T" },
+      "target": { "node": 6, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 150 },
+        "value": ["E/E,L", "1/1,L"]
+      }
+    },
+    {
+      "source": { "node": 7, "port": "B" },
+      "target": { "node": 7, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["E/E,L", "0/0,L"]
+      }
+    },
+    {
+      "source": { "node": 6, "port": "L" },
+      "target": { "node": 0, "port": "TR" },
+      "content": {
+        "offset": { "x": 0, "y": -50 },
+        "value": ["0/ E, R", "B/ 1, R"]
+      }
+    },
+    {
+      "source": { "node": 7, "port": "L" },
+      "target": { "node": 0, "port": "BR" },
+      "content": {
+        "offset": { "x": 0, "y": 50 },
+        "value": ["1/ E, R", "B/ 0, R"]
+      }
+    },
+    {
+      "source": { "node": 4, "port": "T" },
+      "target": { "node": 6, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["E/ E, L", "0/ 0, S"]
+      }
+    },
+    {
+      "source": { "node": 5, "port": "B" },
+      "target": { "node": 7, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["E/ E, L", "1/ 1, S"]
+      }
+    },
+    {
+      "source": { "node": 8, "port": "T" },
+      "target": { "node": 8, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 150 },
+        "value": ["E/1,L"]
+      }
+    },
+    {
+      "source": { "node": 8, "port": "B" },
+      "target": { "node": 10, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["B/B,R"]
+      }
+    },
+    {
+      "source": { "node": 9, "port": "B" },
+      "target": { "node": 9, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["1/0,R"]
+      }
+    },
+    {
+      "source": { "node": 9, "port": "T" },
+      "target": { "node": 10, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 20 },
+        "value": ["B/B,R"]
+      }
+    }
+  ]
+}

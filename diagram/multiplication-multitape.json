@@ -1,0 +1,117 @@
+{
+  "totalTape": 3,
+  "nodes": [
+    {
+      "state": 0,
+      "cx": 200,
+      "cy": 400,
+      "type": "start"
+    },
+    {
+      "state": 1,
+      "cx": 500,
+      "cy": 400,
+      "type": "normal"
+    },
+    {
+      "state": 2,
+      "cx": 500,
+      "cy": 200,
+      "type": "normal"
+    },
+    {
+      "state": 3,
+      "cx": 800,
+      "cy": 300,
+      "type": "final"
+    }
+  ],
+  "links": [
+    {
+      "source": { "node": 0, "port": "B" },
+      "target": { "node": 0, "port": "B" },
+      "content": {
+        "value": ["0BB/ 00B, RRS", "1BB/ 11B, RRS"]
+      }
+    },
+    {
+      "source": { "node": 0, "port": "R" },
+      "target": { "node": 1, "port": "L" },
+      "content": {
+        "value": ["CBB / CBB, RLS"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "B" },
+      "target": { "node": 1, "port": "B" },
+      "content": {
+        "value": [
+          "11B/ 111, SLR",
+          "00B/ 001, SLR",
+          "01B/ 010, SLR",
+          "10B/ 100, SLR"
+        ]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "TR" },
+      "target": { "node": 2, "port": "BR" },
+      "content": {
+        "offset": {
+          "x": 50,
+          "y": 0
+        },
+        "value": ["1BB/ 1BB, RRS", "0BB/ 0BB, RRS"]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "BL" },
+      "target": { "node": 1, "port": "TL" },
+      "content": {
+        "offset": {
+          "x": -50,
+          "y": 0
+        },
+        "value": ["1BB/ 1BB, RLS", "0BB/ 0BB, RLS"]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "T" },
+      "target": { "node": 2, "port": "T" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 70
+        },
+        "value": [
+          "11B/ 111, SRR",
+          "00B/ 001, SRR",
+          "01B/ 010, SRR",
+          "10B/ 100, SRR"
+        ]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "R" },
+      "target": { "node": 3, "port": "TL" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": -20
+        },
+        "value": ["B1B/ B1B, SSS", "B0B/ B0B, SSS"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "R" },
+      "target": { "node": 3, "port": "BL" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 20
+        },
+        "value": ["B1B/ B1B, SSS", "B0B/ B0B, SSS"]
+      }
+    }
+  ]
+}

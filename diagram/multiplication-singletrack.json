@@ -1,0 +1,812 @@
+{
+  "totalTape": 1,
+  "nodes": [
+    {
+      "state": 0,
+      "cx": 900,
+      "cy": 750,
+      "type": "start"
+    },
+    {
+      "state": 1,
+      "cx": 1050,
+      "cy": 600,
+      "type": "normal"
+    },
+    {
+      "state": 2,
+      "cx": 1050,
+      "cy": 300,
+      "type": "normal"
+    },
+    {
+      "state": 3,
+      "cx": 1200,
+      "cy": 150,
+      "type": "normal"
+    },
+    {
+      "state": 4,
+      "cx": 1200,
+      "cy": 450,
+      "type": "normal"
+    },
+    {
+      "state": 5,
+      "cx": 1450,
+      "cy": 150,
+      "type": "normal"
+    },
+    {
+      "state": 6,
+      "cx": 1450,
+      "cy": 450,
+      "type": "normal"
+    },
+    {
+      "state": 7,
+      "cx": 1700,
+      "cy": 150,
+      "type": "normal"
+    },
+    {
+      "state": 8,
+      "cx": 1700,
+      "cy": 450,
+      "type": "normal"
+    },
+    {
+      "state": 9,
+      "cx": 1950,
+      "cy": 150,
+      "type": "normal"
+    },
+    {
+      "state": 10,
+      "cx": 1950,
+      "cy": 450,
+      "type": "normal"
+    },
+    {
+      "state": 11,
+      "cx": 2100,
+      "cy": 300,
+      "type": "normal"
+    },
+    {
+      "state": 12,
+      "cx": 2300,
+      "cy": 150,
+      "type": "normal"
+    },
+    {
+      "state": 13,
+      "cx": 2300,
+      "cy": 450,
+      "type": "normal"
+    },
+    {
+      "state": 14,
+      "cx": 2550,
+      "cy": 450,
+      "type": "normal"
+    },
+    {
+      "state": 15,
+      "cx": 300,
+      "cy": 750,
+      "type": "normal"
+    },
+    {
+      "state": 16,
+      "cx": 600,
+      "cy": 750,
+      "type": "final"
+    },
+    {
+      "state": 17,
+      "cx": 1050,
+      "cy": 900,
+      "type": "normal"
+    },
+    {
+      "state": 18,
+      "cx": 1050,
+      "cy": 1200,
+      "type": "normal"
+    },
+    {
+      "state": 19,
+      "cx": 1200,
+      "cy": 1050,
+      "type": "normal"
+    },
+    {
+      "state": 20,
+      "cx": 1200,
+      "cy": 1350,
+      "type": "normal"
+    },
+    {
+      "state": 21,
+      "cx": 1450,
+      "cy": 1050,
+      "type": "normal"
+    },
+    {
+      "state": 22,
+      "cx": 1450,
+      "cy": 1350,
+      "type": "normal"
+    },
+    {
+      "state": 23,
+      "cx": 1700,
+      "cy": 1050,
+      "type": "normal"
+    },
+    {
+      "state": 24,
+      "cx": 1700,
+      "cy": 1350,
+      "type": "normal"
+    },
+    {
+      "state": 25,
+      "cx": 1950,
+      "cy": 1050,
+      "type": "normal"
+    },
+    {
+      "state": 26,
+      "cx": 1950,
+      "cy": 1350,
+      "type": "normal"
+    },
+    {
+      "state": 27,
+      "cx": 2100,
+      "cy": 1200,
+      "type": "normal"
+    },
+    {
+      "state": 28,
+      "cx": 2300,
+      "cy": 1050,
+      "type": "normal"
+    },
+    {
+      "state": 29,
+      "cx": 2300,
+      "cy": 1350,
+      "type": "normal"
+    },
+    {
+      "state": 30,
+      "cx": 2550,
+      "cy": 1050,
+      "type": "normal"
+    }
+    
+  ],
+  "links": [
+    {
+      "source": { "node": 0, "port": "TR" },
+      "target": { "node": 1, "port": "BL" },
+      "content": {
+        "offset": { "x": -25, "y": 0 },
+        "value": ["0/B,R"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "B" },
+      "target": { "node": 1, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["0/0,R"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "T" },
+      "target": { "node": 2, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["0/0,R"]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "T" },
+      "target": { "node": 2, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 150 },
+        "value": ["E/E,R"]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "TR" },
+      "target": { "node": 3, "port": "BL" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["1/E,R"]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "BR" },
+      "target": { "node": 4, "port": "TL" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["0/E,R"]
+      }
+    },
+    {
+      "source": { "node": 3, "port": "T" },
+      "target": { "node": 3, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 150 },
+        "value": ["1/1,R"]
+      }
+    },
+    {
+      "source": { "node": 4, "port": "B" },
+      "target": { "node": 4, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["0/0,R"]
+      }
+    },
+    {
+      "source": { "node": 3, "port": "R" },
+      "target": { "node": 5, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/C,R"]
+      }
+    },
+    {
+      "source": { "node": 4, "port": "R" },
+      "target": { "node": 6, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/C,R"]
+      }
+    },
+    {
+      "source": { "node": 5, "port": "T" },
+      "target": { "node": 5, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 150 },
+        "value": ["0/0,R"]
+      }
+    },
+    {
+      "source": { "node": 6, "port": "B" },
+      "target": { "node": 6, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["1/1,R"]
+      }
+    },
+    {
+      "source": { "node": 5, "port": "R" },
+      "target": { "node": 7, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["B/0,L"]
+      }
+    },
+    {
+      "source": { "node": 6, "port": "R" },
+      "target": { "node": 8, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["B/1,L"]
+      }
+    },
+    {
+      "source": { "node": 7, "port": "T" },
+      "target": { "node": 7, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 150 },
+        "value": ["0/0,L"]
+      }
+    },
+    {
+      "source": { "node": 8, "port": "B" },
+      "target": { "node": 8, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["1/1,L"]
+      }
+    },
+    {
+      "source": { "node": 7, "port": "R" },
+      "target": { "node": 9, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/C,L"]
+      }
+    },
+    {
+      "source": { "node": 8, "port": "R" },
+      "target": { "node": 10, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/C,L"]
+      }
+    },
+    {
+      "source": { "node": 9, "port": "BR" },
+      "target": { "node": 11, "port": "TL" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["1/1,L"]
+      }
+    },
+    {
+      "source": { "node": 10, "port": "TR" },
+      "target": { "node": 11, "port": "BL" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["0/0,L"]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "R" },
+      "target": { "node": 11, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": ["C/C,R"]
+      }
+    },
+    {
+      "source": { "node": 11, "port": "R" },
+      "target": { "node": 11, "port": "R" },
+      "content": {
+        "offset": { "x": -75, "y": 45 },
+        "value": [
+          "0/0,L",
+          "1/1,L",
+          "E/E,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 9, "port": "R" },
+      "target": { "node": 12, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "E/1,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 10, "port": "R" },
+      "target": { "node": 13, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "E/0,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 12, "port": "B" },
+      "target": { "node": 12, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "E/1,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 13, "port": "T" },
+      "target": { "node": 13, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 140 },
+        "value": [
+          "E/0,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 12, "port": "BR" },
+      "target": { "node": 14, "port": "T" },
+      "content": {
+        "offset": { "x": 25, "y":-15 },
+        "value": [
+          "C/C,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 13, "port": "R" },
+      "target": { "node": 14, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "C/C,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 14, "port": "R" },
+      "target": { "node": 14, "port": "R" },
+      "content": {
+        "offset": { "x": -90, "y": 70 },
+        "value": [
+          "0/0,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 14, "port": "B" },
+      "target": { "node": 0, "port": "R" },
+      "content": {
+        "offset": { "x": 0, "y": 15 },
+        "value": [
+          "B/B,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 15, "port": "L" },
+      "target": { "node": 15, "port": "L" },
+      "content": {
+        "offset": { "x": 100, "y": 50 },
+        "value": [
+          "0/0,L",
+          "1/1,L",
+          "C/B,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "L" },
+      "target": { "node": 15, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "B/B,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 15, "port": "R" },
+      "target": { "node": 16, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "B/B,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 16, "port": "T" },
+      "target": { "node": 16, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 90},
+        "value": [
+          "0/B,R",
+          "1/B,R",
+          "C/B,S",
+          "B/B,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 0, "port": "L" },
+      "target": { "node": 16, "port": "R" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "C/B,R",
+          "B/B,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 0, "port": "BR" },
+      "target": { "node": 17, "port": "TL" },
+      "content": {
+        "offset": { "x": -30, "y": 25 },
+        "value": [
+          "1/B,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 17, "port": "T" },
+      "target": { "node": 17, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 140 },
+        "value": [
+          "1/1,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 17, "port": "B" },
+      "target": { "node": 18, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "C/C,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 18, "port": "B" },
+      "target": { "node": 18, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "E/E,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 18, "port": "TR" },
+      "target": { "node": 19, "port": "BL" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "0/E,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 18, "port": "BR" },
+      "target": { "node": 20, "port": "TL" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "1/E,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 19, "port": "R" },
+      "target": { "node": 21, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "C/C,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 20, "port": "R" },
+      "target": { "node": 22, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "C/C,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 21, "port": "R" },
+      "target": { "node": 23, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "B/0,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 22, "port": "R" },
+      "target": { "node": 24, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "B/1,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 23, "port": "R" },
+      "target": { "node": 25, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "C/C,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 24, "port": "R" },
+      "target": { "node": 26, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "C/C,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 25, "port": "BR" },
+      "target": { "node": 27, "port": "TL" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "0/0,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 26, "port": "TR" },
+      "target": { "node": 27, "port": "BL" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "1/1,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 19, "port": "T" },
+      "target": { "node": 19, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 140 },
+        "value": [
+          "0/0,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 20, "port": "B" },
+      "target": { "node": 20, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "1/1,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 21, "port": "T" },
+      "target": { "node": 21, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 140 },
+        "value": [
+          "0/0,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 22, "port": "B" },
+      "target": { "node": 22, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "1/1,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 23, "port": "T" },
+      "target": { "node": 23, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 140 },
+        "value": [
+          "0/0,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 24, "port": "B" },
+      "target": { "node": 24, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "1/1,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 27, "port": "R" },
+      "target": { "node": 27, "port": "R" },
+      "content": {
+        "offset": { "x": -70, "y": 45 },
+        "value": [
+          "0/0,L",
+          "1/1,L",
+          "E/E,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 25, "port": "R" },
+      "target": { "node": 28, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "E/0,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 26, "port": "R" },
+      "target": { "node": 29, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "E/1,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 28, "port": "B" },
+      "target": { "node": 28, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "E/0,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 29, "port": "T" },
+      "target": { "node": 29, "port": "T" },
+      "content": {
+        "offset": { "x": 0, "y": 150 },
+        "value": [
+          "E/1,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 29, "port": "R" },
+      "target": { "node": 30, "port": "BL" },
+      "content": {
+        "offset": { "x": 50, "y": 50 },
+        "value": [
+          "C/C,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 28, "port": "R" },
+      "target": { "node": 30, "port": "L" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "C/C,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 30, "port": "R" },
+      "target": { "node": 30, "port": "R" },
+      "content": {
+        "offset": { "x": -100, "y": 70 },
+        "value": [
+          "1/1,L"
+        ]
+      }
+    },
+    {
+      "source": { "node": 30, "port": "T" },
+      "target": { "node": 0, "port": "R" },
+      "content": {
+        "offset": { "x": 0, "y": 0 },
+        "value": [
+          "B/B,R"
+        ]
+      }
+    },
+    {
+      "source": { "node": 18, "port": "L" },
+      "target": { "node": 15, "port": "B" },
+      "content": {
+        "offset": { "x": 0, "y": 15 },
+        "value": [
+          "B/B,L"
+        ]
+      }
+    }
+  ]
+}
