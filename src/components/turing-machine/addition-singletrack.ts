@@ -4,7 +4,7 @@ import { OneTape } from './tape';
 export class AdditionSingleTrack {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new OneTape(this.inputSymbols);
+    this.tapes = new OneTape(resolveInput(inputSymbols));
   }
   private inputSymbols: Symbol[] = [];
   static totalTape = 1;
