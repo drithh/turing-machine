@@ -31,9 +31,6 @@ export const Tape = (props: {
     reset,
     assignedHead,
   } = props;
-  // if (index === 1) {
-  //   console.log(inputString);
-  // }
   const [positions, setPositions] = useState<TapeData[]>(initTape(inputString));
   const [head, setHead] = useState(0);
   const [tapeHead, setTapeHead] = useState(0);
@@ -81,12 +78,6 @@ export const Tape = (props: {
     }
     setTapeHead(tapeHead + x);
     setHead(head + x);
-    // console.log({
-    //   firstPosition: positions[0].id,
-    //   nextHead: nextHead,
-    //   leftTapeSide: leftTapeSide,
-    //   tapeHead: tapeHead,
-    // });
   };
 
   useEffect(() => {
@@ -146,9 +137,6 @@ export const Tape = (props: {
       <div
         {...events}
         ref={ref}
-        // onScroll={(e) => {
-        //   console.log('scroll', e.currentTarget.scrollLeft);
-        // }}
         className="flex relative w-[48rem] h-32 overflow-x-hidden"
         id={`container-tabs-${index}`}
       >

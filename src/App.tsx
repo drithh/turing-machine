@@ -58,7 +58,7 @@ function App() {
       if (action === 'Debug') {
         debug();
       } else if (action === 'ShowResult') {
-        // showResult();
+        showResult();
       }
     }
   };
@@ -69,6 +69,8 @@ function App() {
     isRunning.current = false;
     setActiveTransition(undefined);
     setTuringMachinesResult(undefined);
+    setAssignedHead([0, 0, 0]);
+    setInputString([]);
     turingMachines.current = new TuringMachines(operation);
   };
 
@@ -93,7 +95,6 @@ function App() {
         const inputString = [turingMachinesResult.inputSymbols];
         setInputString(inputString);
       }
-      console.log(turingMachinesResult);
     }
   }, [turingMachinesResult]);
 
@@ -144,53 +145,27 @@ function App() {
   };
 
   useEffect(() => {
-    if (turingMachinesResult) {
-      const interval = setInterval(() => {
-        if (turingMachinesResult && currentAction.current === 'Simulate') {
-          if (turingMachinesResult.transitions.length > index.current) {
-            setAssignedHead([]);
-            isRunning.current = true;
-            setActiveTransition(
-              turingMachinesResult.transitions[index.current]
-            );
-            index.current++;
-          } else if (
-            turingMachinesResult &&
-            turingMachinesResult.transitions.length === index.current
-          ) {
-            isRunning.current = false;
-            setTuringMachinesResult(undefined);
-            setActiveTransition(undefined);
-            index.current = 0;
-          }
-        }
-      }, duration);
-      return () => clearInterval(interval);
+    if (turingMachinesResult && currentAction.current === 'ShowResult') {
+      setAssignedHead(turingMachinesResult.lastHead);
+      setInputString(turingMachinesResult.TapeResult);
+      isRunning.current = false;
+      setTuringMachinesResult(undefined);
+      setActiveTransition(undefined);
+      index.current = 0;
     }
-  }, [duration, turingMachinesResult]);
+  }, [turingMachinesResult]);
 
-  // useEffect(() => {
-  //   if (turingMachinesResult && currentAction.current === 'ShowResult') {
-  //     setAssignedHead(turingMachinesResult.lastHead);
-  //     setInputString(turingMachinesResult.TapeResult);
-  //     isRunning.current = false;
-  //     setTuringMachinesResult(undefined);
-  //     setActiveTransition(undefined);
-  //     index.current = 0;
-  //   }
-  // }, [turingMachinesResult]);
-
-  // const showResult = () => {
-  //   if (turingMachinesResult) {
-  //     setAssignedHead(turingMachinesResult.lastHead);
-  //     setInputString(turingMachinesResult.TapeResult);
-  //     currentAction.current = '';
-  //     isRunning.current = false;
-  //     setTuringMachinesResult(undefined);
-  //     setActiveTransition(undefined);
-  //     index.current = 0;
-  //   }
-  // };
+  const showResult = () => {
+    if (turingMachinesResult) {
+      setAssignedHead(turingMachinesResult.lastHead);
+      setInputString(turingMachinesResult.TapeResult);
+      currentAction.current = '';
+      isRunning.current = false;
+      setTuringMachinesResult(undefined);
+      setActiveTransition(undefined);
+      index.current = 0;
+    }
+  };
 
   // useEffect(() => {
   //   if (
