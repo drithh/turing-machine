@@ -90,74 +90,106 @@ export class BinaryLogarithmMultiTape {
     switch (transition.from) {
       case 0:
         switch (transition.head) {
-          case '0B':
-            transition.to = 0;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'RR';
-            break;
-          case '1B':
-            transition.to = 0;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'RR';
-            break;
-          case 'CB':
+          case '1BB':
             transition.to = 1;
-            transition.headReplace = 'CB';
-            transition.tapeDirection = 'RL';
+            transition.headReplace = '1BB';
+            transition.tapeDirection = 'RSS';
+            break;
+
+          case 'BBB':
+            transition.to = 2;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'LLS';
+            break;
+          case 'EBB':
+            transition.to = 2;
+            transition.headReplace = 'EBB';
+            transition.tapeDirection = 'LLS';
             break;
         }
         break;
       case 1:
         switch (transition.head) {
-          case '01':
-            transition.to = 1;
-            transition.headReplace = '0B';
-            transition.tapeDirection = 'RL';
+          case '1BB':
+            transition.to = 0;
+            transition.headReplace = '11B';
+            transition.tapeDirection = 'RRS';
             break;
-          case '10':
-            transition.to = 1;
-            transition.headReplace = '1B';
-            transition.tapeDirection = 'RL';
-            break;
-          case '0B':
-            transition.to = 1;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'RR';
-            break;
-          case '1B':
-            transition.to = 1;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'RR';
-            break;
-          case '00':
-            transition.to = 1;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'SR';
-            break;
-          case '11':
-            transition.to = 1;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'SR';
 
+          case 'BBB':
+            transition.to = 3;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'LSS';
             break;
-          case 'B1':
-            transition.to = 2;
-            transition.headReplace = 'B1';
-            transition.tapeDirection = 'RR';
-            break;
-          case 'B0':
-            transition.to = 2;
-            transition.headReplace = 'B0';
-            transition.tapeDirection = 'RR';
-            break;
-          case 'BB':
-            transition.to = 2;
-            transition.headReplace = 'BB';
-            transition.tapeDirection = 'RR';
+          case 'EBB':
+            transition.to = 3;
+            transition.headReplace = 'EBB';
+            transition.tapeDirection = 'LSS';
             break;
         }
         break;
       case 2:
+        switch (transition.head) {
+          case '11B':
+            transition.to = 2;
+            transition.headReplace = 'EBB';
+            transition.tapeDirection = 'LLS';
+            break;
+          case '1BB':
+            transition.to = 2;
+            transition.headReplace = '1BB';
+            transition.tapeDirection = 'LSS';
+            break;
+
+          case 'BBB':
+            transition.to = 4;
+            transition.headReplace = 'BB1';
+            transition.tapeDirection = 'RRR';
+            break;
+          case 'EBB':
+            transition.to = 4;
+            transition.headReplace = '1BB';
+            transition.tapeDirection = 'RSS';
+            break;
+        }
+        break;
+      case 3:
+        switch (transition.head) {
+          case '1BB':
+            transition.to = 2;
+            transition.headReplace = 'EBB';
+            transition.tapeDirection = 'LSS';
+            break;
+        }
+        break;
+      case 4:
+        switch (transition.head) {
+          case '1BB':
+            transition.to = 0;
+            transition.headReplace = '1BB';
+            transition.tapeDirection = 'SSS';
+            break;
+
+          case 'BBB':
+            transition.to = 5;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'RSS';
+            break;
+          case 'EBB':
+            transition.to = 5;
+            transition.headReplace = '1BB';
+            transition.tapeDirection = 'RSS';
+            break;
+        }
+        break;
+      case 5:
+        switch (transition.head) {
+          case 'EBB':
+            transition.to = 5;
+            transition.headReplace = '1BB';
+            transition.tapeDirection = 'RSS';
+            break;
+        }
         break;
     }
 
