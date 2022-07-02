@@ -131,74 +131,722 @@ export class DivisionSingleTrack {
         }
         break;
       case 3:
+        switch (transition.head) {
+          case '0':
+            transition.to = 3;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 3;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'C':
+            transition.to = 5;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 4:
+        switch (transition.head) {
+          case '1':
+            transition.to = 4;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 4;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'C':
+            transition.to = 6;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 5:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 5;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+
+          case 'C':
+            transition.to = 7;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+
+          case '0':
+            transition.to = 10;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 6:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 6;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+
+          case 'C':
+            transition.to = 8;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+
+          case '1':
+            transition.to = 11;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 7:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 7;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+          case 'C':
+            transition.to = 7;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 7;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'B':
+            transition.to = 9;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 8:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 8;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+          case 'C':
+            transition.to = 8;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+          case '0':
+            transition.to = 8;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 8;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'B':
+            transition.to = 9;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 9:
+        switch (transition.head) {
+          case '0':
+            transition.to = 9;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'L';
+            break;
+          case '1':
+            transition.to = 9;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+          case 'C':
+            transition.to = 9;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+
+          case 'B':
+            transition.to = 0;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 10:
+        switch (transition.head) {
+          case '0':
+            transition.to = 10;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'L';
+            break;
+          case '1':
+            transition.to = 10;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+          case 'C':
+            transition.to = 10;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+
+          case 'B':
+            transition.to = 12;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 11:
+        switch (transition.head) {
+          case '0':
+            transition.to = 11;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'L';
+            break;
+          case '1':
+            transition.to = 11;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+          case 'C':
+            transition.to = 11;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+
+          case 'B':
+            transition.to = 13;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 12:
+        switch (transition.head) {
+          case '0':
+            transition.to = 14;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'C':
+            transition.to = 16;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 13:
+        switch (transition.head) {
+          case '0':
+            transition.to = 15;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'C':
+            transition.to = 17;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 14:
+        switch (transition.head) {
+          case '0':
+            transition.to = 14;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'C':
+            transition.to = 3;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 15:
+        switch (transition.head) {
+          case '0':
+            transition.to = 15;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'C':
+            transition.to = 4;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 16:
+        switch (transition.head) {
+          case '0':
+            transition.to = 16;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 16;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 16;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'C':
+            transition.to = 18;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'S';
+            break;
+        }
         break;
       case 17:
+        switch (transition.head) {
+          case '0':
+            transition.to = 17;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 17;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 17;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'C':
+            transition.to = 18;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'S';
+            break;
+        }
         break;
       case 18:
+        // final
+        // final
+        // final
+        // final
+        // final
         break;
       case 19:
+        switch (transition.head) {
+          case 'C':
+            transition.to = 20;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 20:
+        switch (transition.head) {
+          case '0':
+            transition.to = 20;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 20;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 20;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+
+          case 'C':
+            transition.to = 18;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'S';
+            break;
+        }
         break;
       case 21:
+        switch (transition.head) {
+          case '1':
+            transition.to = 21;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+          case 'C':
+            transition.to = 22;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 22:
+        switch (transition.head) {
+          case '0':
+            transition.to = 23;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 24;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 23:
+        switch (transition.head) {
+          case '0':
+            transition.to = 23;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 23;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case 'C':
+            transition.to = 25;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 24:
+        switch (transition.head) {
+          case '1':
+            transition.to = 24;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 24;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case 'C':
+            transition.to = 26;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 25:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 25;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+    
+          case 'C':
+            transition.to = 27;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case '0':
+            transition.to = 30;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 26:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 26;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+    
+          case 'C':
+            transition.to = 28;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case '1':
+            transition.to = 31;
+            transition.headReplace = 'E';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 27:
+        switch (transition.head) {
+          case 'E':
+            transition.to = 27;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+          case 'C':
+            transition.to = 27;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+          case '0':
+            transition.to = 27;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 27;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case 'B':
+            transition.to = 29;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 28:
+        switch (transition.head) {
+          // case 'X':
+          //   transition.to = 28;
+          //   transition.headReplace = '1';
+          //   transition.tapeDirection = 'R';
+          //   break;
+          case 'E':
+            transition.to = 28;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+          case 'C':
+            transition.to = 28;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 28;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case 'B':
+            transition.to = 29;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+        }
         break;
       case 29:
+        switch (transition.head) {
+          case '0':
+            transition.to = 29;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'L';
+            break;
+          case '1':
+            transition.to = 29;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+          case 'C':
+            transition.to = 29;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+    
+          case 'B':
+            transition.to = 0;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 30:
+        switch (transition.head) {
+          case '0':
+            transition.to = 30;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'L';
+            break;
+          case '1':
+            transition.to = 30;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+          case 'C':
+            transition.to = 30;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+    
+          case 'B':
+            transition.to = 32;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 31:
+        switch (transition.head) {
+          case '0':
+            transition.to = 31;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'L';
+            break;
+          case '1':
+            transition.to = 31;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'L';
+            break;
+          case 'C':
+            transition.to = 31;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'L';
+            break;
+    
+          case 'B':
+            transition.to = 33;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 32:
+        switch (transition.head) {
+          case '1':
+            transition.to = 34;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case 'C':
+            transition.to = 36;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 33:
+        switch (transition.head) {
+          case '1':
+            transition.to = 35;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case 'C':
+            transition.to = 37;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 34:
+        switch (transition.head) {
+          case '1':
+            transition.to = 34;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case 'C':
+            transition.to = 23;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 35:
+        switch (transition.head) {
+          case '1':
+            transition.to = 35;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case 'C':
+            transition.to = 24;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
+            break;
+        }
         break;
       case 36:
+        switch (transition.head) {
+          case '0':
+            transition.to = 36;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 36;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 36;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case 'C':
+            transition.to = 18;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'S';
+            break;
+        }
         break;
       case 37:
+        switch (transition.head) {
+          case '0':
+            transition.to = 37;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 37;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case 'E':
+            transition.to = 37;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+    
+          case 'C':
+            transition.to = 18;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'S';
+            break;
+        }
         break;
     }
 
