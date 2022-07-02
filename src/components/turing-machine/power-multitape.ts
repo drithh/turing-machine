@@ -269,6 +269,8 @@ export class PowerMultiTape {
             transition.headReplace = 'BB1';
             transition.tapeDirection = 'SSS';
             break;
+          default:
+            break;
         }
         break;
     }
