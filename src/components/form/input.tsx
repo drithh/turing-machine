@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
-import { FormData, TwoInput, Temperature } from '../type';
+import { TwoInput, Temperature } from '../type';
 
 export const Input = (props: {
-  operation: FormData | undefined;
-  setOperation: React.Dispatch<React.SetStateAction<FormData>>;
+  data: any;
+  setData: React.Dispatch<React.SetStateAction<any>>;
+  operation: string;
 }) => {
-  const { operation, setOperation } = props;
+  const { data, setData, operation } = props;
   const [inputCase, setInputCase] = useState(0);
   useEffect(() => {
-    setInputCase(getInputCase(operation?.operation ? operation.operation : ''));
+    setInputCase(getInputCase(operation));
   }, [operation]);
   return (
     <div className="my-6">
@@ -22,10 +23,7 @@ export const Input = (props: {
             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1 focus:outline-none block w-full h-10 text-base px-4 border text-opacity-70 text-primary-indigo font-medium pb-1 border-gray-300 rounded-md"
             onChange={(e) => {
               if (operation) {
-                setOperation({
-                  ...operation,
-                  data: parseInt(e.target.value, 10),
-                });
+                setData(parseInt(e.target.value, 10));
               }
             }}
           />
@@ -41,15 +39,10 @@ export const Input = (props: {
               type="number"
               className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1 focus:outline-none block w-full h-10 text-base px-4 border text-opacity-70 text-primary-indigo font-medium pb-1 border-gray-300 rounded-md"
               onChange={(e) => {
-                if (operation) {
-                  setOperation({
-                    ...operation,
-                    data: {
-                      input1: parseInt(e.target.value, 10),
-                      input2: operation.data?.input2,
-                    } as TwoInput,
-                  });
-                }
+                setData({
+                  input1: parseInt(e.target.value, 10),
+                  input2: data?.input2,
+                } as TwoInput);
               }}
             />
           </div>
@@ -62,15 +55,10 @@ export const Input = (props: {
               type="number"
               className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1 focus:outline-none block w-full h-10 text-base px-4 border text-opacity-70 text-primary-indigo font-medium pb-1 border-gray-300 rounded-md"
               onChange={(e) => {
-                if (operation) {
-                  setOperation({
-                    ...operation,
-                    data: {
-                      input1: operation.data?.input1,
-                      input2: parseInt(e.target.value, 10),
-                    } as TwoInput,
-                  });
-                }
+                setData({
+                  input1: data?.input1,
+                  input2: parseInt(e.target.value, 10),
+                } as TwoInput);
               }}
             />
           </div>
@@ -86,18 +74,15 @@ export const Input = (props: {
               type="number"
               className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1 focus:outline-none block w-full h-10 text-base px-4 border text-opacity-70 text-primary-indigo font-medium pb-1 border-gray-300 rounded-md appearance-none"
               onChange={(e) => {
-                if (operation) {
-                  let from = 'C';
-                  let to = 'C';
-                  setOperation({
-                    ...operation,
-                    data: {
-                      temperature: parseInt(e.target.value, 10),
-                      from: operation.data?.from ? operation.data.from : from,
-                      to: operation.data?.to ? operation.data.to : to,
-                    } as Temperature,
-                  });
-                }
+                let from = 'C';
+                let to = 'C';
+                setData({
+                  data: {
+                    temperature: parseInt(e.target.value, 10),
+                    from: data?.from ? data.from : from,
+                    to: data?.to ? data.to : to,
+                  } as Temperature,
+                });
               }}
             />
             <div className="conversion-wrapper absolute pr-3 inset-y-0 right-0 flex gap-x-4">
@@ -106,16 +91,13 @@ export const Input = (props: {
                   name="temperature"
                   className=" h-full focus:outline-none py-0 !shadow-none pl-2 pr-4 pb-1 border-transparent bg-transparent text-primary-indigo text-base  font-medium "
                   onChange={(e) => {
-                    if (operation) {
-                      setOperation({
-                        ...operation,
-                        data: {
-                          temperature: operation.data?.temperature,
-                          from: e.target.value,
-                          to: operation.data?.to,
-                        } as Temperature,
-                      });
-                    }
+                    setData({
+                      data: {
+                        temperature: data?.temperature,
+                        from: e.target.value,
+                        to: data?.to,
+                      } as Temperature,
+                    });
                   }}
                 >
                   <option>C</option>
@@ -131,16 +113,13 @@ export const Input = (props: {
                   name="temperature"
                   className=" h-full focus:outline-none py-0 !shadow-none pl-2 pr-4 pb-1 border-transparent bg-transparent text-primary-indigo text-base  font-medium "
                   onChange={(e) => {
-                    if (operation) {
-                      setOperation({
-                        ...operation,
-                        data: {
-                          temperature: operation.data?.temperature,
-                          from: operation.data?.from,
-                          to: e.target.value,
-                        } as Temperature,
-                      });
-                    }
+                    setData({
+                      data: {
+                        temperature: data?.temperature,
+                        from: data?.from,
+                        to: e.target.value,
+                      } as Temperature,
+                    });
                   }}
                 >
                   <option>C</option>

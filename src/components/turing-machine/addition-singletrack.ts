@@ -4,7 +4,7 @@ import { OneTape } from './tape';
 export class AdditionSingleTrack {
   public setup(inputSymbols: TwoInput) {
     this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new OneTape(this.inputSymbols);
+    this.tapes = new OneTape(resolveInput(inputSymbols));
   }
   private inputSymbols: Symbol[] = [];
   static totalTape = 1;
@@ -51,20 +51,14 @@ export class AdditionSingleTrack {
       return [e?.tapeDirection[0], e?.tapeDirection[1]];
     });
     let first = 0;
-    let second = 0;
     directions.forEach((e) => {
       if (e[0] === 'L') {
         first--;
       } else if (e[0] === 'R') {
         first++;
       }
-      if (e[1] === 'L') {
-        second--;
-      } else if (e[1] === 'R') {
-        second++;
-      }
     });
-    return [first, second];
+    return [first];
   }
 
   private getNextTransition = (currentHead: number) => {
@@ -75,7 +69,6 @@ export class AdditionSingleTrack {
       headReplace: '',
       tapeDirection: '',
     };
-
 
     switch (transition.from) {
       case 0:
@@ -266,6 +259,8 @@ export class AdditionSingleTrack {
             transition.to = 8;
             transition.headReplace = 'B';
             transition.tapeDirection = 'L';
+            break;
+          default:
             break;
         }
         break;

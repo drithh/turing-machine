@@ -51,20 +51,14 @@ export class DivisionSingleTrack {
       return [e?.tapeDirection[0], e?.tapeDirection[1]];
     });
     let first = 0;
-    let second = 0;
     directions.forEach((e) => {
       if (e[0] === 'L') {
         first--;
       } else if (e[0] === 'R') {
         first++;
       }
-      if (e[1] === 'L') {
-        second--;
-      } else if (e[1] === 'R') {
-        second++;
-      }
     });
-    return [first, second];
+    return [first];
   }
 
   private getNextTransition = (currentHead: number) => {
@@ -79,74 +73,132 @@ export class DivisionSingleTrack {
     switch (transition.from) {
       case 0:
         switch (transition.head) {
-          case '0B':
-            transition.to = 0;
-            transition.headReplace = '00';
-            transition.tapeDirection = 'RR';
-            break;
-          case '1B':
-            transition.to = 0;
-            transition.headReplace = '11';
-            transition.tapeDirection = 'RR';
-            break;
-          case 'CB':
+          case '0':
             transition.to = 1;
-            transition.headReplace = 'CB';
-            transition.tapeDirection = 'RL';
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case 'C':
+            transition.to = 1;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'S';
+            break;
+
+          case 'B':
+            transition.to = 19;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+
+          case '1':
+            transition.to = 21;
+            transition.headReplace = 'B';
+            transition.tapeDirection = 'R';
+            break;
+          case 'C':
+            transition.to = 21;
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'S';
             break;
         }
         break;
       case 1:
         switch (transition.head) {
-          case '00':
+          case '0':
             transition.to = 1;
-            transition.headReplace = '0B';
-            transition.tapeDirection = 'RL';
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
             break;
-          case '11':
-            transition.to = 1;
-            transition.headReplace = '1B';
-            transition.tapeDirection = 'RL';
-            break;
-          case '0B':
-            transition.to = 1;
-            transition.headReplace = '01';
-            transition.tapeDirection = 'RR';
-            break;
-          case '1B':
-            transition.to = 1;
-            transition.headReplace = '10';
-            transition.tapeDirection = 'RR';
-            break;
-          case '01':
-            transition.to = 1;
-            transition.headReplace = '01';
-            transition.tapeDirection = 'SR';
-            break;
-          case '10':
-            transition.to = 1;
-            transition.headReplace = '10';
-            transition.tapeDirection = 'SR';
-
-            break;
-          case 'B1':
+          case 'C':
             transition.to = 2;
-            transition.headReplace = 'B1';
-            transition.tapeDirection = 'RR';
-            break;
-          case 'B0':
-            transition.to = 2;
-            transition.headReplace = 'B0';
-            transition.tapeDirection = 'RR';
-            break;
-          case 'BB':
-            transition.to = 2;
-            transition.headReplace = 'BB';
-            transition.tapeDirection = 'RR';
+            transition.headReplace = 'C';
+            transition.tapeDirection = 'R';
             break;
         }
         break;
       case 2:
+        switch (transition.head) {
+          case '0':
+            transition.to = 3;
+            transition.headReplace = '0';
+            transition.tapeDirection = 'R';
+            break;
+          case '1':
+            transition.to = 4;
+            transition.headReplace = '1';
+            transition.tapeDirection = 'R';
+            break;
+        }
+        break;
+      case 3:
+        break;
+      case 4:
+        break;
+      case 5:
+        break;
+      case 6:
+        break;
+      case 7:
+        break;
+      case 8:
+        break;
+      case 9:
+        break;
+      case 10:
+        break;
+      case 11:
+        break;
+      case 12:
+        break;
+      case 13:
+        break;
+      case 14:
+        break;
+      case 15:
+        break;
+      case 16:
+        break;
+      case 17:
+        break;
+      case 18:
+        break;
+      case 19:
+        break;
+      case 20:
+        break;
+      case 21:
+        break;
+      case 22:
+        break;
+      case 23:
+        break;
+      case 24:
+        break;
+      case 25:
+        break;
+      case 26:
+        break;
+      case 27:
+        break;
+      case 28:
+        break;
+      case 29:
+        break;
+      case 30:
+        break;
+      case 31:
+        break;
+      case 32:
+        break;
+      case 33:
+        break;
+      case 34:
+        break;
+      case 35:
+        break;
+      case 36:
+        break;
+      case 37:
         break;
     }
 

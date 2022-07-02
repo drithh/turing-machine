@@ -24,17 +24,22 @@ export type TuringMachinesResult = {
 };
 
 export class TuringMachines {
-  constructor(formData: FormData) {
-    this.formData = formData;
-    if (this.formData.operation !== 'Select Operation') {
-      this.turingMachineName = convertOperationFormData(formData.operation);
-      this.createturingMachine(this.turingMachineName);
+  constructor(operation: string) {
+    if (operation !== 'Select Operation') {
+      this.turingMachineName = convertOperationFormData(operation);
+      this.createTuringMachine(this.turingMachineName);
     }
+    this.formData = {
+      operation: operation,
+      data: '',
+    };
   }
 
-  public createturingMachine = (turingMachineName: string) => {
-    console.log(turingMachineName);
+  public setup = (formData: FormData) => {
+    this.formData = formData;
+  };
 
+  public createTuringMachine = (turingMachineName: string) => {
     switch (turingMachineName) {
       case 'AdditionMultiTape':
         this.turingMachine = new AdditionMultiTape();
@@ -164,51 +169,38 @@ export class TuringMachines {
     return [];
   }
 
-  public getActionType() {
-    return this.formData.actionType;
-  }
-
   private formData: FormData;
 
   private transitions = new Array<Transition>();
 
   public run() {
     if (this.turingMachine) {
-      // if (this.formData.data.input1) {
-
-      //   const data: TwoInput = this.formData.data;
-      //   this.turingMachine.setup(data);
-      // } else if (this.formData.data.temperature) {
-      // } else {
-      // }
-      this.turingMachine.setup(this.formData.data);
-
-      // switch (this.turingMachineName) {
-      //   case 'AdditionMultiTape':
-      //   case 'AdditionSingleTrack':
-      //   case 'SubtractionMultiTape':
-      //   case 'MultiplicationMultiTape':
-      //   case 'SubtractionSingleTrack':
-      //   case 'MultiplicationSingleTrack':
-      //   case 'DivisionMultiTape':
-      //   case 'DivisionSingleTrack':
-      //   case 'PowerMultiTape':
-      //   case 'PowerMultiTrack':
-      //     this.turingMachine.setup(this.formData.data);
-      //     break;
-      //   case 'FactorialMultiTape':
-      //   case 'FactorialMultiTrack':
-      //   case 'BinaryLogarithmMultiTape':
-      //   case 'BinaryLogarithmMultiTrack':
-      //     this.turingMachine.setup(this.formData.data);
-      //     break;
-      //   case 'TemperatureConversionMultiTape':
-      //   case 'TemperatureConversionMultiTrack':
-      //     this.turingMachine.setup(this.formData.data);
-      //     break;
-      //   default:
-      //     break;
-      // }
+      switch (this.turingMachineName) {
+        case 'AdditionMultiTape':
+        case 'AdditionSingleTrack':
+        case 'SubtractionMultiTape':
+        case 'MultiplicationMultiTape':
+        case 'SubtractionSingleTrack':
+        case 'MultiplicationSingleTrack':
+        case 'DivisionMultiTape':
+        case 'DivisionSingleTrack':
+        case 'PowerMultiTape':
+        case 'PowerMultiTrack':
+          this.turingMachine.setup(this.formData.data);
+          break;
+        case 'FactorialMultiTape':
+        case 'FactorialMultiTrack':
+        case 'BinaryLogarithmMultiTape':
+        case 'BinaryLogarithmMultiTrack':
+          this.turingMachine.setup(this.formData.data);
+          break;
+        case 'TemperatureConversionMultiTape':
+        case 'TemperatureConversionMultiTrack':
+          this.turingMachine.setup(this.formData.data);
+          break;
+        default:
+          break;
+      }
 
       this.turingMachine.run();
       const turingMachineResult: TuringMachinesResult = {
