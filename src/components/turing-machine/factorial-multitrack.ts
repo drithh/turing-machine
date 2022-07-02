@@ -648,6 +648,14 @@ export class FactorialMultiTrack {
             transition.headReplace = 'Z11';
             transition.tapeDirection = 'LLL';
             break;
+            //NEWNENWNEWNENW
+            //NEWNENWNEWNENW
+            //NEWNENWNEWNENW
+          case 'BBB':
+            transition.to = 7;
+            transition.headReplace = 'BBB';
+            transition.tapeDirection = 'SSS';
+            break;
         }
         break;
 
@@ -665,14 +673,15 @@ export class FactorialMultiTrack {
             break;
           case 'Y11':
             transition.to = 21;
-            transition.headReplace = '111';
+            // transition.headReplace = '111';
+            transition.headReplace = '1B1';
             transition.tapeDirection = 'RRR';
             break;
 
           case 'Z11':
             transition.to = 21;
-            // transition.headReplace = '1B1';
-            transition.headReplace = '111';
+            // transition.headReplace = '111';
+            transition.headReplace = '1B1';
             transition.tapeDirection = 'RRR';
             break;
           default:
