@@ -232,7 +232,7 @@ function App() {
           // diagramFileName={`${formData.operation
           //   .replace(/ /g, '')
           //   .toLowerCase()}.json`}
-          diagramFileName="faktorial-multitape.json"
+          diagramFileName="division-singletrack.json"
           activeTransition={activeTransition}    
           duration={duration}
         />
