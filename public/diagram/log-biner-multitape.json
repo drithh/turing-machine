@@ -1,0 +1,171 @@
+{
+  "totalTape": 3,
+  "nodes": [
+    {
+      "state": 0,
+      "cx": 300,
+      "cy": 300,
+      "type": "start"
+    },
+    {
+      "state": 1,
+      "cx": 300,
+      "cy": 150,
+      "type": "normal"
+    },
+    {
+      "state": 2,
+      "cx": 650,
+      "cy": 150,
+      "type": "normal"
+    },
+    {
+      "state": 3,
+      "cx": 650,
+      "cy": 300,
+      "type": "normal"
+    },
+    {
+      "state": 4,
+      "cx": 650,
+      "cy": 450,
+      "type": "normal"
+    },
+    {
+      "state": 5,
+      "cx": 900,
+      "cy": 450,
+      "type": "final"
+    }
+  ],
+  "links": [
+    {
+      "source": { "node": 0, "port": "TL" },
+      "target": { "node": 1, "port": "BL" },
+      "content": {
+        "offset": {
+          "x": -100,
+          "y": 10
+        },
+        "value": ["1BB/1BB,RSS"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "BR" },
+      "target": { "node": 0, "port": "TR" },
+      "content": {
+        "offset": {
+          "x": 100,
+          "y": 10
+        },
+        "value": ["1BB/11B,RRS"]
+      }
+    },
+    {
+      "source": { "node": 1, "port": "R" },
+      "target": { "node": 2, "port": "L" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "BBB/ BBB, LSS",
+          "EBB/ EBB, LSS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 0, "port": "R" },
+      "target": { "node": 3, "port": "L" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "BBB/ BBB, LLS",
+          "EBB/ EBB, LLS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 2, "port": "B" },
+      "target": { "node": 3, "port": "T" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "1BB/ EBB, LSS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 3, "port": "R" },
+      "target": { "node": 3, "port": "R" },
+      "content": {
+        "offset": {
+          "x": -50,
+          "y": 60
+        },
+        "value": [
+          "11B/ EBB, LLS","1BB/ 1BB, LSS "
+        ]
+      }
+    },
+    {
+      "source": { "node": 3, "port": "B" },
+      "target": { "node": 4, "port": "T" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "BBB/ BB1, RRR","EBB/ 1BB, RSS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 4, "port": "L" },
+      "target": { "node": 0, "port": "BR" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 70
+        },
+        "value": [
+          "1BB/1BB, SSS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 4, "port": "R" },
+      "target": { "node": 5, "port": "L" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "BBB/ BBB, RSS","EBB/ 1BB, RSS"
+        ]
+      }
+    },
+    {
+      "source": { "node": 5, "port": "B" },
+      "target": { "node": 5, "port": "B" },
+      "content": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "value": [
+          "EBB/ 1BB, RSS"
+        ]
+      }
+    }
+  ]
+}
