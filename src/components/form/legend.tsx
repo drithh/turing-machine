@@ -1,13 +1,35 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 
-export const Legend = () => {
-  const operations: string[] = [
+export const Legend = (props: { operation: string }) => {
+  const { operation } = props;
+  const defaultOperation = [
     '0 : 1 Negative Number ex:000 => -3',
     '1 : 1 Positive Number ex:111 => 3',
     'C : Delimiter',
     'E : Escape Character',
   ];
+  const operations = useRef(defaultOperation);
+
+  useEffect(() => {
+    if (operation === 'Temperature Conversion - MultiTape') {
+      operations.current = [
+        'P : 100 Positive Number ex:PPP => 300',
+        'O : 10 Positive Number ex:OOO => 30',
+        'I : 1 Positive Number ex:III => 3',
+        'U : 100 Negative Number ex:UUU => -300',
+        'Y : 10 Negative Number ex:YYY => -30',
+        'T : 1 Negative Number ex:TTT => -3',
+        'C : Celcius',
+        'F : Fahrenheit',
+        'K : Kelvin',
+        'E : Escape Character',
+      ];
+    } else {
+      operations.current = defaultOperation;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [operation]);
 
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -28,7 +50,7 @@ export const Legend = () => {
       >
         <Menu.Items className="origin-top-right absolute right-0 mt-2 w-max z-10 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            {operations.map((item) => {
+            {operations.current.map((item) => {
               return (
                 <Menu.Item key={item}>
                   {({ active }) => (

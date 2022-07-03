@@ -17,8 +17,6 @@ function App() {
     data: '',
   });
 
-  const [formAction, setFormAction] = useState<string>('');
-
   const isRunning = useRef(false);
   const [inputString, setInputString] = useState<string[][]>([]);
 
@@ -34,6 +32,7 @@ function App() {
   const [assignedHead, setAssignedHead] = useState<number[]>();
   const [isTransitionShow, setIsTransitionShow] = useState<boolean>(false);
   const [lastTransitions, setLastTransitons] = useState<Transition[]>([]);
+  const simulateDebug = useRef(false);
 
   const dropdownHandler = (operation: string) => {
     setFormData({ ...formData, operation });
@@ -41,8 +40,6 @@ function App() {
   };
 
   const actionHandler = (action: string, data: FormData) => {
-    currentAction.current = action;
-    setFormAction(action);
     if (formData.operation !== data.operation || formData.data !== data.data) {
       setFormData(data);
       console.log('Reset');
@@ -56,11 +53,16 @@ function App() {
         console.log('No Reset');
       }
       if (action === 'Debug') {
-        debug();
+        if (currentAction.current === 'Simulate') {
+          simulateDebug.current = true;
+        } else {
+          debug();
+        }
       } else if (action === 'ShowResult') {
         showResult();
       }
     }
+    currentAction.current = action;
   };
 
   const resetTuringMachine = (operation: string) => {
@@ -103,7 +105,11 @@ function App() {
   useEffect(() => {
     if (turingMachinesResult) {
       const interval = setInterval(() => {
-        if (turingMachinesResult && currentAction.current === 'Simulate') {
+        if (
+          turingMachinesResult &&
+          (currentAction.current === 'Simulate' || simulateDebug.current)
+        ) {
+          simulateDebug.current = false;
           if (turingMachinesResult.transitions.length > index.current) {
             setAssignedHead([]);
             isRunning.current = true;
@@ -167,136 +173,6 @@ function App() {
       index.current = 0;
     }
   };
-
-  // useEffect(() => {
-  //   if (
-  //     formData.actionType !== '' &&
-  //     formData.actionType !== undefined &&
-  //     formData.actionType !== turingMachines?.getActionType()
-  //   ) {
-  //     setTuringMachines(new TuringMachines(formData));
-  //     if (
-  //       !(
-  //         (formData.actionType === 'Simulate' &&
-  //           lastForm.current?.actionType === 'Debug') ||
-  //         (formData.actionType === 'Debug' &&
-  //           lastForm.current?.actionType === 'Simulate')
-  //       ) ||
-  //       isRunning.current === false
-  //     ) {
-  //       setReset(true);
-  //     }
-  //   }
-  //   if (formData.operation !== lastForm.current.operation) {
-  //     setTuringMachines(new TuringMachines(formData));
-  //   } else {
-  //     turingMachines?.setFormData(formData);
-  //   }
-  //   if (turingMachines) {
-  //     if (formData.actionType && validateForm(formData)) {
-  //       setTuringMachinesResult(turingMachines.run());
-  //       setLastTransitons(turingMachines.getTransitions());
-  //     }
-  //   }
-  //   setDuration(formData.duration === undefined ? 2000 : formData.duration);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [formData]);
-
-  // useEffect(() => {
-  //   if (turingMachinesResult) {
-  //     if (
-  //       turingMachinesResult.inputSymbols &&
-  //       inputString[0] !== turingMachinesResult.inputSymbols
-  //     ) {
-  //       const inputString = [turingMachinesResult.inputSymbols];
-  //       setInputString(inputString);
-  //     }
-
-  //     if (formData.actionType === 'Validate') {
-  //       lastForm.current = formData;
-  //       setFormData({
-  //         ...formData,
-  //         actionType: '',
-  //       });
-  //       isRunning.current = false;
-  //       setActiveTransition(undefined);
-  //       setIndex(0);
-  //       setAssignedHead(turingMachinesResult.lastHead);
-  //       setInputString(turingMachinesResult.TapeResult);
-  //       setTuringMachinesResult(undefined);
-  //     }
-
-  //     if (
-  //       (formData.actionType === 'Simulate' ||
-  //         formData.actionType === 'Debug') &&
-  //       lastForm.current?.actionType === 'Validate' &&
-  //       index === 0 &&
-  //       isRunning.current === false
-  //     ) {
-  //       setAssignedHead([0, 0, 0]);
-  //       setReset(true);
-  //     }
-
-  //     const interval = setInterval(() => {
-  //       if (
-  //         formData.actionType === 'Simulate' &&
-  //         turingMachinesResult.transitions.length > index
-  //       ) {
-  //         setAssignedHead([]);
-  //         lastForm.current = formData;
-  //         isRunning.current = true;
-  //         setActiveTransition(turingMachinesResult.transitions[index]);
-  //         setIndex(index + 1);
-  //       } else if (
-  //         turingMachinesResult &&
-  //         turingMachinesResult.transitions.length === index
-  //       ) {
-  //         setFormData({
-  //           ...formData,
-  //           actionType: '',
-  //         });
-  //         isRunning.current = false;
-  //         setActiveTransition(undefined);
-  //         setIndex(0);
-  //       }
-  //     }, duration);
-  //     return () => clearInterval(interval);
-  //   }
-
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [turingMachinesResult, duration, index, formData.actionType]);
-
-  // useEffect(() => {
-  //   if (turingMachinesResult && formData.actionType !== '') {
-  //     if (formData.actionType === 'Debug') {
-  //       lastForm.current = formData;
-  //       setFormData({
-  //         ...formData,
-  //         actionType: '',
-  //       });
-  //       if (isRunning.current === false) {
-  //         isRunning.current = true;
-  //         setIndex(0);
-  //       } else {
-  //         if (turingMachinesResult.transitions.length > index) {
-  //           setAssignedHead([]);
-
-  //           isRunning.current = true;
-  //           setActiveTransition(turingMachinesResult.transitions[index]);
-  //           setIndex(index + 1);
-  //         } else if (
-  //           turingMachinesResult &&
-  //           turingMachinesResult.transitions.length === index
-  //         ) {
-  //           isRunning.current = false;
-  //           setActiveTransition(undefined);
-  //           setIndex(0);
-  //         }
-  //       }
-  //     }
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [formData.actionType, turingMachinesResult]);
 
   return (
     <div className="App  w-full max-w-[1366px] mx-auto mt-[10vh] flex flex-col gap-y-8 xl:px-0 px-12">

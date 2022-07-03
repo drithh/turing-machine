@@ -1544,7 +1544,7 @@ export class TemperatureConversionMultiTape {
       case 104:
         switch (transition.head) {
           case 'BYB':
-            transition.to = 104;
+            transition.to = 105;
             transition.headReplace = 'BYO';
             transition.tapeDirection = 'SSR';
             break;
@@ -1553,7 +1553,7 @@ export class TemperatureConversionMultiTape {
       case 105:
         switch (transition.head) {
           case 'BYB':
-            transition.to = 105;
+            transition.to = 106;
             transition.headReplace = 'BYO';
             transition.tapeDirection = 'SSR';
             break;
@@ -1562,7 +1562,7 @@ export class TemperatureConversionMultiTape {
       case 106:
         switch (transition.head) {
           case 'BYB':
-            transition.to = 106;
+            transition.to = 107;
             transition.headReplace = 'BYO';
             transition.tapeDirection = 'SSR';
             break;
@@ -1571,7 +1571,7 @@ export class TemperatureConversionMultiTape {
       case 107:
         switch (transition.head) {
           case 'BYB':
-            transition.to = 107;
+            transition.to = 108;
             transition.headReplace = 'BYO';
             transition.tapeDirection = 'SSR';
             break;
@@ -1580,7 +1580,7 @@ export class TemperatureConversionMultiTape {
       case 108:
         switch (transition.head) {
           case 'BYB':
-            transition.to = 108;
+            transition.to = 109;
             transition.headReplace = 'BYO';
             transition.tapeDirection = 'SSR';
             break;
@@ -1589,7 +1589,7 @@ export class TemperatureConversionMultiTape {
       case 109:
         switch (transition.head) {
           case 'BYB':
-            transition.to = 109;
+            transition.to = 110;
             transition.headReplace = 'BYO';
             transition.tapeDirection = 'SSR';
             break;
@@ -1608,8 +1608,8 @@ export class TemperatureConversionMultiTape {
         switch (transition.head) {
           case 'BYB':
             transition.to = 103;
-            transition.headReplace = 'BYO';
-            transition.tapeDirection = 'SSS';
+            transition.headReplace = 'BEO';
+            transition.tapeDirection = 'SRS';
             break;
         }
         break;
@@ -1768,8 +1768,8 @@ export class TemperatureConversionMultiTape {
         switch (transition.head) {
           case 'BTB':
             transition.to = 113;
-            transition.headReplace = 'BTI';
-            transition.tapeDirection = 'SSS';
+            transition.headReplace = 'BEI';
+            transition.tapeDirection = 'SRS';
         }
         break;
       case 122:
@@ -1853,7 +1853,7 @@ export class TemperatureConversionMultiTape {
         }
         break;
     }
-
+    console.log(transition);
     return transition.to === -1 ? false : transition;
   };
 }

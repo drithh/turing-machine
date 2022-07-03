@@ -115,7 +115,7 @@ export const Form = (props: {
         >
           Show Transitions
         </button>
-        <Legend />
+        <Legend operation={operation} />
       </div>
     </div>
   );
