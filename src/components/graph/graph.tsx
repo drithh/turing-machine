@@ -8,7 +8,7 @@ import { useDraggable } from 'react-use-draggable-scroll';
 
 interface GraphProps {
   diagramFileName: string;
-  activeTransition: Transition;
+  activeTransition?: Transition;
   duration: number;
 }
 

@@ -1,6 +1,6 @@
 import { Symbol, Direction } from '../type';
 
-export class OneTape {
+export class Tape {
   constructor(symbols: Symbol[] = ['B']) {
     if (symbols.length === 0) {
       symbols = ['B'];
@@ -45,71 +45,38 @@ export class OneTape {
   }
 }
 
-export class TwoTape {
-  constructor(inputSymbols: Symbol[]) {
-    this.tape1 = new OneTape(inputSymbols);
+export class MultiTape {
+  protected tapes: Tape[];
+  constructor(inputSymbols: Symbol[], tapeCount: number) {
+    this.tapes = [new Tape(inputSymbols)];
+    for (let i = 1; i < tapeCount; i++) {
+      this.tapes.push(new Tape());
+    }
+    this.tapes.length = tapeCount;
   }
-  private tape1: OneTape;
-  private tape2 = new OneTape();
+  public length = 0;
 
-  public moveHead(directions: Array<Direction>) {
-    this.tape1.moveHead(directions[0]);
-    this.tape2.moveHead(directions[1]);
+  public moveHead(directions: Direction[]) {
+    directions.forEach((direction, index) => {
+      this.tapes[index].moveHead(direction);
+    });
   }
 
   public write(symbols: Symbol[]) {
-    this.tape1.write(symbols[0]);
-    this.tape2.write(symbols[1]);
+    symbols.forEach((symbol, index) => {
+      this.tapes[index].write(symbol);
+    });
   }
 
   public read() {
-    return [this.tape1.read(), this.tape2.read()];
+    return this.tapes.map((tape) => tape.read());
   }
 
   public getHeadAndValue() {
-    return {
-      tape1: this.tape1.getHeadAndValue(),
-      tape2: this.tape2.getHeadAndValue(),
-    };
+    return this.tapes.map((tape) => tape.getHeadAndValue());
   }
 
   public all() {
-    return {
-      tape1: this.tape1.all(),
-      tape2: this.tape2.all(),
-    };
-  }
-}
-
-export class ThreeTape {
-  constructor(inputSymbols: Symbol[]) {
-    this.tape1 = new OneTape(inputSymbols);
-  }
-  private tape1: OneTape;
-  private tape2 = new OneTape();
-  private tape3 = new OneTape();
-
-  public moveHead(directions: Array<Direction>) {
-    this.tape1.moveHead(directions[0]);
-    this.tape2.moveHead(directions[1]);
-    this.tape3.moveHead(directions[2]);
-  }
-
-  public write(symbols: Symbol[]) {
-    this.tape1.write(symbols[0]);
-    this.tape2.write(symbols[1]);
-    this.tape3.write(symbols[2]);
-  }
-
-  public read() {
-    return [this.tape1.read(), this.tape2.read(), this.tape3.read()];
-  }
-
-  public all() {
-    return {
-      tape1: this.tape1.all(),
-      tape2: this.tape2.all(),
-      tape3: this.tape3.all(),
-    };
+    return this.tapes.map((tape) => tape.all());
   }
 }

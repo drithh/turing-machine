@@ -22,7 +22,7 @@ export const Form = (props: {
 
   const debugRef = useRef<HTMLButtonElement>(null);
 
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<string>('');
   const [operation, setOperation] = useState<string>('Select Operation');
 
   return (
@@ -38,7 +38,7 @@ export const Form = (props: {
         />
       </div>
       <div className="input-handle">
-        <Input data={data} setData={setData} operation={operation} />
+        <Input data={data} setData={setData} />
       </div>
       <div className="slider">
         <label className="text-xl font-medium text-primary-indigo ">

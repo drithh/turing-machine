@@ -13,7 +13,7 @@ type TapeData = {
 };
 
 export const Tape = (props: {
-  activeTransition: Transition;
+  activeTransition?: Transition;
   duration: number;
   inputString?: string[];
   index: number;
@@ -31,6 +31,7 @@ export const Tape = (props: {
     reset,
     assignedHead,
   } = props;
+  console.log('inputString', inputString);
   const [positions, setPositions] = useState<TapeData[]>(initTape(inputString));
   const [head, setHead] = useState(0);
   const [tapeHead, setTapeHead] = useState(0);
@@ -158,20 +159,6 @@ export const Tape = (props: {
           className="head w-16 absolute h-[5px] top-[4.5rem] left-[31px] bg-primary-orange"
         ></motion.div>
       </div>
-      {/* <div className="flex place-content-between flex-row bottom-0">
-        <div
-          onClick={() => {
-            moveTapeHead(-1);
-          }}
-          className="w-8 h-8 bg-black"
-        ></div>
-        <div
-          onClick={() => {
-            moveTapeHead(1);
-          }}
-          className="w-8 h-8  bg-red-500 right-16"
-        ></div>
-      </div> */}
     </div>
   );
 };
