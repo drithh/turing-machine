@@ -8,15 +8,9 @@ export type Transition = {
 
 export type Inputs = number[];
 
-export type Temperature = {
-  temperature: number;
-  from: string;
-  to: string;
-};
-
 export type FormData = {
   operation: string;
-  data: any;
+  data: string;
 };
 
 export type Symbol = '0' | '1' | 'B' | 'C' | 'E';

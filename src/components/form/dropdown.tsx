@@ -25,7 +25,6 @@ export const Dropdown = (props: {
     'Factorial - MultiTape',
     'Power - MultiTape',
     'Binary Logarithm - MultiTape',
-    'Temperature Conversion - MultiTape',
   ];
 
   return (

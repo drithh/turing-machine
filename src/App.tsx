@@ -46,7 +46,7 @@ function App() {
       restart(action, data);
     } else {
       if (!isRunning.current) {
-        console.log('Reset');
+        console.log('Reset 2');
         setFormData(data);
         restart(action, data);
       } else {
@@ -163,6 +163,7 @@ function App() {
   }, [turingMachinesResult]);
 
   const showResult = () => {
+    console.log('Show Result');
     if (turingMachinesResult) {
       setAssignedHead(turingMachinesResult.lastHead);
       setInputString(turingMachinesResult.TapeResult);
@@ -192,7 +193,6 @@ function App() {
         </div>
         <div className="relative flex flex-col place-items-center gap-y-6 mt-20">
           {Array.from(Array(turingMachines.current?.getTotalTape()), (e, i) => {
-            console.log('i', i, inputString[i]);
             return (
               <Tape
                 activeTransition={activeTransition}

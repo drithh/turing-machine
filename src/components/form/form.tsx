@@ -63,12 +63,12 @@ export const Form = (props: {
         <div className="wrapper flex gap-x-4">
           <button
             className="text-primary-indigo font-medium text-sm w-32  bg-slate-100 rounded-md px-4 py-2 hover:bg-slate-200 duration-200"
-            onClick={() =>
+            onClick={() => {
               actionHandler('ShowResult', {
                 operation: operation,
                 data: data,
-              })
-            }
+              });
+            }}
           >
             Show Result
           </button>

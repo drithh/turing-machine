@@ -12,22 +12,7 @@ export const Legend = (props: { operation: string }) => {
   const operations = useRef(defaultOperation);
 
   useEffect(() => {
-    if (operation === 'Temperature Conversion - MultiTape') {
-      operations.current = [
-        'P : 100 Positive Number ex:PPP => 300',
-        'O : 10 Positive Number ex:OOO => 30',
-        'I : 1 Positive Number ex:III => 3',
-        'U : 100 Negative Number ex:UUU => -300',
-        'Y : 10 Negative Number ex:YYY => -30',
-        'T : 1 Negative Number ex:TTT => -3',
-        'C : Celcius',
-        'F : Fahrenheit',
-        'K : Kelvin',
-        'E : Escape Character',
-      ];
-    } else {
-      operations.current = defaultOperation;
-    }
+    operations.current = defaultOperation;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [operation]);
 

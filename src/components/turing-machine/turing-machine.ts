@@ -79,7 +79,6 @@ export class TuringMachines {
     if (this.turingMachine) {
       this.turingMachine.setup(this.formData.data);
       this.turingMachine.run();
-      console.log('inputSymbols', this.turingMachine.getInputSymbols());
       const turingMachineResult: TuringMachinesResult = {
         transitions: this.turingMachine.getTransitions(),
         inputSymbols: this.turingMachine.getInputSymbols(),
