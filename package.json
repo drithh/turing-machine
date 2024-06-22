@@ -3,37 +3,31 @@
   "homepage": "https://drithh.github.io",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
-    "@craco/craco": "^6.4.3",
     "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/d3": "^7.4.0",
-    "@types/jest": "^27.5.1",
-    "@types/node": "^16.11.38",
-    "@types/react": "^18.0.10",
-    "@types/react-dom": "^18.0.5",
-    "@types/react-scroll": "^1.8.3",
+    "@vitejs/plugin-react-swc": "^3.7.0",
     "framer-motion": "^6.3.10",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "^5.0.1",
     "react-scroll": "^1.8.7",
     "react-text-transition": "^2.0.0",
     "react-use-draggable-scroll": "^0.4.3",
     "tailwind-scrollbar-hide": "^1.1.7",
     "typescript": "^4.7.2",
+    "vite": "^5.3.1",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^4.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -54,9 +48,13 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
-    "gh-pages": "^4.0.0",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.0.24"
+    "@types/jest": "^27.5.1",
+    "@types/node": "^16.11.38",
+    "@types/react": "^18.0.10",
+    "@types/react-dom": "^18.0.5",
+    "@types/react-scroll": "^1.8.3",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4"
   }
 }

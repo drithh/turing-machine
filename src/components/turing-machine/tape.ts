@@ -1,4 +1,3 @@
-import { symbol } from 'd3';
 import { Symbol, Direction } from '../type';
 
 export class OneTape {
