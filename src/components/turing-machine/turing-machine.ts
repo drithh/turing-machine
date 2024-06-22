@@ -1,21 +1,20 @@
 import { FormData, Transition, Symbol } from '../type';
 import { AdditionMultiTape } from './addition-multitape';
 import { AdditionSingleTrack } from './addition-singletrack';
+import { BinaryLogarithmMultiTape } from './binarylogarithm-multitape';
+import { BinaryLogarithmMultiTrack } from './binarylogarithm-multitrack';
+import { DivisionMultiTape } from './division-multitape';
+import { DivisionSingleTrack } from './division-singletrack';
+import { FactorialMultiTape } from './factorial-multitape';
+import { FactorialMultiTrack } from './factorial-multitrack';
+import { MultiplicationMultiTape } from './multiplication-multitape';
+import { MultiplicationSingleTrack } from './multiplication-singletrack';
+import { PowerMultiTape } from './power-multitape';
+import { PowerMultiTrack } from './power-multitrack';
 import { Strategy } from './strategy';
+import { SubtractionMultiTape } from './subtraction-multitape';
+import { SubtractionSingleTrack } from './subtraction-singletrack';
 import { TuringBase } from './turing-base';
-// import { AdditionSingleTrack } from './addition-singletrack';
-// import { BinaryLogarithmMultiTape } from './binarylogarithm-multitape';
-// import { BinaryLogarithmMultiTrack } from './binarylogarithm-multitrack';
-// import { DivisionMultiTape } from './division-multitape';
-// import { DivisionSingleTrack } from './division-singletrack';
-// import { FactorialMultiTape } from './factorial-multitape';
-// import { FactorialMultiTrack } from './factorial-multitrack';
-// import { MultiplicationMultiTape } from './multiplication-multitape';
-// import { MultiplicationSingleTrack } from './multiplication-singletrack';
-// import { PowerMultiTape } from './power-multitape';
-// import { PowerMultiTrack } from './power-multitrack';
-// import { SubtractionMultiTape } from './subtraction-multitape';
-// import { SubtractionSingleTrack } from './subtraction-singletrack';
 
 export type TuringMachinesResult = {
   transitions: Transition[];
@@ -100,51 +99,33 @@ const getStrategy = (strategyName: string): undefined | Strategy => {
   switch (strategyName) {
     case 'AdditionMultiTape':
       return new AdditionMultiTape();
-    // case 'AdditionSingleTrack':
-    // return new AdditionSingleTrack(1);
-    //   break;
-    // case 'SubtractionMultiTape':
-    //   this.turingMachine = new SubtractionMultiTape();
-    //   break;
-    // case 'SubtractionSingleTrack':
-    //   this.turingMachine = new SubtractionSingleTrack();
-    //   break;
-    // case 'MultiplicationMultiTape':
-    //   this.turingMachine = new MultiplicationMultiTape();
-    //   break;
-    // case 'MultiplicationSingleTrack':
-    //   this.turingMachine = new MultiplicationSingleTrack();
-    //   break;
-    // case 'DivisionMultiTape':
-    //   this.turingMachine = new DivisionMultiTape();
-    //   break;
-    // case 'DivisionSingleTrack':
-    //   this.turingMachine = new DivisionSingleTrack();
-    //   break;
-    // case 'FactorialMultiTape':
-    //   this.turingMachine = new FactorialMultiTape();
-    //   break;
-    // case 'FactorialMultiTrack':
-    //   this.turingMachine = new FactorialMultiTrack();
-    //   break;
-    // case 'PowerMultiTape':
-    //   this.turingMachine = new PowerMultiTape();
-    //   break;
-    // case 'PowerMultiTrack':
-    //   this.turingMachine = new PowerMultiTrack();
-    //   break;
-    // case 'BinaryLogarithmMultiTape':
-    //   this.turingMachine = new BinaryLogarithmMultiTape();
-    //   break;
-    // case 'BinaryLogarithmMultiTrack':
-    //   this.turingMachine = new BinaryLogarithmMultiTrack();
-    //   break;
-    // case 'TemperatureConversionMultiTape':
-    //   this.turingMachine = new TemperatureConversionMultiTape();
-    //   break;
-    // case 'TemperatureConversionMultiTrack':
-    //   this.turingMachine = new TemperatureConversionMultiTrack();
-    //   break;
+    case 'AdditionSingleTrack':
+      return new AdditionSingleTrack();
+    case 'SubtractionMultiTape':
+      return new SubtractionMultiTape();
+    case 'SubtractionSingleTrack':
+      return new SubtractionSingleTrack();
+    case 'MultiplicationMultiTape':
+      return new MultiplicationMultiTape();
+    case 'MultiplicationSingleTrack':
+      return new MultiplicationSingleTrack();
+    case 'DivisionMultiTape':
+      return new DivisionMultiTape();
+    case 'DivisionSingleTrack':
+      return new DivisionSingleTrack();
+    case 'FactorialMultiTape':
+      return new FactorialMultiTape();
+    case 'FactorialMultiTrack':
+      return new FactorialMultiTrack();
+    case 'PowerMultiTape':
+      return new PowerMultiTape();
+    case 'PowerMultiTrack':
+      return new PowerMultiTrack();
+    case 'BinaryLogarithmMultiTape':
+      return new BinaryLogarithmMultiTape();
+    case 'BinaryLogarithmMultiTrack':
+      return new BinaryLogarithmMultiTrack();
+
     default:
       break;
   }

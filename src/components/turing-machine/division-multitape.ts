@@ -1,92 +1,11 @@
-import { TwoInput, Symbol, Direction, Transition } from '../type';
-import { ThreeTape } from './tape';
+import { Transition } from '../type';
+import { Strategy } from './strategy';
 
-export class DivisionMultiTape {
-  public setup(inputSymbols: TwoInput) {
-    this.inputSymbols = resolveInput(inputSymbols);
-    this.tapes = new ThreeTape(resolveInput(inputSymbols));
-  }
-  private inputSymbols: Symbol[] = [];
-  static totalTape = 3;
-  private tapes: ThreeTape = new ThreeTape([]);
-
-  private transitions = new Array<Transition>();
-  private lastTransition: Transition;
-
-  public async run() {
-    do {
-      const transition = this.getNextTransition(
-        this.lastTransition ? this.lastTransition.to : 0
-      );
-      if (transition !== false) {
-        this.tapes.write([...transition.headReplace] as Symbol[]);
-        this.tapes.moveHead([...transition.tapeDirection] as Direction[]);
-
-        this.transitions.push(transition);
-        this.lastTransition = transition;
-      } else {
-        this.lastTransition = undefined;
-      }
-    } while (this.lastTransition !== undefined);
-  }
-
-  public getResult() {
-    return [
-      this.tapes.all().tape1,
-      this.tapes.all().tape2,
-      this.tapes.all().tape3,
-    ];
-  }
-
-  public getTransitions() {
-    return this.transitions;
-  }
-
-  public getTotalTape() {
-    return DivisionMultiTape.totalTape;
-  }
-
-  public getInputSymbols() {
-    return this.inputSymbols;
-  }
-
-  public getLastHead() {
-    const directions = this.transitions.map((e) => {
-      return [e?.tapeDirection[0], e?.tapeDirection[1], e?.tapeDirection[2]];
-    });
-    let first = 0;
-    let second = 0;
-    let third = 0;
-    directions.forEach((e) => {
-      if (e[0] === 'L') {
-        first--;
-      } else if (e[0] === 'R') {
-        first++;
-      }
-      if (e[1] === 'L') {
-        second--;
-      } else if (e[1] === 'R') {
-        second++;
-      }
-      if (e[2] === 'L') {
-        third--;
-      }
-      if (e[2] === 'R') {
-        third++;
-      }
-    });
-    return [first, second, third];
-  }
-
-  private getNextTransition = (currentHead: number) => {
-    let transition: Transition = {
-      from: currentHead,
-      to: -1,
-      head: this.tapes.read().join(''),
-      headReplace: '',
-      tapeDirection: '',
-    };
-
+export class DivisionMultiTape implements Strategy {
+  public totalTape: number = 3;
+  public getNextTransition = (
+    transition: Transition
+  ): Transition | undefined => {
     switch (transition.from) {
       case 0:
         switch (transition.head) {
@@ -296,18 +215,6 @@ export class DivisionMultiTape {
         break;
     }
 
-    return transition.to === -1 ? false : transition;
+    return transition.to === -1 ? undefined : transition;
   };
 }
-
-const resolveInput = (input: TwoInput): Symbol[] => {
-  let inputstring = new Array<string>();
-  for (let i = 0; i < Math.abs(input.input1); i++) {
-    inputstring.push(input.input1 > 0 ? '1' : '0');
-  }
-  inputstring.push('C');
-  for (let i = 0; i < Math.abs(input.input2); i++) {
-    inputstring.push(input.input2 > 0 ? '1' : '0');
-  }
-  return inputstring as Symbol[];
-};
