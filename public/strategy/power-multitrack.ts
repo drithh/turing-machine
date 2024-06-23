@@ -1,7 +1,7 @@
-import { Transition } from '../type';
-import { Strategy } from './strategy';
+import { Transition } from '../../src/components/type';
+import { Strategy } from '../../src/components/turing-machine/strategy';
 
-export class BinaryLogarithmMultiTrack implements Strategy {
+export class PowerMultiTrack implements Strategy {
   public totalTape: number = 2;
   public getNextTransition = (
     transition: Transition
@@ -79,7 +79,6 @@ export class BinaryLogarithmMultiTrack implements Strategy {
       case 2:
         break;
     }
-
     return transition.to === -1 ? undefined : transition;
   };
 }
