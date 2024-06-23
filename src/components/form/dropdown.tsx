@@ -15,16 +15,16 @@ export const Dropdown = (props: {
   const operations: string[] = [
     'Addition - SingleTrack',
     'Addition - MultiTape',
-    'Subtraction - SingleTrack',
-    'Subtraction - MultiTape',
-    'Multiplication - SingleTrack',
-    'Multiplication - MultiTape',
+    // 'Subtraction - SingleTrack',
+    // 'Subtraction - MultiTape',
+    // 'Multiplication - SingleTrack',
+    // 'Multiplication - MultiTape',
     'Division - SingleTrack',
     'Division - MultiTape',
-    'Factorial - MultiTrack',
-    'Factorial - MultiTape',
-    'Power - MultiTape',
-    'Binary Logarithm - MultiTape',
+    // 'Factorial - MultiTrack',
+    // 'Factorial - MultiTape',
+    // 'Power - MultiTape',
+    // 'Binary Logarithm - MultiTape',
   ];
 
   return (
