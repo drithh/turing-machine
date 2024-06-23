@@ -9,13 +9,13 @@ export class TuringBase {
   }
 
   public setup(inputs: string) {
+    console.log(inputs);
     const symbols = resolveSymbol(inputs);
     this.inputSymbols = symbols;
     this.tapes = new MultiTape(resolveSymbol(inputs), this.strategy.totalTape);
   }
 
   protected strategy: Strategy;
-  // protected totalTape: number = 0;
   protected inputSymbols: Symbol[] = [];
   protected tapes: MultiTape = new MultiTape([], 0);
 
@@ -25,7 +25,7 @@ export class TuringBase {
   public async run() {
     do {
       const transition = this.getNextTransition(
-        this.lastTransition ? this.lastTransition.to : 0
+        this.lastTransition ? this.lastTransition.to : '0'
       );
       if (transition) {
         this.tapes.write(resolveSymbol(transition.headReplace));
@@ -77,11 +77,11 @@ export class TuringBase {
   }
 
   protected getNextTransition = (
-    currentHead: number
+    currentHead: string
   ): Transition | undefined => {
     const currentTransition: Transition = {
       from: currentHead,
-      to: -1,
+      to: '',
       head: this.tapes.read().reduce((acc, curr) => acc + curr, ''),
       headReplace: '',
       tapeDirection: '',

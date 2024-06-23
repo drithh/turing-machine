@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
   TuringMachines,
   TuringMachinesResult,
+  createTuringMachine,
 } from './components/turing-machine/turing-machine';
 import { motion } from 'framer-motion';
 
@@ -65,7 +66,7 @@ function App() {
     currentAction.current = action;
   };
 
-  const resetTuringMachine = (operation: string) => {
+  const resetTuringMachine = async (operation: string) => {
     setReset(true);
     index.current = 0;
     isRunning.current = false;
@@ -73,17 +74,18 @@ function App() {
     setTuringMachinesResult(undefined);
     setAssignedHead([0, 0, 0]);
     setInputString([[], [], []]);
-    turingMachines.current = new TuringMachines(operation);
+    turingMachines.current = await createTuringMachine(operation);
   };
 
-  const restart = (action: string, data: FormData) => {
-    resetTuringMachine(data.operation);
+  const restart = async (action: string, data: FormData) => {
+    await resetTuringMachine(data.operation);
     if (turingMachines.current) {
       turingMachines.current.setup(data);
       setTuringMachinesResult(turingMachines.current.run());
 
       setLastTransitons(turingMachines.current.getTransitions());
     }
+    console.log('Restarted');
   };
 
   useEffect(() => {
