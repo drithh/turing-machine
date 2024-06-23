@@ -1,6 +1,6 @@
 export type Transition = {
-  from: number;
-  to: number;
+  from: string;
+  to: string;
   head: string;
   headReplace: string;
   tapeDirection: string;
