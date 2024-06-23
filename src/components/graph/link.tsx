@@ -58,10 +58,11 @@ export const Link = (props: Props) => {
 };
 
 const isActive = (
-  activeNode: { from?: number; to?: number },
+  activeNode: { from?: string; to?: string },
   link: Type.Link
 ) => {
   return (
-    activeNode?.from === link.source.node && activeNode?.to === link.target.node
+    activeNode?.from === link.source.node.toString() &&
+    activeNode?.to === link.target.node.toString()
   );
 };

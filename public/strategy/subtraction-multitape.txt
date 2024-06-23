@@ -1,5 +1,5 @@
-import { Transition } from '../type';
-import { Strategy } from './strategy';
+import { Transition } from '../../src/components/type';
+import { Strategy } from '../../src/components/turing-machine/strategy';
 
 export class SubtractionMultiTape implements Strategy {
   public totalTape: number = 2;

@@ -23,7 +23,10 @@ export const Node = (props: {
   const [variant, setVariant] = useState<'active' | 'inactive'>('inactive');
 
   useEffect(() => {
-    if (active?.from === node.state || active?.to === node.state) {
+    if (
+      active?.from === node.state.toString() ||
+      active?.to === node.state.toString()
+    ) {
       setVariant('active');
     } else {
       setVariant('inactive');

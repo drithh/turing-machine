@@ -26,6 +26,8 @@
     "public/strategy/multiplication-multitape.ts",
     "public/strategy/multiplication-singletrack.ts",
     "public/strategy/power-multitape.ts",
-    "public/strategy/power-multitrack.ttxt"
+    "public/strategy/power-multitrack.ttxt",
+    "public/strategy/subtraction-multitape.ts",
+    "public/strategy/subtraction-singletrack.ts"
   ]
 }
