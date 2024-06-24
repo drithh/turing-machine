@@ -15,6 +15,7 @@ export const Dropdown = (props: {
   const operations: string[] = [
     'Addition - SingleTrack',
     'Addition - MultiTape',
+    'Factorial - Division',
     // 'Subtraction - SingleTrack',
     // 'Subtraction - MultiTape',
     // 'Multiplication - SingleTrack',
